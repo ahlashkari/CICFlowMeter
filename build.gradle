@@ -1,0 +1,138 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+group = 'cic.unb.ca'
+version = '3.0'
+description = """CICFlowMeterV3"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+dependencies {
+    compile group: 'log4j', name: 'log4j', version:'1.2.17'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.25'
+    compile group: 'org.jnetpcap', name: 'jnetpcap', version:'1.4.1'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.6'
+    compile group: 'org.apache.commons', name: 'commons-math3', version:'3.5'
+    compile group: 'commons-io', name: 'commons-io', version:'2.5'
+    compile group: 'org.quartz-scheduler', name: 'quartz', version:'2.3.0'
+    compile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version:'3.6.14'
+    // https://mvnrepository.com/artifact/org.jfree/jfreechart
+    compile group: 'org.jfree', name: 'jfreechart', version: '1.5.0'
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '23.6-jre'
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            exclude '**/CICFlowMeter.java'
+        }
+    }
+}
+
+task zipSrc(type: Zip){
+    baseName "${applicationName}-Source"
+    destinationDir = file('build/')
+    from('.'){
+        include '**/'
+        exclude '.gradle/','build/','bin/','logs/','*.iml','*.ipr','*.iws','.idea/','out/'
+        into "${applicationName}V${version}-Src"
+    }
+}
+
+import org.apache.tools.ant.DirectoryScanner
+task zipPro(type: Zip){
+
+    doFirst {
+        DirectoryScanner.defaultExcludes.each { DirectoryScanner.removeDefaultExclude it }
+        //DirectoryScanner.addDefaultExclude 'something has to be in here or everything gets excluded'
+    }
+
+    doLast {
+        DirectoryScanner.resetDefaultExcludes()
+    }
+
+    baseName "${applicationName}-Full"
+    destinationDir = file('build/')
+
+    from('.'){
+        include '**/'
+        exclude '.gradle/','build/','bin/','logs/','*.iml','*.ipr','*.iws','.idea/','out/'
+        into "${applicationName}V${version}-Full"
+    }
+}
+
+
+task fatJar(type: Jar) {
+    println 'type Jar'
+
+    manifest {
+
+        attributes 'Premain-Class': 'swing.common.ObjectSizeFetcher'
+        attributes 'Can-Retransform-Classes': true
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'cic.cs.unb.ca.ifm.App'
+
+    }
+    /*baseName = "NetWorkTraffic" + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    into(new File('build/jar/'))
+    with jar*/
+}
+
+
+task execute(type: JavaExec) {
+    println 'type JavaExec'
+
+
+    main = "cic.cs.unb.ca.ifm.App" //main class
+    classpath = sourceSets.main.runtimeClasspath
+    String osName = System.getProperty('os.name').toLowerCase()
+    if(osName.contains('windows')){
+        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
+    }else{
+        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
+    }
+}
+
+/*task exedebug(type: JavaExec) {
+    debug = true
+    main = "cic.cs.unb.ca.ifm.App"
+    classpath = sourceSets.main.runtimeClasspath
+    String osName = System.getProperty('os.name').toLowerCase()
+    if(osName.contains('windows')){
+        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
+    }else{
+        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
+    }
+    jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005'
+}*/
+
+
+// The Application Plugin
+mainClassName = "cic.cs.unb.ca.ifm.App"
+applicationName = "CICFlowMeter"
+applicationDefaultJvmArgs = ["-Djava.library.path=../lib/native"]
+
+applicationDistribution.from("jnetpcap/linux/jnetpcap-1.4.r1425") {
+    include "*.so"
+    into('lib/native')
+}
+applicationDistribution.from("jnetpcap/win/jnetpcap-1.4.r1425") {
+    include "*.dll"
+    into('lib/native')
+}
+applicationDistribution.from('LICENSE.txt'){
+    into('')
+}
+applicationDistribution.from('README.md'){
+    into('')
+}

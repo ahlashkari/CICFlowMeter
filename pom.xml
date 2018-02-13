@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cic.unb.ca</groupId>
+	<artifactId>SimpleFlowMeterV3</artifactId>
+	<version>0.0.4-SNAPSHOT</version>
+	<name>SimpleFlowMeterV3</name>
+
+	<dependencies>
+		<dependency>  
+		    <groupId>log4j</groupId>  
+		    <artifactId>log4j</artifactId>  
+		    <version>1.2.17</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>org.slf4j</groupId>  
+		    <artifactId>slf4j-log4j12</artifactId>  
+		    <version>1.7.25</version>  
+		</dependency>
+
+		<dependency>
+			<groupId>org.jnetpcap</groupId>
+			<artifactId>jnetpcap</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.6</version>
+		</dependency>
+				
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.5</version>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+	                <excludes>
+	                	<exclude>**/*_bak.java</exclude>
+	                	<exclude>**/OnLineFlowMeter.java</exclude>
+	                </excludes>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-assembly-plugin</artifactId>  
+                <version>3.0.0</version>
+                <executions>
+                    <!-- <execution>
+                        <configuration>  
+                            <archive>  
+                                <manifest>  
+                                    <mainClass>cic.cs.unb.ca.ifm.CICFlowMeter</mainClass>  
+                                </manifest>  
+                            </archive>  
+                            <descriptorRefs>  
+                                <descriptorRef>jar-with-dependencies</descriptorRef>  
+                            </descriptorRefs> 
+                            <finalName>CICFlowMeterV2-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId> 
+                        </configuration>                        
+                        <id>build-CICFlowMeter</id>
+                        <phase>package</phase> 
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution> -->
+                    
+                    <execution>
+                    	<configuration>
+                    		<archive>
+                    			<manifest>
+                    				<mainClass>cic.cs.unb.ca.ifm.App</mainClass>
+                    			</manifest>
+                    		</archive>
+                    		<descriptorRefs>
+                    			<descriptorRef>jar-with-dependencies</descriptorRef>
+                    		</descriptorRefs>
+                    		<finalName>CICFlowMeterV3-${project.version}</finalName>
+                    		<appendAssemblyId>false</appendAssemblyId>
+                    	</configuration>
+                    	<id>build-NetWorkTraffic</id>
+                    	<phase>package</phase>
+                    	<goals>
+                    		<goal>single</goal>
+                    	</goals>
+                    </execution>
+                </executions>  
+            	
+            
+            </plugin>
+			
+		</plugins>
+		
+	</build>
+	
+</project>
