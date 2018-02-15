@@ -46,7 +46,7 @@ $ gradlew distZip
 the zip file will be in the pathtoproject/CICFlowMeter/build/distributions
 
 ### Eclipse
-at the project root
+At the project root
 ```
 mvn package
 ```
