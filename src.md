@@ -25,11 +25,10 @@ $ gradlew execute
 
 Run eclipse with sudo
 ```
-1.first time
-right click App.java -> Run As -> Run Configurations -> Arguments -> VM arguments:
+1. Right click App.java -> Run As -> Run Configurations -> Arguments -> VM arguments:
 -Djava.library.path="pathtoproject/jnetpcap/linux/jnetpcap-1.4.r1425"  -> Run
 
-2.right click App.java -> Run As -> Java Application
+2. Right click App.java -> Run As -> Java Application
 
 ```
 
@@ -40,7 +39,7 @@ open a Terminal in the IDE
 ```
 //linux:
 $ gradle distZip
-
+http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=g4gLnPa/2OM=&t=1
 //window
 $ gradlew distZip
 ```
