@@ -5,7 +5,12 @@
 	<artifactId>SimpleFlowMeterV3</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<name>SimpleFlowMeterV3</name>
-
+	<repositories>
+		<repository>
+		  <id>clojars.org</id>
+		  <url>https://repo.clojars.org</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>  
 		    <groupId>log4j</groupId>  
@@ -19,9 +24,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jnetpcap</groupId>
-			<artifactId>jnetpcap</artifactId>
-			<version>1.4.1</version>
+		    <groupId>jnetpcap</groupId>
+		    <artifactId>jnetpcap</artifactId>
+		    <version>1.4.r1425-1g</version>
 		</dependency>
 		
 		<dependency>

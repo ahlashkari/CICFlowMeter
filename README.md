@@ -68,14 +68,6 @@ Arash Habibi Lashkari, Gerard Draper-Gil, Mohammad Saiful Islam Mamun and Ali A.
 Gerard Drapper Gil, Arash Habibi Lashkari, Mohammad Mamun, Ali A. Ghorbani, "Characterization of Encrypted and VPN Traffic Using Time-Related Features", In Proceedings of the 2nd International Conference on Information Systems Security and Privacy(ICISSP 2016) , pages 407-414, Rome , Italy
 
 # Development
-## Install jnetpcap local repo
-
-for linux, sudo is a prerequisite
-```
-//linux :at the pathtoproject/jnetpcap/linux/jnetpcap-1.4.r1425
-//windows: at the pathtoproject/jnetpcap/win/jnetpcap-1.4.r1425
-mvn install:install-file -Dfile=jnetpcap.jar -DgroupId=org.jnetpcap -DartifactId=jnetpcap -Dversion=1.4.1 -Dpackaging=jar
-```
 
 ## Run
 ### IntelliJ IDEA
