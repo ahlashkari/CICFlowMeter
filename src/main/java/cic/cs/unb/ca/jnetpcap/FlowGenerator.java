@@ -7,9 +7,13 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+
+import java.util.Iterator;
+import java.util.Map;
 
 public class FlowGenerator {
     public static final Logger logger = LoggerFactory.getLogger(FlowGenerator.class);
@@ -44,7 +48,8 @@ public class FlowGenerator {
 	private long    flowTimeOut;
 	private long    flowActivityTimeOut;
 	private int     finishedFlowCount;
-	
+	private int     timeoutFlowCount;
+
 	public FlowGenerator(boolean bidirectional, long flowTimeout, long activityTimeout) {
 		super();
 		this.bidirectional = bidirectional;
@@ -57,7 +62,33 @@ public class FlowGenerator {
 		currentFlows = new HashMap<>();
 		finishedFlows = new HashMap<>();
 		IPAddresses = new HashMap<>();
-		finishedFlowCount = 0;		
+		finishedFlowCount = 0;
+		timeoutFlowCount = 0;
+
+	}
+
+	public void close_timed_out_flows(BasicPacketInfo packet){
+		long currentTimestamp = packet.getTimeStamp();
+		long oldTimestamp;
+
+		System.out.println("Remove timed out flows");
+
+		Map<String,BasicFlow> map = this.currentFlows;
+
+		for(Iterator<Map.Entry<String,BasicFlow>> it = map.entrySet().iterator(); it.hasNext(); ) {
+			Map.Entry<String, BasicFlow> entry = it.next();
+//			System.out.println(entry.getKey() + "/" + entry.getValue());
+			BasicFlow flow = entry.getValue();
+			oldTimestamp = flow.getFlowStartTime();
+
+			if ((currentTimestamp - oldTimestamp) > this.flowTimeOut) {
+//				System.out.println("Flow removed");
+				finishedFlows.put(getFlowCount(), flow);
+				timeoutFlowCount += 1;
+				it.remove();
+			}
+		}
+
 	}
 
 	public void addFlowListener(FlowGenListener listener) {
@@ -79,14 +110,14 @@ public class FlowGenerator {
     		// 2.- we eliminate the flow from the current flow list
     		// 3.- we create a new flow with the packet-in-process
     		if((currentTimestamp -flow.getFlowStartTime())>flowTimeOut){
-    			if(flow.packetCount()>1){
-					if (mListener != null) {
-						mListener.onFlowGenerated(flow);
-					}else{
-                        finishedFlows.put(getFlowCount(), flow);
-                    }
-                    //flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
-    			}
+				if (mListener != null) {
+					mListener.onFlowGenerated(flow);
+				}else{
+					finishedFlows.put(getFlowCount(), flow);
+				}
+				//flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
+
+				timeoutFlowCount++;
     			currentFlows.remove(packet.getFlowId());    			
     			currentFlows.put(packet.getFlowId(), new BasicFlow(bidirectional,packet,flow.getSrc(),flow.getDst(),flow.getSrcPort(),flow.getDstPort()));
     			
@@ -117,6 +148,52 @@ public class FlowGenerator {
     		currentFlows.put(packet.getFlowId(), new BasicFlow(bidirectional,packet)); 		
     	}
     }
+
+	public int dumpFinishedFlows(String path, String filename, boolean writeHeader, boolean writeLastFlows){
+		BasicFlow flow;
+
+		try {
+			//total = finishedFlows.size()+currentFlows.size(); becasue there are 0 packet BasicFlow in the currentFlows
+			File csvFile = new File(path+filename);
+			if(writeHeader){
+				// If there exists already a csv with this name, delete it
+				boolean deletedExistingFile = Files.deleteIfExists((new File(path+filename)).toPath());
+				if(deletedExistingFile){
+                    System.out.println("Deleted existing .csv");
+                }
+				Files.write(csvFile.toPath(), (FlowFeature.getHeader()+"\n").getBytes());
+			}
+
+			FileOutputStream output = new FileOutputStream(csvFile, true);
+			logger.debug("dumpLabeledFlow: ", path + filename);
+
+			Set<Integer> fkeys = this.finishedFlows.keySet();
+			for(Integer key:fkeys){
+				flow = this.finishedFlows.get(key);
+				output.write((flow.dumpFlowBasedFeaturesEx() + "\n").getBytes());
+			}
+			// clear the list to free up memory
+			this.finishedFlows.clear();
+
+			if(writeLastFlows){
+				Set<String> ckeys = currentFlows.keySet();
+				for(String key:ckeys){
+					flow = currentFlows.get(key);
+					output.write((flow.dumpFlowBasedFeaturesEx() + "\n").getBytes());
+					finishedFlowCount++;
+					timeoutFlowCount++;
+				}
+			}
+			output.flush();
+			output.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Appended finished flows to CSV. Flows finished: " + Integer.toString(finishedFlowCount));
+
+		return finishedFlowCount;
+	}
 
     public void dumpFlowBasedFeatures(String path, String filename,String header){
     	BasicFlow   flow;

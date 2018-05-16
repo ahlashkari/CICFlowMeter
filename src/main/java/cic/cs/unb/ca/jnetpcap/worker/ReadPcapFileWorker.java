@@ -145,6 +145,8 @@ public class ReadPcapFileWorker extends SwingWorker<List<String>,String>{
         int nTotal=0;
         int nDiscarded = 0;
         long start = System.currentTimeMillis();
+        int flush_period = 1000000;
+        boolean writeHeader = true;
         while(true) {
             try{
                 basicPacket = packetReader.nextPacket();
@@ -152,6 +154,12 @@ public class ReadPcapFileWorker extends SwingWorker<List<String>,String>{
                 if(basicPacket!=null){
                     flowGen.addPacket(basicPacket);
                     nValid++;
+
+                    if(nValid%flush_period == 0){
+                        flowGen.close_timed_out_flows(basicPacket);
+                        flowGen.dumpFinishedFlows(outPath, fullname+"_Flow.csv", writeHeader, false);
+                        writeHeader = false; // only write header the first time
+                    }
                 }else{
                     nDiscarded++;
                 }
@@ -167,7 +175,8 @@ public class ReadPcapFileWorker extends SwingWorker<List<String>,String>{
         chunks.add(String.format("\t Ignored packets:%d %d ", nDiscarded,(nTotal-nValid)));
         chunks.add(String.format("PCAP duration %d seconds",((packetReader.getLastPacket()-packetReader.getFirstPacket())/1000)));
         chunks.add(DividingLine);
-        int singleTotal = flowGen.dumpLabeledFlowBasedFeatures(outPath, fullname+"_Flow.csv", FlowFeature.getHeader());
+//        int singleTotal = flowGen.dumpLabeledFlowBasedFeatures(outPath, fullname+"_Flow.csv", FlowFeature.getHeader());
+        int singleTotal = flowGen.dumpFinishedFlows(outPath, fullname+"_Flow.csv", false, true);
         chunks.add(String.format("Number of Flows: %d",singleTotal));
         chunks.add("");
         publish(chunks.toArray( new String[chunks.size()]));
