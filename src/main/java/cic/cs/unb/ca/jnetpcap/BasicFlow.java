@@ -379,7 +379,7 @@ public class BasicFlow {
 		if (tsOflastBulkInOther > fbulkStartHelper) fbulkStartHelper = 0;
 		if (size <= 0) return ;
 
-		packet.payloadPacket += 1;
+		packet.getPayloadPacket();
 
 		if (fbulkStartHelper == 0){
 			fbulkStartHelper = packet.getTimeStamp();
@@ -423,7 +423,7 @@ public class BasicFlow {
 		if (tsOflastBulkInOther > bbulkStartHelper) bbulkStartHelper = 0;
 		if ( size<= 0) return ;
 
-		packet.payloadPacket += 1;
+		packet.getPayloadPacket();
 
 		if ( bbulkStartHelper == 0 ){
 			bbulkStartHelper = packet.getTimeStamp();
@@ -696,13 +696,14 @@ public class BasicFlow {
     	}else{
     		dump+="0,0,0,0";
     	}
+		dump+=","+ getLabel();
 
-		if(FormatUtils.ip(src).equals("147.32.84.165") | FormatUtils.ip(dst).equals("147.32.84.165")){
+		/*if(FormatUtils.ip(src).equals("147.32.84.165") | FormatUtils.ip(dst).equals("147.32.84.165")){
 			dump+=",BOTNET";
 		}
 		else{
 			dump+=",BENIGN";
-		}
+		} */
 		/////////////////////////////////
     	return dump;
     }      
@@ -716,7 +717,7 @@ public class BasicFlow {
     }
     
 	public List<BasicPacketInfo> getForward() {
-		return forward;
+		return new ArrayList<>(forward);
 	}
 
 	public void setForward(List<BasicPacketInfo> forward) {
@@ -724,7 +725,7 @@ public class BasicFlow {
 	}
 
 	public List<BasicPacketInfo> getBackward() {
-		return backward;
+		return new ArrayList<>(backward);
 	}
 
 	public void setBackward(List<BasicPacketInfo> backward) {
@@ -740,7 +741,7 @@ public class BasicFlow {
 	}
 
 	public byte[] getSrc() {
-		return src;
+		return Arrays.copyOf(src,src.length);
 	}
 
 	public void setSrc(byte[] src) {
@@ -748,7 +749,7 @@ public class BasicFlow {
 	}
 
 	public byte[] getDst() {
-		return dst;
+		return Arrays.copyOf(dst,dst.length);
 	}
 
 	public void setDst(byte[] dst) {
@@ -1063,7 +1064,7 @@ public class BasicFlow {
     	dump.append(getDstPort()).append(separator);          						//5
     	dump.append(getProtocol()).append(separator);         						//6 
     	
-    	String starttime = DateFormatter.parseDateFromLong(flowStartTime/1000L, "dd/MM/yyyy hh:mm:ss");
+    	String starttime = DateFormatter.convertMilliseconds2String(flowStartTime/1000L, "dd/MM/yyyy hh:mm:ss a");
     	dump.append(starttime).append(separator);									//7
     	
     	long flowDuration = flowLastSeen - flowStartTime;

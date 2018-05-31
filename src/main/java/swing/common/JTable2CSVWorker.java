@@ -35,11 +35,14 @@ public class JTable2CSVWorker extends SwingWorker<String,String> {
         FileWriter csv = null;
         try {
             if (file.exists()) {
-                file.delete();
+                if (!file.delete()) {
+                    System.out.println("File can not be deleted");
+                }
             }
-            file.createNewFile();
+            if (file.createNewFile()) {
 
-            csv = new FileWriter(file);
+                csv = new FileWriter(file);
+            }
 
             StringBuilder tableHeader = new StringBuilder();
             TableModel model = table.getModel();
@@ -63,7 +66,7 @@ public class JTable2CSVWorker extends SwingWorker<String,String> {
             }
 
         }catch (IOException e) {
-            e.printStackTrace();
+            logger.debug(e.getMessage());
             logger.info("JTable2CSVWorker: {}", e.getMessage());
         } finally {
             try {
@@ -71,7 +74,7 @@ public class JTable2CSVWorker extends SwingWorker<String,String> {
                     csv.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.debug(e.getMessage());
             }
         }
         return file.toString();

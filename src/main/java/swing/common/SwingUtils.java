@@ -1,24 +1,22 @@
 package swing.common;
 
 import org.apache.tika.Tika;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.Enumeration;
 
 /**
  * Created by yzhang29 on 23/11/17.
  */
 public class SwingUtils {
+    protected static final Logger logger = LoggerFactory.getLogger(SwingUtils.class);
     private final static String PCAP = "application/vnd.tcpdump.pcap";
-
     public static void fitTableColumns(JTable myTable) {
         JTableHeader header = myTable.getTableHeader();
         int rowCount = myTable.getRowCount();
@@ -91,9 +89,38 @@ public class SwingUtils {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.debug(e.getMessage());
         }
 
         return false;
+    }
+
+    public static long countLines(String fileName) {
+        File file =new File(fileName);
+        int linenumber = 0;
+        FileReader fr;
+        LineNumberReader lnr = null;
+        try {
+            fr = new FileReader(file);
+            lnr = new LineNumberReader(fr);
+
+            while (lnr.readLine() != null){
+                linenumber++;
+            }
+
+        } catch (IOException e) {
+            logger.debug(e.getMessage());
+        } finally {
+
+            if (lnr != null) {
+
+                try {
+                    lnr.close();
+                } catch (IOException e) {
+                    logger.debug(e.getMessage());
+                }
+            }
+        }
+        return linenumber;
     }
 }

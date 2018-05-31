@@ -3,6 +3,10 @@ package cic.cs.unb.ca.ifm.ui;
 import cic.cs.unb.ca.flow.FlowMgr;
 import cic.cs.unb.ca.flow.ui.FlowMonitorPane;
 import cic.cs.unb.ca.flow.ui.FlowOfflinePane;
+import cic.cs.unb.ca.flow.ui.FlowVisualPane;
+import cic.cs.unb.ca.guava.Event.FlowVisualEvent;
+import cic.cs.unb.ca.guava.GuavaMgr;
+import com.google.common.eventbus.Subscribe;
 import swing.common.SwingUtils;
 
 import javax.swing.*;
@@ -16,7 +20,7 @@ public class MainFrame extends JFrame{
 
 	private FlowOfflinePane offLinePane;
 	private FlowMonitorPane monitorPane;
-	//private FlowVisualPane visualPane;
+	private FlowVisualPane visualPane;
 	
 	
 	public MainFrame() throws HeadlessException {
@@ -44,9 +48,10 @@ public class MainFrame extends JFrame{
 		
 		offLinePane = new FlowOfflinePane();
         monitorPane = new FlowMonitorPane();
-        //visualPane = new FlowVisualPane();
+        visualPane = new FlowVisualPane();
         getContentPane().add(monitorPane,BorderLayout.CENTER);
 
+        GuavaMgr.getInstance().getEventBus().register(this);
 
 		setVisible(true);
 	}
@@ -91,8 +96,22 @@ public class MainFrame extends JFrame{
 		mnHelp.add(itemAbout);
 	}
 
+    @Subscribe
+    public void listenGuava(FlowVisualEvent evt) {
+        System.out.println("file: " + evt.getCsv_file().getPath());
+
+        if (visualPane == null) {
+            visualPane = new FlowVisualPane(evt.getCsv_file());
+        } else {
+            visualPane.visualFile(evt.getCsv_file());
+        }
+
+        SwingUtils.setBorderLayoutPane(getContentPane(), visualPane, BorderLayout.CENTER);
+    }
+
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
+        GuavaMgr.getInstance().getEventBus().unregister(this);
     }
 }

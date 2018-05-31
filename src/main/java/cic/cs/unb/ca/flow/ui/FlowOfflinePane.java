@@ -1,8 +1,12 @@
 package cic.cs.unb.ca.flow.ui;
 
+import cic.cs.unb.ca.flow.FlowMgr;
+import cic.cs.unb.ca.jnetpcap.BasicFlow;
+import cic.cs.unb.ca.jnetpcap.FlowFeature;
 import cic.cs.unb.ca.jnetpcap.worker.ReadPcapFileWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import cic.cs.unb.ca.jnetpcap.worker.InsertCsvRow;
 import swing.common.PcapFileFilter;
 
 import javax.swing.*;
@@ -10,8 +14,12 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class FlowOfflinePane extends JPanel{
     protected static final Logger logger = LoggerFactory.getLogger(FlowOfflinePane.class);
@@ -34,6 +42,8 @@ public class FlowOfflinePane extends JPanel{
     private JProgressBar fileProgress;
     private JProgressBar fileCntProgress;
 
+    private ExecutorService csvWriterThread;
+
     public FlowOfflinePane() {
 
         init();
@@ -49,6 +59,12 @@ public class FlowOfflinePane extends JPanel{
         fileChooser = new JFileChooser(new File("."));
         pcapChooserFilter = new PcapFileFilter();
         fileChooser.setFileFilter(pcapChooserFilter);
+        csvWriterThread = Executors.newSingleThreadExecutor();
+
+    }
+
+    public void destroy() {
+        csvWriterThread.shutdown();
     }
 
     private JPanel initOutPane(){
@@ -307,7 +323,7 @@ public class FlowOfflinePane extends JPanel{
     }
 
     private void startReadPcap(){
-        File in;
+        final File in;
         int cmbInIndex = cmbInput.getSelectedIndex();
         if (cmbInIndex < 0) {
             in = new File((String) cmbInput.getEditor().getItem());
@@ -315,7 +331,7 @@ public class FlowOfflinePane extends JPanel{
             in = cmbInputEle.get(cmbInIndex);
         }
 
-        File out;
+        final File out;
         int cmbOutIndex = cmbOutput.getSelectedIndex();
         if (cmbOutIndex < 0) {
             out = new File((String) cmbOutput.getEditor().getItem());
@@ -332,6 +348,8 @@ public class FlowOfflinePane extends JPanel{
         try {
             flowTimeout = getComboParameter(param1, param1Ele);
             activityTimeout = getComboParameter(param2, param2Ele);
+
+            Map<String, Long> flowCnt = new HashMap<>();
 
             ReadPcapFileWorker worker = new ReadPcapFileWorker(in, out.getPath(), flowTimeout, activityTimeout);
             worker.addPropertyChangeListener(evt -> {
@@ -353,6 +371,7 @@ public class FlowOfflinePane extends JPanel{
                             break;
                         case DONE:
                             progressBox.setVisible(false);
+                            flowCnt.clear();
                             break;
                     }
                 } else if (ReadPcapFileWorker.PROPERTY_FILE_CNT.equalsIgnoreCase(evt.getPropertyName())) {
@@ -366,7 +385,22 @@ public class FlowOfflinePane extends JPanel{
 
                 } else if (ReadPcapFileWorker.PROPERTY_CUR_FILE.equalsIgnoreCase(evt.getPropertyName())) {
                     fileProgress.setIndeterminate(true);
-                    fileProgress.setString((String) evt.getNewValue());
+                    String curFile = (String) evt.getNewValue();
+                    fileProgress.setString(curFile);
+                    flowCnt.put(curFile, 0L);
+                } else if (ReadPcapFileWorker.PROPERTY_FLOW.equalsIgnoreCase(evt.getPropertyName())) {
+
+                    String fileName = (String) evt.getOldValue();
+                    BasicFlow flow = (BasicFlow) evt.getNewValue();
+
+                    flowCnt.put(fileName, flowCnt.get(fileName) + 1);
+
+                    String msg = String.format("%d flows on Reading %s",flowCnt.get(fileName),fileName);
+                    fileProgress.setString(msg);
+
+                    //write flows to csv file
+                    String header  = FlowFeature.getHeader();
+                    csvWriterThread.execute(new InsertCsvRow(header, flow.dumpFlowBasedFeaturesEx(), out.getPath(), fileName+FlowMgr.FLOW_SUFFIX));
                 }
             });
             worker.execute();

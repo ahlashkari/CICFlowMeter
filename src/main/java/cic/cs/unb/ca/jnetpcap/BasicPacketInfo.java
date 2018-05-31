@@ -27,7 +27,7 @@ public class BasicPacketInfo {
 	private    boolean flagRST = false;
 	private	   int TCPWindow=-1;
 	private	   long headerBytes;
-	public int payloadPacket=0;
+	private int payloadPacket=0;
 
 	public BasicPacketInfo(byte[] src, byte[] dst, int srcPort, int dstPort,
 			int protocol, long timeStamp, IdGenerator generator) {
@@ -72,6 +72,9 @@ public class BasicPacketInfo {
 	public String dumpInfo() {
 		return null;
 	}
+	public int getPayloadPacket() {
+		return payloadPacket+=1;
+	}
           
     
     public String getSourceIP(){
@@ -92,7 +95,7 @@ public class BasicPacketInfo {
 	}
 
 	public byte[] getSrc() {
-		return src;
+		return Arrays.copyOf(src,src.length);
 	}
 
 	public void setSrc(byte[] src) {
@@ -100,7 +103,7 @@ public class BasicPacketInfo {
 	}
 
 	public byte[] getDst() {
-		return dst;
+		return Arrays.copyOf(dst,dst.length);
 	}
 
 	public void setDst(byte[] dst) {

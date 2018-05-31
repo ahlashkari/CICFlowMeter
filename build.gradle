@@ -3,8 +3,8 @@ apply plugin: 'maven'
 apply plugin: 'application'
 
 group = 'cic.unb.ca'
-version = '3.0'
-description = """CICFlowMeterV3"""
+version = '4.0'
+description = """CICFlowMeterV4"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -12,9 +12,10 @@ targetCompatibility = 1.8
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://clojars.org/repo" }
 }
 dependencies {
-    compile group: 'log4j', name: 'log4j', version:'1.2.17'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.25'
     compile group: 'org.jnetpcap', name: 'jnetpcap', version:'1.4.1'
     compile group: 'junit', name: 'junit', version:'4.12'
@@ -105,9 +106,9 @@ task execute(type: JavaExec) {
     }
 }
 
-/*task exedebug(type: JavaExec) {
-    debug = true
-    main = "cic.cs.unb.ca.ifm.App"
+
+task exeCMD(type: JavaExec){
+    main = "cic.cs.unb.ca.ifm.Cmd" //main class
     classpath = sourceSets.main.runtimeClasspath
     String osName = System.getProperty('os.name').toLowerCase()
     if(osName.contains('windows')){
@@ -115,8 +116,22 @@ task execute(type: JavaExec) {
     }else{
         jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
     }
-    jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005'
-}*/
+    //args = ["/home/yzhang29/0a/Capture/", "/home/yzhang29/0a/Capture/out/"]
+}
+
+
+task cmdScript(type: CreateStartScripts) {
+    mainClassName = "cic.cs.unb.ca.ifm.Cmd"
+    applicationName = "cfm"
+    outputDir = new File(project.buildDir, 'scripts')
+    classpath = jar.outputs.files + project.configurations.runtime
+    defaultJvmOpts = ["-Djava.library.path=../lib/native"]
+}
+
+applicationDistribution.into("bin") {
+    from(cmdScript)
+    fileMode = 0755
+}
 
 
 // The Application Plugin
@@ -135,6 +150,7 @@ applicationDistribution.from("jnetpcap/win/jnetpcap-1.4.r1425") {
 applicationDistribution.from('LICENSE.txt'){
     into('')
 }
-applicationDistribution.from('README.md'){
+applicationDistribution.from('ReadMe.txt'){
     into('')
+    rename("ReadMe.txt","README.md")
 }

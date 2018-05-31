@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import static cic.cs.unb.ca.jnetpcap.Utils.LINE_SEP;
+
+
 public class FlowGenerator {
     public static final Logger logger = LoggerFactory.getLogger(FlowGenerator.class);
 
@@ -37,7 +40,7 @@ public class FlowGenerator {
 	//40/86
 	private FlowGenListener mListener;
 	private HashMap<String,BasicFlow> currentFlows;
-	private HashMap<Integer,BasicFlow> finishedFlows;
+	//private HashMap<Integer,BasicFlow> finishedFlows;
 	private HashMap<String,ArrayList> IPAddresses;
 
 	private boolean bidirectional;
@@ -55,7 +58,7 @@ public class FlowGenerator {
 	
 	private void init(){
 		currentFlows = new HashMap<>();
-		finishedFlows = new HashMap<>();
+		//finishedFlows = new HashMap<>();
 		IPAddresses = new HashMap<>();
 		finishedFlowCount = 0;		
 	}
@@ -82,9 +85,9 @@ public class FlowGenerator {
     			if(flow.packetCount()>1){
 					if (mListener != null) {
 						mListener.onFlowGenerated(flow);
-					}else{
+					}/*else{
                         finishedFlows.put(getFlowCount(), flow);
-                    }
+                    }*/
                     //flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
     			}
     			currentFlows.remove(packet.getFlowId());    			
@@ -104,9 +107,9 @@ public class FlowGenerator {
     	    	flow.addPacket(packet);
                 if (mListener != null) {
                     mListener.onFlowGenerated(flow);
-                } else {
+                } /*else {
                     finishedFlows.put(getFlowCount(), flow);
-                }
+                }*/
                 currentFlows.remove(packet.getFlowId());
     		}else{
     			flow.updateActiveIdleTime(currentTimestamp,this.flowActivityTimeOut);
@@ -118,7 +121,7 @@ public class FlowGenerator {
     	}
     }
 
-    public void dumpFlowBasedFeatures(String path, String filename,String header){
+    /*public void dumpFlowBasedFeatures(String path, String filename,String header){
     	BasicFlow   flow;
     	try {
     		System.out.println("TOTAL Flows: "+(finishedFlows.size()+currentFlows.size()));
@@ -144,7 +147,7 @@ public class FlowGenerator {
 			e.printStackTrace();
 		}
 
-    }
+    }*/
 
     public int dumpLabeledFlowBasedFeatures(String path, String filename,String header){
     	BasicFlow   flow;
@@ -156,7 +159,7 @@ public class FlowGenerator {
 
     		FileOutputStream output = new FileOutputStream(new File(path+filename));
 			logger.debug("dumpLabeledFlow: ", path + filename);
-    		output.write((header+"\n").getBytes());
+    		/*output.write((header+"\n").getBytes());
     		Set<Integer> fkeys = finishedFlows.keySet();    		
 			for(Integer key:fkeys){
 	    		flow = finishedFlows.get(key);
@@ -166,7 +169,7 @@ public class FlowGenerator {
                 } else {
                     zeroPkt++;
                 }
-            }
+            }*/
             logger.debug("dumpLabeledFlow finishedFlows -> {},{}",zeroPkt,total);
 
             Set<String> ckeys = currentFlows.keySet();
@@ -184,12 +187,56 @@ public class FlowGenerator {
             output.flush();
             output.close();
         } catch (IOException e) {
-            e.printStackTrace();
+
+            logger.debug(e.getMessage());
         }
 
         return total;
     }       
-    
+
+    public long dumpLabeledCurrentFlow(String fileFullPath,String header) {
+        if (fileFullPath == null || header==null) {
+            String ex = String.format("fullFilePath=%s,filename=%s", fileFullPath);
+            throw new IllegalArgumentException(ex);
+        }
+
+        File file = new File(fileFullPath);
+        FileOutputStream output = null;
+        int total = 0;
+        try {
+            if (file.exists()) {
+                output = new FileOutputStream(file, true);
+            }else{
+                if (file.createNewFile()) {
+                    output = new FileOutputStream(file);
+                    output.write((header + LINE_SEP).getBytes());
+                }
+            }
+
+            for (BasicFlow flow : currentFlows.values()) {
+                if(flow.packetCount()>1) {
+                    output.write((flow.dumpFlowBasedFeaturesEx() + LINE_SEP).getBytes());
+                    total++;
+                }else{
+
+                }
+            }
+
+        } catch (IOException e) {
+            logger.debug(e.getMessage());
+        } finally {
+            try {
+                if (output != null) {
+                    output.flush();
+                    output.close();
+                }
+            } catch (IOException e) {
+                logger.debug(e.getMessage());
+            }
+        }
+        return total;
+	}
+
     private int getFlowCount(){
     	this.finishedFlowCount++;
     	return this.finishedFlowCount;
