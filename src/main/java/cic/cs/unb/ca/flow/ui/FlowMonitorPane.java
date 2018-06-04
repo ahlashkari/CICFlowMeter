@@ -50,9 +50,9 @@ public class FlowMonitorPane extends JPanel {
     private JToggleButton btnStop;
     private ButtonGroup btnGroup;
 
-    private JButton btnSave;
+    private JButton btnSave = new JButton();
     private File lastSave;
-    private JButton btnGraph;
+    private JButton btnGraph = new JButton();
     private JFileChooser fileChooser;
 
     private ExecutorService csvWriterThread;

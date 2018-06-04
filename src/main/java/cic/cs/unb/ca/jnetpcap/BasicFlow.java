@@ -269,39 +269,48 @@ public class BasicFlow {
 	}
 
 	public void checkFlags(BasicPacketInfo packet){
-		if(packet.hasFlagURG()){
-			MutableInt count1 = flagCounts.get("URG");
-			count1.increment();
-		}
-		if(packet.hasFlagECE()){
-			MutableInt count2 = flagCounts.get("ECE");
-			count2.increment();
+		if(packet.hasFlagFIN()){
+			//MutableInt count1 = flagCounts.get("FIN");
+			//count1.increment();
+			flagCounts.get("FIN").increment();
 		}
 		if(packet.hasFlagSYN()){
-			MutableInt count3 = flagCounts.get("SYN");
-			count3.increment();
-		}
-		if(packet.hasFlagACK()){
-			MutableInt count4 = flagCounts.get("ACK");
-			count4.increment();
-		}
-		if(packet.hasFlagFIN()){
-			MutableInt count5 = flagCounts.get("FIN");
-			count5.increment();
-		}
-		if(packet.hasFlagPSH()){
-			MutableInt count6 = flagCounts.get("PSH");
-			count6.increment();
-		}
-		if(packet.hasFlagCWR()){
-			MutableInt count7 = flagCounts.get("CWR");
-			count7.increment();
+			//MutableInt count2 = flagCounts.get("SYN");
+			//count2.increment();
+			flagCounts.get("SYN").increment();
 		}
 		if(packet.hasFlagRST()){
-			MutableInt count8 = flagCounts.get("RST");
-			count8.increment();
+			//MutableInt count3 = flagCounts.get("RST");
+			//count3.increment();
+			flagCounts.get("RST").increment();
+		}
+		if(packet.hasFlagPSH()){
+			//MutableInt count4 = flagCounts.get("PSH");
+			//count4.increment();
+			flagCounts.get("PSH").increment();
+		}
+		if(packet.hasFlagACK()){
+			//MutableInt count5 = flagCounts.get("ACK");
+			//count5.increment();
+			flagCounts.get("ACK").increment();
+		}
+		if(packet.hasFlagURG()){
+			//MutableInt count6 = flagCounts.get("URG");
+			//count6.increment();
+			flagCounts.get("URG").increment();
+		}
+		if(packet.hasFlagCWR()){
+			//MutableInt count7 = flagCounts.get("CWR");
+			//count7.increment();
+			flagCounts.get("CWR").increment();
+		}
+		if(packet.hasFlagECE()){
+			//MutableInt count8 = flagCounts.get("ECE");
+			//count8.increment();
+			flagCounts.get("ECE").increment();
 		}
 	}
+
 
 
 
@@ -1160,10 +1169,18 @@ public class BasicFlow {
 		
 		/*for(MutableInt v:flagCounts.values()) {
 			dump.append(v).append(separator);
-		}*/
+		}
 		for(String key: flagCounts.keySet()){
 			dump.append(flagCounts.get(key).value).append(separator);				//50,51,52,53,54,55,56,57
-		}
+		} */
+		dump.append(flagCounts.get("FIN").value).append(separator);                 //50
+		dump.append(flagCounts.get("SYN").value).append(separator);                 //51
+		dump.append(flagCounts.get("RST").value).append(separator);                  //52
+		dump.append(flagCounts.get("PSH").value).append(separator);                  //53
+		dump.append(flagCounts.get("ACK").value).append(separator);                  //54
+		dump.append(flagCounts.get("URG").value).append(separator);                  //55
+		dump.append(flagCounts.get("CWR").value).append(separator);                  //56
+		dump.append(flagCounts.get("ECE").value).append(separator);                  //57
 		
 		dump.append(getDownUpRatio()).append(separator);							//58
 		dump.append(getAvgPacketSize()).append(separator);							//59
