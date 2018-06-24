@@ -1,4 +1,4 @@
-# Intro
+﻿# Intro
 The CICFlowMeter is an open source tool that generates Biflows from pcap files, and extracts features from these flows.
 
 CICFlowMeter is a network traffic flow generator available from here . It can be used to generate bidirectional flows, where the first packet determines the forward (source to destination) and backward (destination to source) directions, hence the statistical time-related features can be calculated separately in the forward and backward directions. Additional functionalities include, selecting features from the list of existing features, adding new features, and controlling the duration of flow timeout.
@@ -131,79 +131,156 @@ the jar file will be in the pathtoproject/CICFlowMeter/target
 ----------------------------------------------------------------------
 # CICFlowMeter Features
 
-Feduration		Duration of the flow in Microsecond
-total_fpackets		Total packets in the forward direction
-total_bpackets		Total packets in the backward direction
-total_fpktl		Total size of packet in forward direction
-total_bpktl		Total size of packet in backward direction
-min_fpktl		Minimum size of packet in forward direction
-min_bpktl		Minimum size of packet in backward direction
-max_fpktl		Maximum size of packet in forward direction
-max_bpktl		Maximum size of packet in backward direction
-mean_fpktl		Mean size of packet in forward direction
-mean_bpktl		Mean size of packet in backward direction
-std_fpktl		Standard deviation size of packet in forward direction
-std_bpktl		Standard deviation size of packet in backward direction
-total_fiat		Total time between two packets sent in the forward direction
-total_biat		Total time between two packets sent in the backward direction
-min_fiat		Minimum time between two packets sent in the forward direction
-min_biat		Minimum time between two packets sent in the backward direction
-max_fiat		Maximum time between two packets sent in the forward direction
-max_biat		Maximum time between two packets sent in the backward direction
-mean_fiat		Mean time between two packets sent in the forward direction
-mean_biat		Mean time between two packets sent in the backward direction
-std_fiat		Standard deviation time between two packets sent in the forward direction
-std_biat		Standard deviation time between two packets sent in the backward direction
-fpsh_cnt		Number of times the PSH flag was set in packets travelling in the forward direction (0 for UDP)
-bpsh_cnt		Number of times the PSH flag was set in packets travelling in the backward direction (0 for UDP)
-furg_cnt		Number of times the URG flag was set in packets travelling in the forward direction (0 for UDP)
-burg_cnt		Number of times the URG flag was set in packets travelling in the backward direction (0 for UDP)
-total_fhlen		Total bytes used for headers in the forward direction
-total_bhlen		Total bytes used for headers in the forward direction
-fPktsPerSecond		Number of forward packets per second
-bPktsPerSecond		Number of backward packets per second
-flowPktsPerSecond	Number of flow packets per second
-flowBytesPerSecond	Number of flow bytes per second
-min_flowpktl		Minimum length of a flow
-max_flowpktl		Maximum length of a flow
-mean_flowpktl		Mean length of a flow
-std_flowpktl		Standard deviation length of a flow
-min_flowiat		Minimum inter-arrival time of packet
-max_flowiat		Maximum inter-arrival time of packet
-mean_flowiat		Mean inter-arrival time of packet
-std_flowiat		Standard deviation inter-arrival time of packet
-flow_fin		Number of packets with FIN
-flow_syn		Number of packets with SYN
-flow_rst		Number of packets with RST
-flow_psh		Number of packets with PUSH
-flow_ack		Number of packets with ACK
-flow_urg		Number of packets with URG
-flow_cwr		Number of packets with CWE
-flow_ece		Number of packets with ECE
-downUpRatio		Download and upload ratio
-avgPacketSize		Average size of packet
-fAvgSegmentSize		Average size observed in the forward direction
-fAvgBytesPerBulk	Average number of bytes bulk rate in the forward direction
-fAvgPacketsPerBulk	Average number of packets bulk rate in the forward direction
-fAvgBulkRate		Average number of bulk rate in the forward direction
-bAvgSegmentSize		Average size observed in the backward direction
-bAvgBytesPerBulk	Average number of bytes bulk rate in the backward direction
-bAvgPacketsPerBulk	Average number of packets bulk rate in the backward direction
-bAvgBulkRate		Average number of bulk rate in the backward direction
-sflow_fpacket		The average number of packets in a sub flow in the forward direction
-sflow_fbytes		The average number of bytes in a sub flow in the forward direction
-sflow_bpacket		The average number of packets in a sub flow in the backward direction
-sflow_bbytes		The average number of bytes in a sub flow in the backward direction
-min_active		Minimum time a flow was active before becoming idle
-mean_active		Mean time a flow was active before becoming idle
-max_active		Maximum time a flow was active before becoming idle
-std_active		Standard deviation time a flow was active before becoming idle
-min_idle		Minimum time a flow was idle before becoming active
-mean_idle		Mean time a flow was idle before becoming active
-max_idle		Maximum time a flow was idle before becoming active
-std_idle		Standard deviation time a flow was idle before becoming active
-Init_Win_bytes_forward	The total number of bytes sent in initial window in the forward direction
-Init_Win_bytes_backward	The total number of bytes sent in initial window in the backward direction
-Act_data_pkt_forward	Count of packets with at least 1 byte of TCP data payload in the forward direction
-min_seg_size_forward	Minimum segment size observed in the forward direction
+Duration:Duration of the flow in Microsecond
+
+total_fpackets:Total packets in the forward direction
+
+total_bpackets:Total packets in the backward direction
+
+total_fpktl:Total size of packet in forward direction
+
+total_bpktl:Total size of packet in backward direction
+
+min_fpktl:Minimum size of packet in forward direction
+
+min_bpktl:Minimum size of packet in backward direction
+
+max_fpktl:Maximum size of packet in forward direction
+
+max_bpktl:Maximum size of packet in backward direction
+
+mean_fpktl:Mean size of packet in forward direction
+
+mean_bpktl:Mean size of packet in backward direction
+
+std_fpktl:Standard deviation size of packet in forward direction
+
+std_bpktl:Standard deviation size of packet in backward direction
+
+total_fiat:Total time between two packets sent in the forward direction
+
+total_biat:Total time between two packets sent in the backward direction
+
+min_fiat:Minimum time between two packets sent in the forward direction
+
+min_biat:Minimum time between two packets sent in the backward direction
+
+max_fiat:Maximum time between two packets sent in the forward direction
+
+max_biat:Maximum time between two packets sent in the backward direction
+
+mean_fiat:Mean time between two packets sent in the forward direction
+
+mean_biat:Mean time between two packets sent in the backward direction
+
+std_fiat:Standard deviation time between two packets sent in the forward
+ direction
+
+std_biat:Standard deviation time between two packets sent in the backward direction
+
+fpsh_cnt:Number of times the PSH flag was set in packets travelling in the forward direction (0 for UDP)
+
+bpsh_cnt:Number of times the PSH flag was set in packets travelling in the backward direction (0 for UDP)
+
+furg_cnt:Number of times the URG flag was set in packets travelling in the forward direction (0 for UDP)
+
+burg_cnt:Number of times the URG flag was set in packets travelling in the backward direction (0 for UDP)
+
+total_fhlen: Total bytes used for headers in the forward direction
+
+total_bhlen: Total bytes used for headers in the forward direction
+
+fPktsPerSecond: Number of forward packets per second
+
+bPktsPerSecond: Number of backward packets per second
+
+flowPktsPerSecond: Number of flow packets per second
+
+flowBytesPerSecond: Number of flow bytes per second
+
+min_flowpktl: Minimum length of a flow
+
+max_flowpktl: Maximum length of a flow
+
+mean_flowpktl: Mean length of a flow
+
+std_flowpktl: Standard deviation length of a flow
+
+min_flowiat: Minimum inter-arrival time of packet
+
+max_flowiat: Maximum inter-arrival time of packet
+
+mean_flowiat: Mean inter-arrival time of packet
+
+std_flowiat: Standard deviation inter-arrival time of packet
+
+flow_fin: Number of packets with FIN
+
+flow_syn: Number of packets with SYN
+
+flow_rst: Number of packets with RST
+
+flow_psh: Number of packets with PUSH
+
+flow_ack: Number of packets with ACK
+
+flow_urg: Number of packets with URG
+
+flow_cwr: Number of packets with CWE
+
+flow_ece: Number of packets with ECE
+
+downUpRatio: Download and upload ratio
+
+avgPacketSize: Average size of packet
+
+fAvgSegmentSize: Average size observed in the forward direction
+
+fAvgBytesPerBulk: Average number of bytes bulk rate in the forward direction
+
+fAvgPacketsPerBulk: Average number of packets bulk rate in the forward
+ direction
+
+fAvgBulkRate: Average number of bulk rate in the forward direction
+
+bAvgSegmentSize: Average size observed in the backward direction
+
+bAvgBytesPerBulk: Average number of bytes bulk rate in the backward direction
+
+bAvgPacketsPerBulk: Average number of packets bulk rate in the backward
+ direction
+
+bAvgBulkRate: Average number of bulk rate in the backward direction
+
+sflow_fpacket: The average number of packets in a sub flow in the forward direction
+
+sflow_fbytes: The average number of bytes in a sub flow in the forward direction
+
+sflow_bpacket: The average number of packets in a sub flow in the backward direction
+
+sflow_bbytes: The average number of bytes in a sub flow in the backward direction
+
+min_active: Minimum time a flow was active before becoming idle
+
+mean_active: Mean time a flow was active before becoming idle
+
+max_active: Maximum time a flow was active before becoming idle
+
+std_active: Standard deviation time a flow was active before becoming idle
+
+min_idle: Minimum time a flow was idle before becoming active
+
+mean_idle: Mean time a flow was idle before becoming active
+
+max_idle: Maximum time a flow was idle before becoming active
+
+std_idle: Standard deviation time a flow was idle before becoming active
+
+Init_Win_bytes_forward: The total number of bytes sent in initial window in the forward direction
+
+Init_Win_bytes_backward: The total number of bytes sent in initial window in the backward direction
+
+Act_data_pkt_forward: Count of packets with at least 1 byte of TCP data payload in the forward direction
+
+min_seg_size_forward: Minimum segment size observed in the forward direction
 
