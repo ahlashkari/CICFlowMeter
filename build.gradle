@@ -17,7 +17,8 @@ repositories {
 dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.25'
-    compile group: 'org.jnetpcap', name: 'jnetpcap', version:'1.4.1'
+    // compile group: 'org.jnetpcap', name: 'jnetpcap', version:'1.4.1'
+	compile group: 'jnetpcap', name: 'jnetpcap', version: '1.4.r1425-1g'
     compile group: 'junit', name: 'junit', version:'4.12'
     compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.6'
     compile group: 'org.apache.commons', name: 'commons-math3', version:'3.5'
