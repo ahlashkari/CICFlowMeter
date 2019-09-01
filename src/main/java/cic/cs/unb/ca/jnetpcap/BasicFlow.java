@@ -674,7 +674,7 @@ public class BasicFlow {
 		dump+=fAvgBytesPerBulk()+",";
 		dump+=fAvgPacketsPerBulk()+",";
 		dump+=fAvgBulkRate()+",";
-		dump+=fAvgBytesPerBulk()+",";
+		dump+=bAvgBytesPerBulk()+",";
 		dump+=bAvgPacketsPerBulk()+",";
 		dump+=bAvgBulkRate()+",";
 
@@ -1191,7 +1191,7 @@ public class BasicFlow {
 		dump.append(fAvgBytesPerBulk()).append(separator);							//63	
 		dump.append(fAvgPacketsPerBulk()).append(separator);						//64
 		dump.append(fAvgBulkRate()).append(separator);								//65
-		dump.append(fAvgBytesPerBulk()).append(separator);							//66
+		dump.append(bAvgBytesPerBulk()).append(separator);							//66
 		dump.append(bAvgPacketsPerBulk()).append(separator);						//67
 		dump.append(bAvgBulkRate()).append(separator);								//68
     	
