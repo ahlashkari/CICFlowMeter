@@ -164,9 +164,9 @@ public class BasicFlow {
 	}
     
     public void addPacket(BasicPacketInfo packet){
-		//updateFlowBulk(packet);
-		//detectUpdateSubflows(packet);
-		//checkFlags(packet);
+		updateFlowBulk(packet);
+		detectUpdateSubflows(packet);
+		checkFlags(packet);
     	long currentTimestamp = packet.getTimeStamp();
     	if(isBidirectional){
 			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
