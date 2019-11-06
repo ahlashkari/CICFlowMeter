@@ -79,8 +79,8 @@ Gerard Drapper Gil, Arash Habibi Lashkari, Mohammad Mamun, Ali A. Ghorbani, "Cha
 --------------------------------------------------------------
 List of extracted features and descriptions:
 Feature Name				Description
-Flow Feduration			Duration of the flow in Microsecond
-total FWwd Packet		Total packets in the forward direction
+Flow duration			Duration of the flow in Microsecond
+total Fwd Packet		Total packets in the forward direction
 total Bwd packets		Total packets in the backward direction
 total Length of Fwd Packet	Total size of packet in forward direction
 total Length of Bwd Packet	Total size of packet in backward direction
