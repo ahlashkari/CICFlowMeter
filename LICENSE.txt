@@ -23,3 +23,10 @@ For citation in your works and also understanding CICFlowMeter (formerly ISCXFlo
 Arash Habibi Lashkari, Gerard Draper-Gil, Mohammad Saiful Islam Mamun and Ali A. Ghorbani, "Characterization of Tor Traffic Using Time Based Features", In the proceeding of the 3rd International Conference on Information System Security and Privacy, SCITEPRESS, Porto, Portugal, 2017
 
 Gerard Drapper Gil, Arash Habibi Lashkari, Mohammad Mamun, Ali A. Ghorbani, "Characterization of Encrypted and VPN Traffic Using Time-Related Features", In Proceedings of the 2nd International Conference on Information Systems Security and Privacy(ICISSP 2016) , pages 407-414, Rome , Italy
+
+## Contributors:
+Arash Habibi Lashkari: Founder, Researcher and Developer
+
+Gerard Drapper: Co-funder, Researcher and Developer
+
+muhammad saiful islam: Co-funder, Researcher and Developer
