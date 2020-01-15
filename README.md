@@ -1,6 +1,10 @@
 ## Install jnetpcap local repo
 
-for linux, sudo is a prerequisite
+for linux:
+1) install libpcap-dev dependancy:
+  a) `sudo apt-get update -y`
+  b) `sudo apt-get install -y libpcap-dev`
+2) sudo is a prerequisite
 ```
 //linux :at the pathtoproject/jnetpcap/linux/jnetpcap-1.4.r1425
 //windows: at the pathtoproject/jnetpcap/win/jnetpcap-1.4.r1425
