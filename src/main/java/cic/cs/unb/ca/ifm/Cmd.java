@@ -116,9 +116,9 @@ public class Cmd {
         File saveFileFullPath = new File(outPath+fileName+FlowMgr.FLOW_SUFFIX);
 
         if (saveFileFullPath.exists()) {
-           if (!saveFileFullPath.delete()) {
-               System.out.println("Save file can not be deleted");
-           }
+            if (!saveFileFullPath.delete()) {
+                System.out.println("Save file can not be deleted");
+            }
         }
 
         FlowGenerator flowGen = new FlowGenerator(true, flowTimeout, activityTimeout);

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jnetpcap2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jnetpcap/win/jnetpcap-1.3.0/jnetpcap.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

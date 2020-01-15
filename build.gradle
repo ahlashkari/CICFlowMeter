@@ -133,6 +133,30 @@ applicationDistribution.into("bin") {
     fileMode = 0755
 }
 
+task cmdSamplingScript(type: CreateStartScripts) {
+    mainClassName = "cic.cs.unb.ca.ifm.CmdSampling"
+    applicationName = "WSampler"
+    outputDir = new File(project.buildDir, 'scripts')
+    classpath = jar.outputs.files + project.configurations.runtime
+    defaultJvmOpts = ["-Djava.library.path=../lib/native"]
+}
+
+task exeCmdSampling(type: JavaExec){
+    main = "cic.cs.unb.ca.ifm.CmdSampling" //main class
+    classpath = sourceSets.main.runtimeClasspath
+    String osName = System.getProperty('os.name').toLowerCase()
+    if(osName.contains('windows')){
+        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
+    }else{
+        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
+    }
+    //args = ["/home/yzhang29/0a/Capture/", "/home/yzhang29/0a/Capture/out/"]
+}
+
+applicationDistribution.into("bin") {
+    from(cmdSamplingScript)
+    fileMode = 0755
+}
 
 // The Application Plugin
 mainClassName = "cic.cs.unb.ca.ifm.App"
