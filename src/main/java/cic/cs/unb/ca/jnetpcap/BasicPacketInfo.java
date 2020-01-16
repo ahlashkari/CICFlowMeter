@@ -47,20 +47,35 @@ public class BasicPacketInfo {
 		this.id = generator.nextId();
 	}
     
-    
+    public boolean getFlowDirection(){
+		boolean forward;
+		//Juma wrote following block to idendify the direction
+		if (this.srcPort>this.dstPort){ // credit to Jiyoo for informing
+			forward=true;
+		}
+		else{
+			forward = false;
+		}
+		// end of Juma's code
+		return forward;
+	}
 
 	public String generateFlowId(){
-    	boolean forward = true;
+    	boolean forward ;
     	
-    	for(int i=0; i<this.src.length;i++){           
-    		if(((Byte)(this.src[i])).intValue() != ((Byte)(this.dst[i])).intValue()){
-    			if(((Byte)(this.src[i])).intValue() >((Byte)(this.dst[i])).intValue()){
-    				forward = false;
-    			}
-    			i=this.src.length;
-    		}
-    	}     	
-    	
+//    	for(int i=0; i<this.src.length;i++){
+//    		if(((Byte)(this.src[i])).intValue() != ((Byte)(this.dst[i])).intValue()){
+//    			if(((Byte)(this.src[i])).intValue() >((Byte)(this.dst[i])).intValue()){
+//    				forward = false;
+//    			}
+//    			i=this.src.length;
+//    		}
+//    	}
+
+		//I believe above original code to define direction of flow is incorrect
+		//we isntead use our costum defined functino
+		forward = getFlowDirection();
+
         if(forward){
             this.flowId = this.getSourceIP() + "-" + this.getDestinationIP() + "-" + this.srcPort  + "-" + this.dstPort  + "-" + this.protocol;
         }else{

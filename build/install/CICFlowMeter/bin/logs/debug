@@ -1,8 +1,12 @@
-2020-01-16 00:17:32 INFO  cic.cs.unb.ca.ifm.CmdSampling    You select: /media/juma/data/research/intrusion_detection/dataset/ddos19/test
-2020-01-16 00:17:32 INFO  cic.cs.unb.ca.ifm.CmdSampling    Out folder: /media/juma/data/research/intrusion_detection/dataset/ddos19/test_RPS_si_10
-2020-01-16 00:17:32 INFO  cic.cs.unb.ca.ifm.CmdSampling    Sampling rate: 10.0
-2020-01-16 00:17:32 INFO  cic.cs.unb.ca.ifm.CmdSampling    Sampling Technique: RPS
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:46 INFO  cic.cs.unb.ca.ifm.Cmd    You select: /media/juma/data/research/intrusion_detection/dataset/ddos19/test
+2020-01-16 11:59:46 INFO  cic.cs.unb.ca.ifm.Cmd    Out folder: /media/juma/data/research/intrusion_detection/dataset/ddos19/test
+2020-01-16 11:59:46 DEBUG swing.common.SwingUtils    /media/juma/data/research/intrusion_detection/dataset/ddos19/test/_RPS_si_1 (Is a directory)
+2020-01-16 11:59:46 DEBUG swing.common.SwingUtils    /media/juma/data/research/intrusion_detection/dataset/ddos19/test/_RPS_si_10 (Is a directory)
+2020-01-16 11:59:46 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 722 flow
+2020-01-16 11:59:46 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 735 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1232 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1240 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*01 00 0c cc* cc cd 00 a3  d1 66 a1 19  00 32 aa aa    .........f...2..
 0010: 03 00 00 0c  01 0b 00 00  00 00 00 80  32 00 a3 d1    ............2...
@@ -10,7 +14,7 @@
 0030: 19 00 00 14  00 02 00 0f  00 00 00 00  00 02 00 32*   ...............2
 
 
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*33 33 00 00  00 fb 90 b1  1c a4 b7 c0* 86 dd 60 0a    33............`.
 0010: d9 b5 00 95  11 ff fe 80  00 00 00 00  00 00 ce c5    ................
@@ -27,10 +31,18 @@
 00c0: 04 5f 69 70  70 c0 12 00  0c 00 01*                   ._ipp......     
 
 
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 817 flow
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2212 flow
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2245 flow
-2020-01-16 00:17:32 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 3922 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 3922 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 4296 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 4829 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 5179 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11425 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11425 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11617 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11617 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11791 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11974 flow
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*01 00 0c cc* cc cc 00 a3  d1 66 a1 0d  01 c0 aa aa    .........f......
 0010: 03 00 00 0c  20 00 02 b4  62 4d 00 01  00 0c 53 4c    .... ...bM....SL
@@ -63,7 +75,7 @@
 01c0: 31 36 36 2e  61 31 30 30  00 10 03 00  05 31*         166.a100.....1  
 
 
-2020-01-16 00:17:33 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*01 00 0c cc* cc cd 00 a3  d1 66 a1 19  00 32 aa aa    .........f...2..
 0010: 03 00 00 0c  01 0b 00 00  00 00 00 80  32 00 a3 d1    ............2...
@@ -71,7 +83,7 @@
 0030: 19 00 00 14  00 02 00 0f  00 00 00 00  00 02 00 32*   ...............2
 
 
-2020-01-16 00:17:33 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:47 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*01 00 0c cc* cc cd 00 a3  d1 66 a1 19  00 32 aa aa    .........f...2..
 0010: 03 00 00 0c  01 0b 00 00  00 00 00 80  32 00 a3 d1    ............2...
@@ -79,8 +91,11 @@
 0030: 19 00 00 14  00 02 00 0f  00 00 00 00  00 02 00 32*   ...............2
 
 
-2020-01-16 00:17:33 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 8639 flow
-2020-01-16 00:17:33 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 44413 flow
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 44414 flow
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 44726 flow
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 44842 flow
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    null
 ********************************************************************************
 0000:*01 00 0c cc* cc cd 00 a3  d1 66 a1 19  00 32 aa aa    .........f...2..
 0010: 03 00 00 0c  01 0b 00 00  00 00 00 80  32 00 a3 d1    ............2...
@@ -88,4 +103,4 @@
 0030: 19 00 00 14  00 02 00 0f  00 00 00 00  00 02 00 32*   ...............2
 
 
-2020-01-16 00:17:33 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    Read All packets on /media/juma/data/research/intrusion_detection/dataset/ddos19/test/SAT_01_12_2018_0500.pcap
+2020-01-16 11:59:48 DEBUG cic.cs.unb.ca.jnetpcap.PacketReader    Read All packets on /media/juma/data/research/intrusion_detection/dataset/ddos19/test/SAT_01_12_2018_0500.pcap

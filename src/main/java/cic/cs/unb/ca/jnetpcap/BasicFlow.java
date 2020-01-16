@@ -121,13 +121,20 @@ public class BasicFlow {
 		this.endActiveTime = packet.getTimeStamp();
 		this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 
-		if(this.src==null){
-			this.src = packet.getSrc();
-			this.srcPort = packet.getSrcPort();
-		}
-		if(this.dst==null){
-			this.dst = packet.getDst();
-			this.dstPort = packet.getDstPort();
+		if(this.src==null && this.dst==null){
+			boolean forward = packet.getFlowDirection();
+			if(forward) {
+				this.src = packet.getSrc();
+				this.srcPort = packet.getSrcPort();
+				this.dst = packet.getDst();
+				this.dstPort = packet.getDstPort();
+			}
+			else{
+				this.dst = packet.getSrc();
+				this.dstPort = packet.getSrcPort();
+				this.src = packet.getDst();
+				this.srcPort = packet.getDstPort();
+			}
 		}		
 		if(this.src == packet.getSrc()){
 			this.min_seg_size_forward = packet.getHeaderBytes();
@@ -310,8 +317,6 @@ public class BasicFlow {
 			flagCounts.get("ECE").increment();
 		}
 	}
-
-
 
 
 	public long getSflow_fbytes(){

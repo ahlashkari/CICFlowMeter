@@ -7,6 +7,7 @@ import cic.cs.unb.ca.jnetpcap.worker.InsertCsvRow;
 import isrl.inha.kr.RPS;
 import isrl.inha.kr.Sampler;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.core.util.Integers;
 import org.jnetpcap.PcapClosedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,10 +83,10 @@ public class CmdSampling {
         }
         sampling_technique = args[3];
         if (sampling_technique.equals("RPS")) {
-            int sampling_interval = 10;
+            int sampling_interval = (int)(100. / sampling_rate);
             int seed = 123;
             sampler = new RPS(sampling_interval, seed);
-            String fingerprint = String.format("_%s_si_%d",sampling_technique,sampling_interval);
+            String fingerprint = String.format("/_%s_si_%d",sampling_technique,sampling_interval);
             outPath = outPath + fingerprint;
         }
         else{
