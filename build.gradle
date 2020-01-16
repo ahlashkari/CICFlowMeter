@@ -2,9 +2,9 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'application'
 
-group = 'cic.unb.ca'
-version = '4.0'
-description = """CICFlowMeterV4"""
+group = 'isrl.inha.kr'
+version = '1.0'
+description = """SampleMeterV1"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -135,7 +135,7 @@ applicationDistribution.into("bin") {
 
 task cmdSamplingScript(type: CreateStartScripts) {
     mainClassName = "cic.cs.unb.ca.ifm.CmdSampling"
-    applicationName = "WSampler"
+    applicationName = "SampleMeter"
     outputDir = new File(project.buildDir, 'scripts')
     classpath = jar.outputs.files + project.configurations.runtime
     defaultJvmOpts = ["-Djava.library.path=../lib/native"]
@@ -160,7 +160,7 @@ applicationDistribution.into("bin") {
 
 // The Application Plugin
 mainClassName = "cic.cs.unb.ca.ifm.App"
-applicationName = "CICFlowMeter"
+applicationName = "SampleMeter"
 applicationDefaultJvmArgs = ["-Djava.library.path=../lib/native"]
 
 applicationDistribution.from("jnetpcap/linux/jnetpcap-1.4.r1425") {

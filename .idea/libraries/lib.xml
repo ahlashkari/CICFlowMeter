@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/log4j-core-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/log4j-api-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/guava-23.6-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/slf4j-log4j12-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/checker-compat-qual-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/animal-sniffer-annotations-1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/commons-lang3-3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/tika-core-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/jsr305-1.3.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/commons-math3-3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/j2objc-annotations-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/weka-stable-3.6.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/jnetpcap-1.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/error_prone_annotations-2.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/commons-io-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/java-cup-0.11a.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/install/CICFlowMeter/lib/jfreechart-1.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

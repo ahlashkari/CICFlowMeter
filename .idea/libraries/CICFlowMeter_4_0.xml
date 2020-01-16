@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CICFlowMeter-4.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/distributions/CICFlowMeter-4.0.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
