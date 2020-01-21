@@ -129,7 +129,7 @@ public class BasicFlow {
 			this.dst = packet.getDst();
 			this.dstPort = packet.getDstPort();
 		}		
-		if(this.src == packet.getSrc()){
+		if(Arrays.equals(this.src, packet.getSrc())){
 			this.min_seg_size_forward = packet.getHeaderBytes();
 			Init_Win_bytes_forward = packet.getTCPWindow();
 			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
