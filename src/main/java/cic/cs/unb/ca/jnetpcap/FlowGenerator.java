@@ -173,6 +173,7 @@ public class FlowGenerator {
             logger.debug("dumpLabeledFlow finishedFlows -> {},{}",zeroPkt,total);
 
             Set<String> ckeys = currentFlows.keySet();
+		output.write((header + "\n").getBytes());
 			for(String key:ckeys){
 	    		flow = currentFlows.get(key);
 	    		if(flow.packetCount()>1) {
