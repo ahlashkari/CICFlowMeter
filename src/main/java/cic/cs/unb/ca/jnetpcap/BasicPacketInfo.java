@@ -25,7 +25,7 @@ public class BasicPacketInfo {
 	private    boolean flagACK = false;
 	private    boolean flagCWR = false;
 	private    boolean flagRST = false;
-	private	   int TCPWindow=-1;
+	private	   int TCPWindow=0;
 	private	   long headerBytes;
 	private int payloadPacket=0;
 
@@ -67,7 +67,19 @@ public class BasicPacketInfo {
             this.flowId = this.getDestinationIP() + "-" + this.getSourceIP() + "-" + this.dstPort  + "-" + this.srcPort  + "-" + this.protocol;
         }
         return this.flowId;
-    }
+	}
+
+ 	public String fwdFlowId() {  
+		this.flowId = this.getSourceIP() + "-" + this.getDestinationIP() + "-" + this.srcPort  + "-" + this.dstPort  + "-" + this.protocol;
+		return this.flowId;
+	}
+	
+	public String bwdFlowId() {  
+		this.flowId = this.getDestinationIP() + "-" + this.getSourceIP() + "-" + this.dstPort  + "-" + this.srcPort  + "-" + this.protocol;
+		return this.flowId;
+	}
+
+
     
 	public String dumpInfo() {
 		return null;
