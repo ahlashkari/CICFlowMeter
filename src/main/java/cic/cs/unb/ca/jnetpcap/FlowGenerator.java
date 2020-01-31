@@ -123,7 +123,7 @@ public class FlowGenerator {
     		}else{
     			flow.updateActiveIdleTime(currentTimestamp,this.flowActivityTimeOut);
     			flow.addPacket(packet);
-    			currentFlows.put(id);
+    			currentFlows.put(id,flow);
     		}
     	}else{
     		currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional,packet)); 		
