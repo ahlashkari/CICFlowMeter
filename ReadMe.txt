@@ -92,8 +92,8 @@ Bwd Packet Length Min		Minimum size of packet in backward direction
 Bwd Packet Length Max		Maximum size of packet in backward direction
 Bwd Packet Length Mean		Mean size of packet in backward direction
 Bwd Packet Length Std		Standard deviation size of packet in backward direction
-Flow Byte/s			Number of flow packets per second
-Flow Packets/s			Number of flow bytes per second 
+Flow Bytes/s			Number of flow bytes per second
+Flow Packets/s			Number of flow packets per second 
 Flow IAT Mean			Mean time between two packets sent in the flow
 Flow IAT Std			Standard deviation time between two packets sent in the flow
 Flow IAT Max			Maximum time between two packets sent in the flow
@@ -108,16 +108,16 @@ Bwd IAT Max			Maximum time between two packets sent in the backward direction
 Bwd IAT Mean			Mean time between two packets sent in the backward direction
 Bwd IAT Std			Standard deviation time between two packets sent in the backward direction
 Bwd IAT Total			Total time between two packets sent in the backward direction
-Fwd PSH flag			Number of times the PSH flag was set in packets travelling in the forward direction (0 for UDP)
-Bwd PSH Flag			Number of times the PSH flag was set in packets travelling in the backward direction (0 for UDP)
-Fwd URG Flag			Number of times the URG flag was set in packets travelling in the forward direction (0 for UDP)
-Bwd URG Flag			Number of times the URG flag was set in packets travelling in the backward direction (0 for UDP)
+Fwd PSH flags			Number of times the PSH flag was set in packets travelling in the forward direction (0 for UDP)
+Bwd PSH Flags			Number of times the PSH flag was set in packets travelling in the backward direction (0 for UDP)
+Fwd URG Flags			Number of times the URG flag was set in packets travelling in the forward direction (0 for UDP)
+Bwd URG Flags			Number of times the URG flag was set in packets travelling in the backward direction (0 for UDP)
 Fwd Header Length		Total bytes used for headers in the forward direction
 Bwd Header Length		Total bytes used for headers in the backward direction
 FWD Packets/s			Number of forward packets per second
 Bwd Packets/s			Number of backward packets per second
-Min Packet Length 		Minimum length of a packet
-Max Packet Length 		Maximum length of a packet
+Packet Length Min 		Minimum length of a packet
+Packet Length Max		Maximum length of a packet
 Packet Length Mean 		Mean length of a packet
 Packet Length Std		Standard deviation length of a packet
 Packet Length Variance  	Variance length of a packet
@@ -127,27 +127,26 @@ RST Flag Count 			Number of packets with RST
 PSH Flag Count 			Number of packets with PUSH
 ACK Flag Count 			Number of packets with ACK
 URG Flag Count 			Number of packets with URG
-CWR Flag Count 			Number of packets with CWE
+CWE Flag Count 			Number of packets with CWE
 ECE Flag Count 			Number of packets with ECE
 down/Up Ratio			Download and upload ratio
 Average Packet Size 		Average size of packet
-Avg Fwd Segment Size 		Average size observed in the forward direction
-AVG Bwd Segment Size 		Average number of bytes bulk rate in the backward direction
-Fwd Header Length		Length of the forward packet header
-Fwd Avg Bytes/Bulk		Average number of bytes bulk rate in the forward direction
-Fwd AVG Packet/Bulk 		Average number of packets bulk rate in the forward direction
-Fwd AVG Bulk Rate 		Average number of bulk rate in the forward direction
-Bwd Avg Bytes/Bulk		Average number of bytes bulk rate in the backward direction
-Bwd AVG Packet/Bulk 		Average number of packets bulk rate in the backward direction
-Bwd AVG Bulk Rate 		Average number of bulk rate in the backward direction
+Fwd Segment Size Avg 		Average size observed in the forward direction
+Bwd Segment Size Avg 		Average number of bytes bulk rate in the backward direction
+Fwd Bytes/Bulk Avg		Average number of bytes bulk rate in the forward direction
+Fwd Packet/Bulk Avg		Average number of packets bulk rate in the forward direction
+Fwd Bulk Rate Avg 		Average number of bulk rate in the forward direction
+Bwd Bytes/Bulk Avg		Average number of bytes bulk rate in the backward direction
+Bwd Packet/Bulk Avg 		Average number of packets bulk rate in the backward direction
+Bwd Bulk Rate Avg		Average number of bulk rate in the backward direction
 Subflow Fwd Packets		The average number of packets in a sub flow in the forward direction
 Subflow Fwd Bytes		The average number of bytes in a sub flow in the forward direction
 Subflow Bwd Packets		The average number of packets in a sub flow in the backward direction
 Subflow Bwd Bytes		The average number of bytes in a sub flow in the backward direction
-Init_Win_bytes_forward		The total number of bytes sent in initial window in the forward direction
-Init_Win_bytes_backward		The total number of bytes sent in initial window in the backward direction
-Act_data_pkt_forward		Count of packets with at least 1 byte of TCP data payload in the forward direction
-min_seg_size_forward		Minimum segment size observed in the forward direction
+Fwd Init Win bytes		The total number of bytes sent in initial window in the forward direction
+Bwd Init Win bytes		The total number of bytes sent in initial window in the backward direction
+Fwd Act Data Pkts		Count of packets with at least 1 byte of TCP data payload in the forward direction
+Fwd Seg Size Min		Minimum segment size observed in the forward direction
 Active Min			Minimum time a flow was active before becoming idle
 Active Mean			Mean time a flow was active before becoming idle
 Active Max			Maximum time a flow was active before becoming idle
