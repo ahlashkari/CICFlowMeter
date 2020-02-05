@@ -94,7 +94,7 @@ public enum FlowFeature {
     idl_max("Idle Max","IlMA"),					//83
     idl_min("Idle Min","IlMI"),					//84
 	
-	Label("Label","LBL",new String[]{"CIC"});		//85
+	Label("Label","LBL",new String[]{"NeedManualLabel"});	//85
 
 
 	protected static final Logger logger = LoggerFactory.getLogger(FlowFeature.class);
