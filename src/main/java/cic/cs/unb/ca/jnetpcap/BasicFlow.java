@@ -132,7 +132,6 @@ public class BasicFlow {
 		if(Arrays.equals(this.src, packet.getSrc())){
 			this.min_seg_size_forward = packet.getHeaderBytes();
 			Init_Win_bytes_forward = packet.getTCPWindow();
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 			this.fwdPktStats.addValue((double)packet.getPayloadBytes());
 			this.fHeaderBytes = packet.getHeaderBytes();
 			this.forwardLastSeen = packet.getTimeStamp();
@@ -146,7 +145,6 @@ public class BasicFlow {
 			}
 		}else{
 			Init_Win_bytes_backward = packet.getTCPWindow();
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 			this.bwdPktStats.addValue((double)packet.getPayloadBytes());
 			this.bHeaderBytes = packet.getHeaderBytes();
 			this.backwardLastSeen = packet.getTimeStamp();
