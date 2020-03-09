@@ -189,7 +189,6 @@ public class BasicFlow {
 
     		}else{
 			this.bwdPktStats.addValue((double)packet.getPayloadBytes());
-			Init_Win_bytes_backward = packet.getTCPWindow();
 			this.bHeaderBytes+=packet.getHeaderBytes();
     			this.backward.add(packet);
     			this.backwardBytes+=packet.getPayloadBytes();
