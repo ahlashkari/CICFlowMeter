@@ -121,7 +121,6 @@ public class FlowGenerator {
                 }
                 currentFlows.remove(id);
     		}else{
-    			flow.updateActiveIdleTime(currentTimestamp,this.flowActivityTimeOut);
     			flow.addPacket(packet);
     			currentFlows.put(id,flow);
     		}
