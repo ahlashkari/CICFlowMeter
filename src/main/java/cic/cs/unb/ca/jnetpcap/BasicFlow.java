@@ -10,8 +10,8 @@ import org.jnetpcap.packet.format.FormatUtils;
 public class BasicFlow {
 
 	private final static String separator = ",";
-	private     SummaryStatistics 		fwdPktStats = null;
-	private		SummaryStatistics 		bwdPktStats = null;
+	private		SummaryStatistics	fwdPktStats = null;
+	private		SummaryStatistics	bwdPktStats = null;
 	private 	List<BasicPacketInfo> 	forward = null;
 	private		List<BasicPacketInfo> 	backward = null;
 
@@ -36,25 +36,25 @@ public class BasicFlow {
 
 
 	private		byte[] src;
-    private    	byte[] dst;
-    private    	int    srcPort;
-    private    	int    dstPort;
-    private    	int    protocol;
-    private    	long   flowStartTime;
-    private    	long   startActiveTime;
-    private    	long   endActiveTime;
-    private    	String flowId = null;
+	private    	byte[] dst;
+	private    	int    srcPort;
+	private    	int    dstPort;
+	private    	int    protocol;
+	private    	long   flowStartTime;
+	private    	long   startActiveTime;
+	private    	long   endActiveTime;
+	private    	String flowId = null;
     
-    private     SummaryStatistics flowIAT = null;
-    private     SummaryStatistics forwardIAT = null;
-    private     SummaryStatistics backwardIAT = null;
+	private     SummaryStatistics flowIAT = null;
+	private     SummaryStatistics forwardIAT = null;
+	private     SummaryStatistics backwardIAT = null;
 	private     SummaryStatistics flowLengthStats = null;
-    private     SummaryStatistics flowActive = null;
-    private     SummaryStatistics flowIdle = null;
+	private     SummaryStatistics flowActive = null;
+	private     SummaryStatistics flowIdle = null;
     
-    private	    long   flowLastSeen;
-    private     long   forwardLastSeen;
-    private     long   backwardLastSeen;
+	private	    long   flowLastSeen;
+	private     long   forwardLastSeen;
+	private     long   backwardLastSeen;
     
 
 	public BasicFlow(boolean isBidirectional,BasicPacketInfo packet, byte[] flowSrc, byte[] flowDst, int flowSrcPort, int flowDstPort) {
@@ -164,49 +164,52 @@ public class BasicFlow {
 	}
     
     public void addPacket(BasicPacketInfo packet){
-		updateFlowBulk(packet);
-		detectUpdateSubflows(packet);
-		checkFlags(packet);
+	updateFlowBulk(packet);
+	detectUpdateSubflows(packet);
+	checkFlags(packet);
     	long currentTimestamp = packet.getTimeStamp();
     	if(isBidirectional){
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
+		this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 
     		if(Arrays.equals(this.src, packet.getSrc())){
-				if(packet.getPayloadBytes() >=1){
-					this.Act_data_pkt_forward++;
-				}
-				this.fwdPktStats.addValue((double)packet.getPayloadBytes());
-				this.fHeaderBytes +=packet.getHeaderBytes();
-    			this.forward.add(packet);   
-    			this.forwardBytes+=packet.getPayloadBytes();
-    			if (this.forward.size()>1)
-    				this.forwardIAT.addValue(currentTimestamp -this.forwardLastSeen);
-    			this.forwardLastSeen = currentTimestamp;
-				this.min_seg_size_forward = Math.min(packet.getHeaderBytes(),this.min_seg_size_forward);
-
-    		}else{
-				this.bwdPktStats.addValue((double)packet.getPayloadBytes());
-				Init_Win_bytes_backward = packet.getTCPWindow();
-				this.bHeaderBytes+=packet.getHeaderBytes();
-    			this.backward.add(packet);
-    			this.backwardBytes+=packet.getPayloadBytes();
-    			if (this.backward.size()>1)
-    				this.backwardIAT.addValue(currentTimestamp-this.backwardLastSeen);
-    			this.backwardLastSeen = currentTimestamp;
-    		}
-    	}
-		else{
-			if(packet.getPayloadBytes() >=1) {
+			if(packet.getPayloadBytes() >=1){
 				this.Act_data_pkt_forward++;
 			}
+			
 			this.fwdPktStats.addValue((double)packet.getPayloadBytes());
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 			this.fHeaderBytes +=packet.getHeaderBytes();
+    			this.forward.add(packet);   
+    			this.forwardBytes+=packet.getPayloadBytes();
+    			
+			if (this.forward.size()>1){
+    				this.forwardIAT.addValue(currentTimestamp -this.forwardLastSeen);
+			}
+			this.forwardLastSeen = currentTimestamp;
+			this.min_seg_size_forward = Math.min(packet.getHeaderBytes(),this.min_seg_size_forward);
+
+    		}else{
+			this.bwdPktStats.addValue((double)packet.getPayloadBytes());
+			Init_Win_bytes_backward = packet.getTCPWindow();
+			this.bHeaderBytes+=packet.getHeaderBytes();
+    			this.backward.add(packet);
+    			this.backwardBytes+=packet.getPayloadBytes();
+    			if (this.backward.size()>1){
+    				this.backwardIAT.addValue(currentTimestamp-this.backwardLastSeen);
+			}
+    			this.backwardLastSeen = currentTimestamp;
+    		}
+    	}else{
+		if(packet.getPayloadBytes() >=1) {
+			this.Act_data_pkt_forward++;
+		}
+		this.fwdPktStats.addValue((double)packet.getPayloadBytes());
+		this.flowLengthStats.addValue((double)packet.getPayloadBytes());
+		this.fHeaderBytes +=packet.getHeaderBytes();
     		this.forward.add(packet);    		
     		this.forwardBytes+=packet.getPayloadBytes();
     		this.forwardIAT.addValue(currentTimestamp-this.forwardLastSeen);
     		this.forwardLastSeen = currentTimestamp;
-			this.min_seg_size_forward = Math.min(packet.getHeaderBytes(),this.min_seg_size_forward);
+		this.min_seg_size_forward = Math.min(packet.getHeaderBytes(),this.min_seg_size_forward);
     	}
 
     	this.flowIAT.addValue(packet.getTimeStamp()-this.flowLastSeen);
@@ -219,16 +222,14 @@ public class BasicFlow {
 		if(duration > 0){
 			return (this.forward.size()/((double)duration/1000000L));
 		}
-		else
-			return 0;
+		return 0;
 	}
 	public double getbPktsPerSecond(){
 		long duration = this.flowLastSeen - this.flowStartTime;
 		if(duration > 0){
 			return (this.backward.size()/((double)duration/1000000L));
 		}
-		else
-			return 0;
+		return 0;
 	}
 
 	public double getDownUpRatio(){
