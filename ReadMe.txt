@@ -61,7 +61,7 @@ RST Flag Count 			Number of packets with RST
 PSH Flag Count 			Number of packets with PUSH
 ACK Flag Count 			Number of packets with ACK
 URG Flag Count 			Number of packets with URG
-CWE Flag Count 			Number of packets with CWE
+CWR Flag Count 			Number of packets with CWR
 ECE Flag Count 			Number of packets with ECE
 down/Up Ratio			Download and upload ratio
 Average Packet Size 		Average size of packet
