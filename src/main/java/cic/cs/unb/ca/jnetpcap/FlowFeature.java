@@ -65,7 +65,7 @@ public enum FlowFeature {
     pst_cnt("PSH Flag Count","PSHCT"),				//53
     ack_cnt("ACK Flag Count","ACKCT"),				//54
     urg_cnt("URG Flag Count","URGCT"),				//55
-    cwe_cnt("CWE Flag Count","CWECT"),				//56
+    CWR_cnt("CWR Flag Count","CWRCT"),				//56
     ece_cnt("ECE Flag Count","ECECT"),				//57
     down_up_ratio("Down/Up Ratio","D/URO"),			//58
     pkt_size_avg("Average Packet Size","PSAG"),			//59
