@@ -99,7 +99,7 @@ public class FlowGenerator {
                     //flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
     			}
     			currentFlows.remove(id);    			
-    			currentFlows.put(id, new BasicFlow(bidirectional,packet,flow.getSrc(),flow.getDst(),flow.getSrcPort(),flow.getDstPort()));
+				currentFlows.put(id, new BasicFlow(bidirectional,packet,flow.getSrc(),flow.getDst(),flow.getSrcPort(),flow.getDstPort(), this.flowActivityTimeOut));
     			
     			int cfsize = currentFlows.size();
     			if(cfsize%50==0) {
@@ -126,7 +126,7 @@ public class FlowGenerator {
     			currentFlows.put(id,flow);
     		}
     	}else{
-    		currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional,packet)); 		
+			currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional,packet, this.flowActivityTimeOut));
     	}
     }
 

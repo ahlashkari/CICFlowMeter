@@ -55,10 +55,11 @@ public class BasicFlow {
     private	    long   flowLastSeen;
     private     long   forwardLastSeen;
     private     long   backwardLastSeen;
-    
+    private     long   activityTimeout;
 
-	public BasicFlow(boolean isBidirectional,BasicPacketInfo packet, byte[] flowSrc, byte[] flowDst, int flowSrcPort, int flowDstPort) {
+	public BasicFlow(boolean isBidirectional,BasicPacketInfo packet, byte[] flowSrc, byte[] flowDst, int flowSrcPort, int flowDstPort, long activityTimeout) {
 		super();
+		this.activityTimeout = activityTimeout;
 		this.initParameters();
 		this.isBidirectional = isBidirectional;
 		this.firstPacket(packet);
@@ -68,15 +69,17 @@ public class BasicFlow {
 		this.dstPort = flowDstPort;
 	}    
     
-	public BasicFlow(boolean isBidirectional,BasicPacketInfo packet) {
+	public BasicFlow(boolean isBidirectional,BasicPacketInfo packet, long activityTimeout) {
 		super();
+		this.activityTimeout = activityTimeout;
 		this.initParameters();
 		this.isBidirectional = isBidirectional;
 		this.firstPacket(packet);
 	}
 
-	public BasicFlow(BasicPacketInfo packet) {
+	public BasicFlow(BasicPacketInfo packet, long activityTimeout) {
 		super();
+		this.activityTimeout = activityTimeout;
 		this.initParameters();
 		this.isBidirectional = true;		
 		firstPacket(packet);
@@ -346,7 +349,7 @@ public class BasicFlow {
 		if( (packet.getTimeStamp() - (sfLastPacketTS)/(double)1000000)   > 1.0 ){
 			sfCount ++ ;
 			long lastSFduration = packet.getTimeStamp() - sfAcHelper;
-			updateActiveIdleTime(packet.getTimeStamp() - sfLastPacketTS, 5000000L);
+			updateActiveIdleTime(packet.getTimeStamp(), this.activityTimeout);
 			sfAcHelper = packet.getTimeStamp();
 		}
 
