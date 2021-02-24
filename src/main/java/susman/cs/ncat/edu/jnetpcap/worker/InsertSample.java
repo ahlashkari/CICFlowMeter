@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import susman.cs.ncat.edu.ais.AIS;
 import susman.cs.ncat.edu.dataset.DataSet;
+import susman.cs.ncat.edu.dataset.Normalizer;
 import susman.cs.ncat.edu.dataset.Sample;
 
 import java.io.BufferedReader;
@@ -36,33 +37,8 @@ public class InsertSample implements Runnable {
         // Send to python socket
         // Create Sample with normalized values
         // Add Sample to DetectorSetQueues
-        Sample sample = new Sample();
-        /*try {
-            Socket socket = new Socket(DataSet.getInstance().DNN_IP_ADDR, DataSet.getInstance().DNN_PORT);
+        Sample sample = new Sample(Normalizer.getInstance().normalize(dataList));
 
-            PrintStream out = new PrintStream(socket.getOutputStream());
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-            for (int i = 7; i < dataList.length; i++) {
-                out.println(Float.parseFloat(dataList[i]));
-            }
-            out.println();
-
-            String line = in.readLine();
-            while (line != null) {
-                sample.addFeature(Float.parseFloat(line));
-                line = in.readLine();
-            }
-
-            in.close();
-            out.close();
-            socket.close();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
 
         // AIS.getInstance().addSample(sample);
 

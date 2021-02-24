@@ -4,25 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sample {
-    private List<Float> features;
+    private float[] features;
 
     public Sample () {
-        features = new ArrayList<>();
+        features = new float[DataSet.getInstance().NUMBER_OF_FEATURES];
     }
 
-    public Sample (ArrayList<Float> features) {
+    public Sample (float[] features) {
         this.features = features;
     }
 
-    public List<Float> getFeatures () {
+    public float[] getFeatures () {
         return this.features;
     }
 
-    public void addFeature(float feature) {
-        features.add(feature);
+    public void setFeatures(float[] features) {
+        this.features = features;
     }
 
-    public void setFeature(int index, float feature) {
-        this.features.set(index, feature);
+    public void setSingleFeature(int index, float feature) {
+        this.features[index] = feature;
+    }
+
+    public float getSingleFeature(int index) {
+        return this.features[index];
+    }
+
+    @Override
+    public String toString () {
+        String str = "";
+
+        for (float f : features) {
+            str += f + ",";
+        }
+
+        return str;
     }
 }

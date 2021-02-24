@@ -65,12 +65,12 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		String[] dataList = StringUtils.split(flowDump, ",");
 		//flowDataList.add(features);
 
-		String str = "";
+		/*String str = "";
 		for (String f: dataList) {
 			str += f + ",";
 		}
 		str += "\n";
-		logger.info(str);
+		logger.info(str);*/
 
 		//write flows to csv file
 		String header  = FlowFeature.getHeader();

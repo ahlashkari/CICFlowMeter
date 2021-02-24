@@ -27,8 +27,7 @@ import java.util.concurrent.ExecutorService;
 // When a flow is generated, send to the datasetqueuewrapper
 public class DataSet {
     protected static final Logger logger = LoggerFactory.getLogger(DataSet.class);
-    public String DNN_IP_ADDR = "localhost";
-    public int DNN_PORT = 2021;
+    public int NUMBER_OF_FEATURES = 76;
 
     private static DataSet Instance = new DataSet();
 
@@ -40,6 +39,7 @@ public class DataSet {
     private int ifSelected = -1;
 
     public DataSet init () {
+        Normalizer.getInstance().init();
         loadPcapIfs();
         return Instance;
     }
