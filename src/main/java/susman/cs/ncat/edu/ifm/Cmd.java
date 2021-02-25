@@ -6,7 +6,7 @@ import susman.cs.ncat.edu.dataset.DataSet;
 
 public class Cmd {
     public static void init () {
-        // AIS.getInstance().init();
+        AIS.getInstance().init();
         DataSet.getInstance().init();
 
     }

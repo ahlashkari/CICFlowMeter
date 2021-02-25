@@ -40,7 +40,7 @@ public class InsertSample implements Runnable {
         Sample sample = new Sample(Normalizer.getInstance().normalize(dataList));
 
 
-        // AIS.getInstance().addSample(sample);
+        AIS.getInstance().addSample(sample);
 
     }
 }

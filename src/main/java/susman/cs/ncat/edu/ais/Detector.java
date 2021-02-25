@@ -3,13 +3,10 @@ package susman.cs.ncat.edu.ais;
 import susman.cs.ncat.edu.dataset.DataSet;
 import susman.cs.ncat.edu.dataset.Sample;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Detector {
@@ -18,6 +15,8 @@ public class Detector {
     private Timestamp creation;
     private String id;
     private final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    private int incorrectMatches;
+    private boolean markedForRegeneration;
 
     public Detector () {id = null;}
 
@@ -27,12 +26,13 @@ public class Detector {
 
         String[] splits = line.split(",");
 
-        for (int i = 0; i < splits.length; i += 2) {
-            float min = Float.parseFloat(splits[i]);
-            float max = Float.parseFloat(splits[i+1]);
+        int splitIndex = 0;
+        for (int i = 0; i < ranges.length; i ++) {
+            float min = Float.parseFloat(splits[splitIndex]);
+            float max = Float.parseFloat(splits[splitIndex + 1]);
 
             ranges[i] = new Range(min, max);
-
+            splitIndex += 2;
         }
 
         MessageDigest salt = null;
@@ -47,9 +47,10 @@ public class Detector {
 
         type = 0;
         creation = new Timestamp(System.currentTimeMillis());
+        incorrectMatches = 0;
     }
 
-    private String bytesToHex(byte[] bytes) {
+    public String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
@@ -94,29 +95,52 @@ public class Detector {
      * @return
      */
     public synchronized boolean classify (Sample s, int rValue) {
+        if (!markedForRegeneration) {
+            int matches = 0;
 
-        int matches = 0;
-
-        for (int i = 0; i < DataSet.getInstance().NUMBER_OF_FEATURES; i++) {
-            if (this.ranges[i].between(s.getSingleFeature(i))) {
-                matches += 1;
+            for (int i = 0; i < DataSet.getInstance().NUMBER_OF_FEATURES; i++) {
+                if (this.ranges[i].between(s.getSingleFeature(i))) {
+                    matches += 1;
+                }
             }
-        }
 
-        return matches >= rValue;
+            return matches >= rValue;
+        } else {
+            return false;
+        }
     }
 
-    public void promoteMature() {
+    public synchronized void promoteMature() {
         if (type == 0) {
             type = 1;
             creation = new Timestamp(System.currentTimeMillis());
         }
     }
 
-    public void promoteMemory() {
+    public synchronized void promoteMemory() {
         if (type == 1) {
             type = 2;
             creation = new Timestamp(System.currentTimeMillis());
+        }
+    }
+
+    public synchronized void incrementIncorrectMatch() {
+        incorrectMatches++;
+    }
+
+    public synchronized int getIncorrectMatches() {
+        return incorrectMatches;
+    }
+
+    public synchronized boolean isMarkedForRegeneration() {
+        return markedForRegeneration;
+    }
+
+    public synchronized void markForRegeneration() {
+        if (type == 0) {
+            if (incorrectMatches > AIS.getInstance().IMMATURE_INCORRECT_MATCHES_THRESHOLD) {
+                this.markedForRegeneration = true;
+            }
         }
     }
 }

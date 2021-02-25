@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Normalizer {
     protected static final Logger logger = LoggerFactory.getLogger(Normalizer.class);
+    public final String DATA_SET_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "data";
 
     private float[] maxes;
     private float[] mins;
@@ -34,16 +35,9 @@ public class Normalizer {
     }
 
     public void readDataFiles () {
-        /*System.out.println("Enter the directory of the data files:");
-        Scanner input = new Scanner(System.in);
-        String dirName = input.nextLine();*/
-        String homeDir = System.getProperty("user.dir") + Sys.FILE_SEP + "src" + Sys.FILE_SEP + "main" + Sys.FILE_SEP + "java" + Sys.FILE_SEP;
-        String dataDir = "susman" + Sys.FILE_SEP + "cs" + Sys.FILE_SEP + "ncat" + Sys.FILE_SEP + "edu" + Sys.FILE_SEP + "data";
+        System.out.println(DATA_SET_DIRECTORY);
 
-        String dirName = homeDir + dataDir;
-        System.out.println(dirName);
-
-        File dir = new File(dirName);
+        File dir = new File(DATA_SET_DIRECTORY);
 
         // System.out.println(System.getProperty("user.dir"));
 
@@ -57,7 +51,22 @@ public class Normalizer {
             try {
                 Scanner reader = new Scanner(df);
 
-                String header = reader.nextLine();
+                String line = reader.nextLine();
+
+                String[] values = line.split(",");
+
+                for (int i = 0; i < mins.length; i++) {
+                    mins[i] = isNumber(Float.parseFloat(values[i]));
+                }
+
+                line = reader.nextLine();
+
+                values = line.split(",");
+
+                for (int i = 0; i < maxes.length; i++) {
+                    maxes[i] = isNumber(Float.parseFloat(values[i]));
+                }
+                /*String header = reader.nextLine();
 
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
@@ -71,7 +80,8 @@ public class Normalizer {
 
                         index++;
                     }
-                }
+                }*/
+                reader.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -80,7 +90,7 @@ public class Normalizer {
 
 
 
-    public float[] normalize (String[] features) {
+    public synchronized float[] normalize (String[] features) {
         float[] normalizedDataList = new float[DataSet.getInstance().NUMBER_OF_FEATURES];
 
         int index = 0;
@@ -88,14 +98,11 @@ public class Normalizer {
             float max = maxes[index];
             float min = mins[index];
 
-            float a = (1)/(max-min);
-            float b = max - a * max;
-
             float value = Float.parseFloat(features[i]);
 
             float newValue = ((value - min) / (max - min));
 
-            normalizedDataList[index] = newValue;
+            normalizedDataList[index] = isNumber(newValue);
 
             index++;
         }
@@ -107,5 +114,16 @@ public class Normalizer {
 
 
         return normalizedDataList;
+    }
+
+    private float isNumber(float value) {
+        boolean ini = Float.isInfinite(value);
+        boolean nan = Float.isNaN(value);
+
+        if (ini || nan) {
+            value = 0.0f;
+        }
+
+        return value;
     }
 }

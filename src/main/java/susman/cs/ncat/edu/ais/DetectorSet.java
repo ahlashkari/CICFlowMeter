@@ -1,6 +1,6 @@
 package susman.cs.ncat.edu.ais;
 
-import susman.cs.ncat.edu.ais.worker.DetectorSetWorker;
+import susman.cs.ncat.edu.ais.worker.DetectionWorker;
 import susman.cs.ncat.edu.dataset.Sample;
 
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ public class DetectorSet {
 
     private List<Detector> detectors;
     private List<Sample> newSampleQueue;
+    private String type;
     private int rValue;
 
     private ExecutorService newSampleThread;
@@ -22,11 +23,15 @@ public class DetectorSet {
         newSampleThread = Executors.newSingleThreadExecutor();
     }
 
-    public void addDetector (Detector detector) {
+    public synchronized void addDetector (Detector detector) {
         detectors.add(detector);
     }
 
-    public void addNewSample(Sample s) {
+    public synchronized void removeDetector(int index) {
+        detectors.remove(index);
+    }
+
+    public synchronized void addNewSample(Sample s) {
         this.newSampleQueue.add(s);
         predict();
     }
@@ -52,6 +57,14 @@ public class DetectorSet {
     }
 
     public void predict() {
-        newSampleThread.execute(new DetectorSetWorker(this));
+        newSampleThread.execute(new DetectionWorker(this));
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

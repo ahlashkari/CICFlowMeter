@@ -40,102 +40,20 @@ sourceSets {
     }
 }
 
-task zipSrc(type: Zip){
-    baseName "${applicationName}-Source"
-    destinationDir = file('build/')
-    from('.'){
-        include '**/'
-        exclude '.gradle/','build/','bin/','logs/','*.iml','*.ipr','*.iws','.idea/','out/','data/'
-        into "${applicationName}V${version}-Src"
-    }
-}
-
-import org.apache.tools.ant.DirectoryScanner
-task zipPro(type: Zip){
-
-    doFirst {
-        DirectoryScanner.defaultExcludes.each { DirectoryScanner.removeDefaultExclude it }
-        //DirectoryScanner.addDefaultExclude 'something has to be in here or everything gets excluded'
-    }
-
-    doLast {
-        DirectoryScanner.resetDefaultExcludes()
-    }
-
-    baseName "${applicationName}-Full"
-    destinationDir = file('build/')
-
-    from('.'){
-        include '**/'
-        exclude '.gradle/','build/','bin/','logs/','*.iml','*.ipr','*.iws','.idea/','out/','data/',".git/"
-        into "${applicationName}V${version}"
-    }
-}
-
-
-task fatJar(type: Jar) {
+jar {
     println 'type Jar'
 
     manifest {
-
-        attributes 'Premain-Class': 'swing.common.ObjectSizeFetcher'
-        attributes 'Can-Retransform-Classes': true
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Implementation-Version': version,
-                'Main-Class': 'cic.cs.unb.ca.ifm.App'
-
+        attributes "Main-Class": "susman.cs.ncat.edu.ifm.Cmd"
     }
-    /*baseName = "NetWorkTraffic" + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    into(new File('build/jar/'))
-    with jar*/
-}
 
-
-task execute(type: JavaExec) {
-    println 'type JavaExec'
-
-
-    main = "cic.cs.unb.ca.ifm.App" //main class
-    classpath = sourceSets.main.runtimeClasspath
-    String osName = System.getProperty('os.name').toLowerCase()
-    if(osName.contains('windows')){
-        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
-    }else{
-        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
-
-task exeCMD(type: JavaExec){
-    main = "cic.cs.unb.ca.ifm.Cmd" //main class
-    classpath = sourceSets.main.runtimeClasspath
-    String osName = System.getProperty('os.name').toLowerCase()
-    if(osName.contains('windows')){
-        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
-    }else{
-        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
-    }
-    //args = ["/home/yzhang29/0a/Capture/", "/home/yzhang29/0a/Capture/out/"]
-}
-
-
-task cmdScript(type: CreateStartScripts) {
-    mainClassName = "cic.cs.unb.ca.ifm.Cmd"
-    applicationName = "cfm"
-    outputDir = new File(project.buildDir, 'scripts')
-    classpath = jar.outputs.files + project.configurations.runtime
-    defaultJvmOpts = ["-Djava.library.path=../lib/native"]
-}
-
-applicationDistribution.into("bin") {
-    from(cmdScript)
-    fileMode = 0755
-}
-
 
 // The Application Plugin
-mainClassName = "cic.cs.unb.ca.ifm.App"
+mainClassName = "susman.cs.ncat.edu.ifm.Cmd"
 applicationName = "CICFlowMeter"
 applicationDefaultJvmArgs = ["-Djava.library.path=../lib/native"]
 

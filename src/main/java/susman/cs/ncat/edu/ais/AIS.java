@@ -16,6 +16,8 @@ public class AIS {
     protected static final org.slf4j.Logger logger = LoggerFactory.getLogger(AIS.class);
     public final String DNN_IP_ADDR = "localhost";
     public final int DNN_PORT = 2021;
+    public final int IMMATURE_INCORRECT_MATCHES_THRESHOLD = 10;
+    public final String DETECTOR_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "detectors";
 
     // Single static instance to be used throughout the project
     private static AIS Instance = new AIS();
@@ -35,7 +37,7 @@ public class AIS {
 
     // Initialize the static instance
     public AIS init () {
-        detectorSetList = new ArrayList<>();
+        detectorSetList = new ArrayList();
 
         readDetectorSets();
 
@@ -44,23 +46,20 @@ public class AIS {
 
     // Read the detector set files from a directory
     public void readDetectorSets() {
-        String homeDir = System.getProperty("user.dir") + Sys.FILE_SEP + "src" + Sys.FILE_SEP + "main" + Sys.FILE_SEP + "java" + Sys.FILE_SEP;
-        String detectorDir = "susman" + Sys.FILE_SEP + "cs" + Sys.FILE_SEP + "ncat" + Sys.FILE_SEP + "edu" + Sys.FILE_SEP + "ais" + Sys.FILE_SEP + "detectors";
 
-        String dir = homeDir + detectorDir;
+        File detectorSetDir = new File(DETECTOR_DIRECTORY);
 
-        File detectorSetDir = new File(detectorDir);
-
-            if (!detectorSetDir.exists()) {
-                logger.error(dir + " does not exist");
+        if (!detectorSetDir.exists()) {
+                logger.error(DETECTOR_DIRECTORY + " does not exist");
                 System.exit(-1);
-            }
+        }
 
-            File[] detectorSetDirListing = detectorSetDir.listFiles();
+        File[] detectorSetDirListing = detectorSetDir.listFiles();
 
-            for (File f : detectorSetDirListing) {
-                readSet(f);
-            }
+        assert detectorSetDirListing != null;
+        for (File f : detectorSetDirListing) {
+            readSet(f);
+        }
 
     }
 
@@ -69,10 +68,11 @@ public class AIS {
     // Add the detectors from the file to the detector set
     public void readSet (File file) {
         DetectorSet detectorSet = new DetectorSet();
+        detectorSet.setType(file.getName().split("\\.")[0]);
         try {
             Scanner input = new Scanner(file);
 
-            String line = input.next();
+            String line = input.nextLine();
 
             detectorSet.setrValue(Integer.parseInt(line));
 
@@ -83,6 +83,8 @@ public class AIS {
 
                 detectorSet.addDetector(detector);
             }
+
+            input.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -91,7 +93,7 @@ public class AIS {
     }
 
     // Replicate a sample to be classified by all the Detector Sets
-    public void addSample(Sample sample) {
+    public synchronized void addSample(Sample sample) {
         for (DetectorSet ds : detectorSetList) {
             ds.addNewSample(sample);
         }
