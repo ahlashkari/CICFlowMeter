@@ -137,10 +137,13 @@ public class Detector {
     }
 
     public synchronized void markForRegeneration() {
-        if (type == 0) {
-            if (incorrectMatches > AIS.getInstance().IMMATURE_INCORRECT_MATCHES_THRESHOLD) {
-                this.markedForRegeneration = true;
-            }
-        }
+        this.markedForRegeneration = true;
+    }
+
+    public synchronized void unmarkForRegeneration() {
+        this.markedForRegeneration = false;
+        type = 0;
+        creation = new Timestamp(System.currentTimeMillis());
+        incorrectMatches = 0;
     }
 }

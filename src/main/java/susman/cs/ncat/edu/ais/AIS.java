@@ -16,6 +16,7 @@ public class AIS {
     protected static final org.slf4j.Logger logger = LoggerFactory.getLogger(AIS.class);
     public final String DNN_IP_ADDR = "localhost";
     public final int DNN_PORT = 2021;
+    public final int REGEN_PORT = 2022;
     public final int IMMATURE_INCORRECT_MATCHES_THRESHOLD = 10;
     public final String DETECTOR_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "detectors";
 
@@ -88,7 +89,7 @@ public class AIS {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        detectorSet.startLifespanEvaluation();
         this.detectorSetList.add(detectorSet);
     }
 
@@ -97,5 +98,9 @@ public class AIS {
         for (DetectorSet ds : detectorSetList) {
             ds.addNewSample(sample);
         }
+    }
+
+    public List<DetectorSet> getDetectorSetList () {
+        return this.detectorSetList;
     }
 }

@@ -1,6 +1,7 @@
 package susman.cs.ncat.edu.ais;
 
 import susman.cs.ncat.edu.ais.worker.DetectionWorker;
+import susman.cs.ncat.edu.ais.worker.DetectorLifespanWorker;
 import susman.cs.ncat.edu.dataset.Sample;
 
 import java.util.ArrayList;
@@ -16,11 +17,18 @@ public class DetectorSet {
     private int rValue;
 
     private ExecutorService newSampleThread;
+    private ExecutorService regenerationThread;
 
     public DetectorSet() {
         this.detectors = new ArrayList<>();
         this.newSampleQueue = new ArrayList();
         newSampleThread = Executors.newSingleThreadExecutor();
+        regenerationThread = Executors.newSingleThreadExecutor();
+
+    }
+
+    public void startLifespanEvaluation() {
+        regenerationThread.execute(new DetectorLifespanWorker(this));
     }
 
     public synchronized void addDetector (Detector detector) {
@@ -57,6 +65,7 @@ public class DetectorSet {
     }
 
     public void predict() {
+
         newSampleThread.execute(new DetectionWorker(this));
     }
 

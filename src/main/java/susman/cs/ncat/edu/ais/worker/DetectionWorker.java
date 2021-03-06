@@ -16,6 +16,8 @@ public class DetectionWorker extends Thread {
     private DetectorSet owner;
 
     public DetectionWorker(DetectorSet detectorSet) {
+        super();
+
         owner = detectorSet;
     }
 
@@ -79,7 +81,7 @@ public class DetectionWorker extends Thread {
                     detectedDetector.promoteMature();
                 } else {
                     detectedDetector.incrementIncorrectMatch();
-                    detectedDetector.markForRegeneration();
+                    //detectedDetector.markForRegeneration();
                 }
 
                 in.close();
@@ -89,6 +91,7 @@ public class DetectionWorker extends Thread {
 
             } catch (IOException e) {
                 e.printStackTrace();
+                owner.addNewSample(newSample);
             }
         }
     }
