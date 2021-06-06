@@ -346,7 +346,7 @@ public class BasicFlow {
 			sfAcHelper   = packet.getTimeStamp();
 		}
 		//System.out.print(" - "+(packet.timeStamp - sfLastPacketTS));
-		if( (packet.getTimeStamp() - (sfLastPacketTS)/(double)1000000)   > 1.0 ){
+		if(((packet.getTimeStamp() - sfLastPacketTS)/(double)1000000)  > 1.0){
 			sfCount ++ ;
 			long lastSFduration = packet.getTimeStamp() - sfAcHelper;
 			updateActiveIdleTime(packet.getTimeStamp(), this.activityTimeout);
