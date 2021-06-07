@@ -66,7 +66,7 @@ ECE Flag Count 			Number of packets with ECE
 down/Up Ratio			Download and upload ratio
 Average Packet Size 		Average size of packet
 Fwd Segment Size Avg 		Average size observed in the forward direction
-Bwd Segment Size Avg 		Average number of bytes bulk rate in the backward direction
+Bwd Segment Size Avg 		Average size observed in the backward direction
 Fwd Bytes/Bulk Avg		Average number of bytes bulk rate in the forward direction
 Fwd Packet/Bulk Avg		Average number of packets bulk rate in the forward direction
 Fwd Bulk Rate Avg 		Average number of bulk rate in the forward direction
