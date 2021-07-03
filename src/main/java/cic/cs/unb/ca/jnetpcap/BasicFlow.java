@@ -28,6 +28,8 @@ public class BasicFlow {
 	private 	int bPSH_cnt;
 	private 	int fURG_cnt;
 	private 	int bURG_cnt;
+	private     int fFIN_cnt;
+	private     int bFIN_cnt;
 
 	private 	long Act_data_pkt_forward;
 	private 	long min_seg_size_forward;
@@ -108,6 +110,8 @@ public class BasicFlow {
 		this.bPSH_cnt=0;
 		this.fURG_cnt=0;
 		this.bURG_cnt=0;
+		this.fFIN_cnt=0;
+		this.bFIN_cnt=0;		
 		this.fHeaderBytes=0L;
 		this.bHeaderBytes=0L;
 
@@ -974,6 +978,24 @@ public class BasicFlow {
 	public int getBwdURGFlags() {
 		return bURG_cnt;
 	}
+	
+	public int getFwdFINFlags() {
+		return fFIN_cnt;
+	}
+	
+	public int getBwdFINFlags() {
+		return bFIN_cnt;
+	}
+	
+	public int setFwdFINFlags() {
+		fFIN_cnt++;
+		return fFIN_cnt;
+	}
+	
+	public int setBwdFINFlags() {
+		bFIN_cnt++;
+		return bFIN_cnt;
+	}	
 	
 	public long getFwdHeaderLength() {
 		return fHeaderBytes;
