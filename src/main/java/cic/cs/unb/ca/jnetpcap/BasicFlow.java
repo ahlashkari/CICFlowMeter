@@ -681,7 +681,7 @@ public class BasicFlow {
 		dump+=fAvgBytesPerBulk()+",";
 		dump+=fAvgPacketsPerBulk()+",";
 		dump+=fAvgBulkRate()+",";
-		dump+=fAvgBytesPerBulk()+",";
+		dump+=bAvgBytesPerBulk()+",";
 		dump+=bAvgPacketsPerBulk()+",";
 		dump+=bAvgBulkRate()+",";
 
