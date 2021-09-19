@@ -1,14 +1,14 @@
-package susman.cs.ncat.edu.ifm;
+package edu.ncat.susman.ifm;
 
-import cic.cs.unb.ca.flow.FlowMgr;
-import susman.cs.ncat.edu.ais.AIS;
-import susman.cs.ncat.edu.dataset.DataSet;
+import edu.ncat.susman.ais.AIS;
+import edu.ncat.susman.client.BCPServer;
+import edu.ncat.susman.dataset.DataSet;
 
 public class Cmd {
     public static void init () {
         AIS.getInstance().init();
         DataSet.getInstance().init();
-
+        BCPServer.getInstance().init();
     }
 
     public static void main (String[] args) {

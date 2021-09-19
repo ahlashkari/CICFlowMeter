@@ -1,17 +1,17 @@
 
 data/min_max.csv
-detectors/Brute Force -Web.csv
-detectors/Brute Force -XSS.csv
-detectors/DDOS attack-HOIC.csv
-detectors/DDoS attacks-LOIC-HTTP.csv
-detectors/DoS attacks-GoldenEye.csv
-detectors/DoS attacks-Hulk.csv
-detectors/DoS attacks-SlowHTTPTest.csv
-detectors/DoS attacks-Slowloris.csv
-detectors/FTP-BruteForce.csv
-detectors/Infilteration.csv
-detectors/SQL Injection.csv
-detectors/SSH-Bruteforce.csv
+bin/Brute Force -Web.csv
+bin/Brute Force -XSS.csv
+bin/DDOS attack-HOIC.csv
+bin/DDoS attacks-LOIC-HTTP.csv
+bin/DoS attacks-GoldenEye.csv
+bin/DoS attacks-Hulk.csv
+bin/DoS attacks-SlowHTTPTest.csv
+bin/DoS attacks-Slowloris.csv
+bin/FTP-BruteForce.csv
+bin/Infilteration.csv
+bin/SQL Injection.csv
+bin/SSH-Bruteforce.csv
 data/min_max.csv
-detectors/FTP-BruteForce.csv
-detectors/SSH-Bruteforce.csv
+bin/FTP-BruteForce.csv
+bin/SSH-Bruteforce.csv

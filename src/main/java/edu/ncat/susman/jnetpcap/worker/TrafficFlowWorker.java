@@ -1,4 +1,4 @@
-package susman.cs.ncat.edu.jnetpcap.worker;
+package edu.ncat.susman.jnetpcap.worker;
 
 import cic.cs.unb.ca.jnetpcap.BasicFlow;
 import cic.cs.unb.ca.jnetpcap.FlowFeature;
@@ -13,13 +13,10 @@ import org.jnetpcap.packet.PcapPacketHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static java.lang.Thread.interrupted;
 
 public class TrafficFlowWorker extends Thread implements FlowGenListener {
 
@@ -50,35 +47,8 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	 * @param flow
 	 */
 	private void insertFlow(BasicFlow flow) {
-		java.util.List<String> flowStringList = new ArrayList<>();
-		List<String[]> flowDataList = new ArrayList<>();
-
-		// Get the list of features from the flow comma separated
-		String flowDump = flow.dumpFlowBasedFeaturesEx();
-
-		//System.out.println("Flow Dump: " + flowDump);
-
-		// Add the flow's features to the flowString List
-		//flowStringList.add(flowDump);
-
-		// Add the flow's individual features to the flowDataList
-		String[] dataList = StringUtils.split(flowDump, ",");
-		//flowDataList.add(features);
-
-		/*String str = "";
-		for (String f: dataList) {
-			str += f + ",";
-		}
-		str += "\n";
-		logger.info(str);*/
-
-		//write flows to csv file
-		String header  = FlowFeature.getHeader();
-		// String path = FlowMgr.getInstance().getSavePath();
-		// String filename = LocalDate.now().toString() + FlowMgr.FLOW_SUFFIX;
-
-		// Using the csvWriterThread, insert a new csv row
-		sampleWriterThread.execute(new InsertSample(header, dataList));
+				// Using the csvWriterThread, insert a new csv row
+		sampleWriterThread.execute(new InsertSample(flow));
 
 	}
 

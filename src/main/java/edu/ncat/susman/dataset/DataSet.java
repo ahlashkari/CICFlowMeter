@@ -1,33 +1,22 @@
-package susman.cs.ncat.edu.dataset;
+package edu.ncat.susman.dataset;
 
 
-import cic.cs.unb.ca.Sys;
-import cic.cs.unb.ca.flow.FlowMgr;
-import cic.cs.unb.ca.jnetpcap.BasicFlow;
-import cic.cs.unb.ca.jnetpcap.FlowFeature;
 import cic.cs.unb.ca.jnetpcap.PcapIfWrapper;
-import cic.cs.unb.ca.jnetpcap.worker.LoadPcapInterfaceWorker;
-import org.apache.commons.lang3.StringUtils;
+import edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapIf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import susman.cs.ncat.edu.jnetpcap.worker.TrafficFlowWorker;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 
 // Constructor with interface name
 // Begin listening on the interface
 // When a flow is generated, send to the datasetqueuewrapper
 public class DataSet {
     protected static final Logger logger = LoggerFactory.getLogger(DataSet.class);
-    public int NUMBER_OF_FEATURES = 76;
 
     private static DataSet Instance = new DataSet();
 

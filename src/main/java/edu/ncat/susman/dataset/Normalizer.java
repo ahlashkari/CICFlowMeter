@@ -1,6 +1,7 @@
-package susman.cs.ncat.edu.dataset;
+package edu.ncat.susman.dataset;
 
 import cic.cs.unb.ca.Sys;
+import edu.ncat.susman.Parameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +11,7 @@ import java.util.Scanner;
 
 public class Normalizer {
     protected static final Logger logger = LoggerFactory.getLogger(Normalizer.class);
-    public final String DATA_SET_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "data";
+
 
     private float[] maxes;
     private float[] mins;
@@ -23,10 +24,10 @@ public class Normalizer {
     public static Normalizer getInstance() { return Instance; }
 
     public void init () {
-        maxes = new float[DataSet.getInstance().NUMBER_OF_FEATURES];
-        mins = new float[DataSet.getInstance().NUMBER_OF_FEATURES];
+        maxes = new float[Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES];
+        mins = new float[Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES];
 
-        for (int i = 0; i < DataSet.getInstance().NUMBER_OF_FEATURES; i++) {
+        for (int i = 0; i < Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES; i++) {
             maxes[i] = Float.MIN_VALUE;
             mins[i] = Float.MAX_VALUE;
         }
@@ -35,21 +36,18 @@ public class Normalizer {
     }
 
     public void readDataFiles () {
-        System.out.println(DATA_SET_DIRECTORY);
 
-        File dir = new File(DATA_SET_DIRECTORY);
+        File minMaxFile = new File(Parameters.DATA_SET_DIRECTORY);
 
         // System.out.println(System.getProperty("user.dir"));
 
-        if (!dir.isDirectory()) {
-            logger.error("Directory doesn't exist");
-            System.exit(0);
+        if (!minMaxFile.exists()) {
+            logger.error("Min Max File doesn't exist");
+            System.exit(-1);
         }
-        File[] dataFiles = dir.listFiles();
 
-        for (File df : dataFiles) {
             try {
-                Scanner reader = new Scanner(df);
+                Scanner reader = new Scanner(minMaxFile);
 
                 String line = reader.nextLine();
 
@@ -66,32 +64,16 @@ public class Normalizer {
                 for (int i = 0; i < maxes.length; i++) {
                     maxes[i] = isNumber(Float.parseFloat(values[i]));
                 }
-                /*String header = reader.nextLine();
-
-                while (reader.hasNextLine()) {
-                    String line = reader.nextLine();
-
-                    String[] dataList = line.split(",");
-
-                    int index = 0;
-                    for (int i = 3; i < dataList.length - 1; i++) {
-                        maxes[index] = Float.max(maxes[index], Float.parseFloat(dataList[i]));
-                        mins[index] = Float.min(mins[index], Float.parseFloat(dataList[i]));
-
-                        index++;
-                    }
-                }*/
                 reader.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
     }
 
 
 
     public synchronized float[] normalize (String[] features) {
-        float[] normalizedDataList = new float[DataSet.getInstance().NUMBER_OF_FEATURES];
+        float[] normalizedDataList = new float[Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES];
 
         int index = 0;
         for (int i = 7; i < features.length - 1; i++) {

@@ -1,28 +1,28 @@
-package susman.cs.ncat.edu.ais;
+package edu.ncat.susman.ais;
 
-import susman.cs.ncat.edu.ais.worker.DetectionWorker;
-import susman.cs.ncat.edu.ais.worker.DetectorLifespanWorker;
-import susman.cs.ncat.edu.dataset.Sample;
+import edu.ncat.susman.client.DetectionWorker;
+import edu.ncat.susman.client.DetectorLifespanWorker;
+import edu.ncat.susman.dataset.Sample;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DetectorSet {
 
-    private List<Detector> detectors;
-    private List<Sample> newSampleQueue;
-    private String type;
+    private HashMap<String, Detector> detectors;
+    private List<Sample> sampleQueue;
     private int rValue;
 
-    private ExecutorService newSampleThread;
+    private ExecutorService sampleAnalysisThread;
     private ExecutorService regenerationThread;
 
     public DetectorSet() {
-        this.detectors = new ArrayList<>();
-        this.newSampleQueue = new ArrayList();
-        newSampleThread = Executors.newSingleThreadExecutor();
+        this.detectors = new HashMap<>();
+        this.sampleQueue = new ArrayList<>();
+        sampleAnalysisThread = Executors.newSingleThreadExecutor();
         regenerationThread = Executors.newSingleThreadExecutor();
 
     }
@@ -32,7 +32,7 @@ public class DetectorSet {
     }
 
     public synchronized void addDetector (Detector detector) {
-        detectors.add(detector);
+        detectors.put(detector.getId(), detector);
     }
 
     public synchronized void removeDetector(int index) {
@@ -40,17 +40,17 @@ public class DetectorSet {
     }
 
     public synchronized void addNewSample(Sample s) {
-        this.newSampleQueue.add(s);
+        this.sampleQueue.add(s);
         predict();
     }
 
-    public List<Detector> getDetectors() {
+    public HashMap<String, Detector> getDetectors() {
         return this.detectors;
     }
 
     public synchronized Sample pop() {
-        if (newSampleQueue.size() > 0)
-            return newSampleQueue.remove(0);
+        if (sampleQueue.size() > 0)
+            return sampleQueue.remove(0);
         else
             return null;
     }
@@ -66,14 +66,6 @@ public class DetectorSet {
 
     public void predict() {
 
-        newSampleThread.execute(new DetectionWorker(this));
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        sampleAnalysisThread.execute(new DetectionWorker(this));
     }
 }

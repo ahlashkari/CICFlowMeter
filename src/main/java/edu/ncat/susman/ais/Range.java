@@ -1,4 +1,4 @@
-package susman.cs.ncat.edu.ais;
+package edu.ncat.susman.ais;
 
 public class Range {
     private float min;
