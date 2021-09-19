@@ -1,19 +1,25 @@
 package edu.ncat.susman.ifm;
 
 import edu.ncat.susman.ais.AIS;
-import edu.ncat.susman.client.BCPServer;
 import edu.ncat.susman.dataset.DataSet;
+
+import java.util.Scanner;
 
 public class Cmd {
     public static void init () {
         AIS.getInstance().init();
         DataSet.getInstance().init();
-        BCPServer.getInstance().init();
+        // BCPServer.getInstance().init();
     }
 
     public static void main (String[] args) {
         init();
         System.out.println("Done");
+        Scanner scan= new Scanner(System.in);
+        System.out.println("Enter exit when finished");
+        String line = scan.nextLine();
+        DataSet.getInstance().getmWorker().close();
+        System.exit(0);
         // Data Set Processing Thread
         // Pop off queue a flow
         // Normalize the flow into a sample

@@ -2,6 +2,9 @@ package edu.ncat.susman;
 
 import cic.cs.unb.ca.Sys;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 public class Parameters {
     // HEADER FIELD BYTE LOCATION #
     public static final int VERSION_LOCATION = 0;
@@ -52,7 +55,7 @@ public class Parameters {
     public static final int SAMPLE_TOTAL_NUMBER_OF_VALUES = 81;
 
     // CONNECTED APPLIANCE VARIABLES #
-    public static final long CONNECTED_APPLIANCE_STATUS_CHECK_INTERVAL = 1000 * 60 * 30;
+    public static final long CONNECTED_APPLIANCE_STATUS_TIMEOUT = 1000 * 60 * 30;
 
     // DEFAULT NETWORK INFO
     public static final String IP_ADDRESS_SYS_ADMIN = "192.168.1.50";
@@ -83,11 +86,22 @@ public class Parameters {
         return new String(hexChars);
     }
 
+    /* s must be an even-length string. */
+    public static byte[] hexToBytes(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
+    }
+
     public static byte[] ipAddressBytes(String address) {
         byte[] retBytes = new byte[4];
         String[] bytes = address.split("\\.");
         for (int i = 0; i < 4; i++) {
-            retBytes[i] = Byte.parseByte(bytes[i]);
+            retBytes[i] = (byte) Integer.parseInt(bytes[i]);
         }
 
         return retBytes;
@@ -107,5 +121,44 @@ public class Parameters {
         }
 
         return retBytes;
+    }
+
+    public static float byteArrayToLeFloat(byte[] b) {
+        final ByteBuffer bb = ByteBuffer.wrap(b);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        return bb.getFloat();
+    }
+
+    public static byte[] leFloatToByteArray(float value) {
+        final ByteBuffer bb = ByteBuffer.allocate(Float.SIZE / Byte.SIZE);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        bb.putFloat(value);
+        return bb.array();
+    }
+
+    public static int byteArrayToLeShort(byte[] b) {
+        final ByteBuffer bb = ByteBuffer.wrap(b);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        return bb.getShort();
+    }
+
+    public static byte[] leShortToByteArray(short value) {
+        final ByteBuffer bb = ByteBuffer.allocate(Short.SIZE / Byte.SIZE);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        bb.putShort(value);
+        return bb.array();
+    }
+
+    public static int byteArrayToLeInt(byte[] b) {
+        final ByteBuffer bb = ByteBuffer.wrap(b);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        return bb.getInt();
+    }
+
+    public static byte[] leIntToByteArray(int value) {
+        final ByteBuffer bb = ByteBuffer.allocate(Integer.SIZE / Byte.SIZE);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
+        bb.putInt(value);
+        return bb.array();
     }
 }

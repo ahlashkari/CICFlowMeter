@@ -1,19 +1,18 @@
 package edu.ncat.susman.ais;
 
-import edu.ncat.susman.client.DetectionWorker;
-import edu.ncat.susman.client.DetectorLifespanWorker;
+import edu.ncat.susman.server.DetectionWorker;
+import edu.ncat.susman.server.DetectorLifespanWorker;
 import edu.ncat.susman.dataset.Sample;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class DetectorSet {
 
     private HashMap<String, Detector> detectors;
-    private List<Sample> sampleQueue;
+    private LinkedBlockingQueue<Sample> sampleQueue;
     private int rValue;
 
     private ExecutorService sampleAnalysisThread;
@@ -21,8 +20,9 @@ public class DetectorSet {
 
     public DetectorSet() {
         this.detectors = new HashMap<>();
-        this.sampleQueue = new ArrayList<>();
+        this.sampleQueue = new LinkedBlockingQueue<>();
         sampleAnalysisThread = Executors.newSingleThreadExecutor();
+        sampleAnalysisThread.execute(new DetectionWorker(this));
         regenerationThread = Executors.newSingleThreadExecutor();
 
     }
@@ -41,18 +41,11 @@ public class DetectorSet {
 
     public synchronized void addNewSample(Sample s) {
         this.sampleQueue.add(s);
-        predict();
+        //predict();
     }
 
     public HashMap<String, Detector> getDetectors() {
         return this.detectors;
-    }
-
-    public synchronized Sample pop() {
-        if (sampleQueue.size() > 0)
-            return sampleQueue.remove(0);
-        else
-            return null;
     }
 
 
@@ -67,5 +60,13 @@ public class DetectorSet {
     public void predict() {
 
         sampleAnalysisThread.execute(new DetectionWorker(this));
+    }
+
+    public boolean hasSample() {
+        return !sampleQueue.isEmpty();
+    }
+
+    public LinkedBlockingQueue getQueue () {
+        return this.sampleQueue;
     }
 }

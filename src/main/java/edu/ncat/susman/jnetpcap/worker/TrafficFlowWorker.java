@@ -5,6 +5,9 @@ import cic.cs.unb.ca.jnetpcap.FlowFeature;
 import cic.cs.unb.ca.jnetpcap.FlowGenerator;
 import cic.cs.unb.ca.jnetpcap.PacketReader;
 import cic.cs.unb.ca.jnetpcap.worker.FlowGenListener;
+import edu.ncat.susman.ais.AIS;
+import edu.ncat.susman.dataset.Normalizer;
+import edu.ncat.susman.dataset.Sample;
 import org.apache.commons.lang3.StringUtils;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.nio.JMemory.Type;
@@ -22,6 +25,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 
 	public static final Logger logger = LoggerFactory.getLogger(TrafficFlowWorker.class);
 	private String device;
+	private Pcap pcap;
 
 	private ExecutorService sampleWriterThread;
 
@@ -47,8 +51,47 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	 * @param flow
 	 */
 	private void insertFlow(BasicFlow flow) {
-				// Using the csvWriterThread, insert a new csv row
-		sampleWriterThread.execute(new InsertSample(flow));
+		java.util.List<String> flowStringList = new ArrayList<>();
+		List<String[]> flowDataList = new ArrayList<>();
+
+		// Get the list of features from the flow comma separated
+		String flowDump = flow.dumpFlowBasedFeaturesEx();
+
+		//System.out.println("Flow Dump: " + flowDump);
+
+		// Add the flow's features to the flowString List
+		//flowStringList.add(flowDump);
+
+		// Add the flow's individual features to the flowDataList
+		String[] dataList = StringUtils.split(flowDump, ",");
+		//flowDataList.add(features);
+
+		/*String str = "";
+		for (String f: dataList) {
+			str += f + ",";
+		}
+		str += "\n";
+		logger.info(str);*/
+
+		//write flows to csv file
+		String header  = FlowFeature.getHeader();
+		// String path = FlowMgr.getInstance().getSavePath();
+		// String filename = LocalDate.now().toString() + FlowMgr.FLOW_SUFFIX;
+		if (dataList == null || dataList.length <= 0) {
+			throw new IllegalArgumentException("No features to write");
+		}
+
+		// Send to python socket
+		// Create Sample with normalized values
+		// Add Sample to DetectorSetQueues
+		Sample sample = new Sample(Normalizer.getInstance().normalize(dataList));
+		sample.setSrcIP(flow.getSrcIP());
+		sample.setDstIP(flow.getDstIP());
+		sample.setSrcPort(String.valueOf(flow.getSrcPort()));
+		sample.setDstPort(String.valueOf(flow.getDstPort()));
+		sample.setProtocol(String.valueOf(flow.getProtocol()));
+
+		AIS.getInstance().addSample(sample);
 
 	}
 
@@ -72,7 +115,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		StringBuilder errbuf = new StringBuilder();
 
 		// Begin listening
-		Pcap pcap = Pcap.openLive(device, snaplen, promiscous, timeout, errbuf);
+		pcap = Pcap.openLive(device, snaplen, promiscous, timeout, errbuf);
 		if (pcap == null) {
 			logger.info("open {} fail -> {}",device,errbuf.toString());
 			//return String.format("open %s fail ->",device)+errbuf.toString();
@@ -101,6 +144,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 			// Add packet to FlowGenerator for analysis
 			flowGen.addPacket(PacketReader.getBasicPacketInfo(permanent, true, false));
 			if(isInterrupted()) {
+				assert pcap != null;
 				pcap.breakloop();
 				logger.debug("break Packet loop");
 			}
@@ -109,6 +153,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		//FlowMgr.getInstance().setListenFlag(true);
 		logger.info("Pcap is listening...");
 		//firePropertyChange("progress","open successfully","listening: "+device);
+		assert pcap != null;
 		int ret = pcap.loop(Pcap.DISPATCH_BUFFER_FULL, jpacketHandler, device);
 
 		String str;
@@ -127,5 +172,9 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		}
 
 		logger.info(str);
+	}
+
+	public void close() {
+		pcap.close();
 	}
 }

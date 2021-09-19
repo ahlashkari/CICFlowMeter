@@ -94,12 +94,10 @@ public class DataSet {
 
         // Begin executing the TrafficFlowWorker
         mWorker.start();
-        try {
-            mWorker.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+    }
+
+    public TrafficFlowWorker getmWorker() {
+        return this.mWorker;
     }
 
 

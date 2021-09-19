@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: edu.ncat.susman.ifm.Cmd
+Main-Class: susman.cs.ncat.edu.ifm.Cmd
 

@@ -38,7 +38,7 @@ public class Detector {
             splitIndex += 2;
         }
 
-        this.setType(splits[splits.length-1].getBytes()[0]);
+        this.setType(Byte.parseByte(splits[splits.length-1]));
 
         MessageDigest salt = null;
         try {
