@@ -92,7 +92,7 @@ public class Normalizer {
 		for (float f: normalizedDataList) {
 			str += f + ",";
 		}
-		logger.info(str);
+		// logger.info(str);
 
 
         return normalizedDataList;

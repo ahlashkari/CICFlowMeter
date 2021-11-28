@@ -1,10 +1,13 @@
 package edu.ncat.susman.server;
 
 import edu.ncat.susman.Parameters;
+import edu.ncat.susman.dataset.Normalizer;
 import edu.ncat.susman.dataset.Sample;
 import edu.ncat.susman.ais.Detector;
 import edu.ncat.susman.ais.DetectorSet;
 import org.apache.commons.lang3.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.BufferOverflowException;
@@ -14,6 +17,7 @@ import java.util.Map;
 
 public class DetectionWorker extends Thread {
     private DetectorSet owner;
+    protected static final Logger logger = LoggerFactory.getLogger(DetectionWorker.class);
 
     public DetectionWorker(DetectorSet detectorSet) {
         super();
@@ -34,14 +38,19 @@ public class DetectionWorker extends Thread {
 
                 boolean detected = false;
 
-                for (Map.Entry<String, Detector> entry : detectors.entrySet()) {
-                    Detector d = entry.getValue();
-                    if (d.classify(sample, rValue)) {
-                        detectedDetector = d;
-                        detected = true;
-                        break;
+                if (!sample.getDstPort().equals("1891") && !sample.getSrcPort().equals("1891")) {
+                    for (Map.Entry<String, Detector> entry : detectors.entrySet()) {
+                        Detector d = entry.getValue();
+                        if (d.classify(sample, rValue)) {
+                            detectedDetector = d;
+                            detected = true;
+                            break;
+                        }
                     }
                 }
+
+                // if (!detected)
+                    // logger.info(sample.getSrcIP() + " - " + sample.getDstIP());
 
                 // If the sample was detected by a detector
                 // Establish a connection with the Validator
@@ -69,6 +78,7 @@ public class DetectionWorker extends Thread {
                         byte[] msg = new byte[]{firstByte, secondByte};
                         msg = ArrayUtils.addAll(msg, Parameters.leShortToByteArray(thirdFourthByte));
                         msg = ArrayUtils.addAll(msg, Parameters.hexToBytes(detectedDetector.getId()));
+                        msg = ArrayUtils.addAll(msg, detectedDetector.getType());
                         msg = ArrayUtils.addAll(msg, Parameters.ipAddressBytes(sample.getSrcIP()));
                         msg = ArrayUtils.addAll(msg, Parameters.ipAddressBytes(sample.getDstIP()));
                         msg = ArrayUtils.addAll(msg, Parameters.portBytes(sample.getSrcPort()));
@@ -104,6 +114,8 @@ public class DetectionWorker extends Thread {
                             return;
                         }
                         byte response = (byte) (in.readByte());
+
+                        logger.info(sample.getSrcIP() + " - " + sample.getDstIP() + ": " + response);
 
                         if (response == 1) {
                             detectedDetector.promoteMature();
