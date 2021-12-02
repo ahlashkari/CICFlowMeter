@@ -9,6 +9,8 @@ public class Sample {
     private String srcPort;
     private String protocol;
     private float[] features;
+    private String header;
+    private String flowDump;
 
     public Sample () {
         features = new float[Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES];
@@ -83,5 +85,21 @@ public class Sample {
 
     public void setProtocol(String protocol) {
         this.protocol = protocol;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getFlowDump() {
+        return flowDump;
+    }
+
+    public void setFlowDump(String flowDump) {
+        this.flowDump = flowDump;
     }
 }

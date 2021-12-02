@@ -5,6 +5,9 @@ for linux, sudo is a prerequisite
 //linux :at the pathtoproject/jnetpcap/linux/jnetpcap-1.4.r1425
 //windows: at the pathtoproject/jnetpcap/win/jnetpcap-1.4.r1425
 mvn install:install-file -Dfile=jnetpcap.jar -DgroupId=org.jnetpcap -DartifactId=jnetpcap -Dversion=1.4.1 -Dpackaging=jar
+cp libjnetpcap.so /usr/lib/
+cp libjnetpcap-pcap100.so /usr/lib/
+sudo apt install libpcap-dev
 ```
 
 ## Run

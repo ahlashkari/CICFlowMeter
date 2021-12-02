@@ -5,9 +5,11 @@ import cic.cs.unb.ca.jnetpcap.FlowFeature;
 import cic.cs.unb.ca.jnetpcap.FlowGenerator;
 import cic.cs.unb.ca.jnetpcap.PacketReader;
 import cic.cs.unb.ca.jnetpcap.worker.FlowGenListener;
+import edu.ncat.susman.Parameters;
 import edu.ncat.susman.ais.AIS;
 import edu.ncat.susman.dataset.Normalizer;
 import edu.ncat.susman.dataset.Sample;
+import jdk.vm.ci.meta.Local;
 import org.apache.commons.lang3.StringUtils;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.nio.JMemory.Type;
@@ -16,10 +18,15 @@ import org.jnetpcap.packet.PcapPacketHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.time.LocalDate;
 
 public class TrafficFlowWorker extends Thread implements FlowGenListener {
 
@@ -44,6 +51,33 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	@Override
 	public void onFlowGenerated(BasicFlow flow) {
         insertFlow(flow);
+	}
+
+	private void writeCSV(String header, String flowDump) {
+		LocalDate currentTime = LocalDate.now();
+		String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
+		try {
+			File f = new File(fileName);
+			boolean exists = f.exists();
+			if (!exists) {
+				f.createNewFile();
+			}
+
+			FileWriter fw = new FileWriter(f, true);
+			BufferedWriter writer = new BufferedWriter(fw);
+
+			if (!exists) {
+				writer.write(header);
+				writer.newLine();
+			}
+
+			writer.write(flowDump);
+			writer.newLine();
+			writer.close();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	/** Writes flow to file
@@ -81,6 +115,8 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 			throw new IllegalArgumentException("No features to write");
 		}
 
+		writeCSV(header, flowDump);
+
 		// Send to python socket
 		// Create Sample with normalized values
 		// Add Sample to DetectorSetQueues
@@ -90,6 +126,8 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		sample.setSrcPort(String.valueOf(flow.getSrcPort()));
 		sample.setDstPort(String.valueOf(flow.getDstPort()));
 		sample.setProtocol(String.valueOf(flow.getProtocol()));
+		sample.setHeader(header);
+		sample.setFlowDump(flowDump);
 
 		AIS.getInstance().addSample(sample);
 

@@ -66,6 +66,7 @@ public class Parameters {
     // ARTIFICIAL IMMUNE SYSTEM
     public static final String DETECTOR_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "bin" + Sys.FILE_SEP + "detectors.csv";
     public static final String DATA_SET_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "bin" + Sys.FILE_SEP + "min_max.csv";
+    public static final String DATA_DIRECTORY = System.getProperty("user.dir") + Sys.FILE_SEP + "bin" + Sys.FILE_SEP;
     public static final int DETECTOR_NUMBER_OF_FLOAT_VALUES = 156;
     public static final long IMMATURE_DETECTOR_LIFESPAN = 1000L * 60L * 60L * 24L;
     public static final long MATURE_DETECTOR_LIFESPAN = IMMATURE_DETECTOR_LIFESPAN * 7L;

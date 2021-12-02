@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.BufferOverflowException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.net.Socket;
 import java.util.Map;
@@ -23,6 +24,33 @@ public class DetectionWorker extends Thread {
         super();
 
         owner = detectorSet;
+    }
+
+    private void writeCSV(String header, String flowDump) {
+        LocalDate currentTime = LocalDate.now();
+        String fileName = Parameters.DATA_DIRECTORY + currentTime + "-detected.csv";
+        try {
+            File f = new File(fileName);
+            boolean exists = f.exists();
+            if (!exists) {
+                f.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(f, true);
+            BufferedWriter writer = new BufferedWriter(fw);
+
+            if (!exists) {
+                writer.write(header);
+                writer.newLine();
+            }
+
+            writer.write(flowDump);
+            writer.newLine();
+            writer.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -60,6 +88,8 @@ public class DetectionWorker extends Thread {
                 if (detected && detectedDetector.getId() != null) {
                     // Open socket to DNN
                     // Send the Detector ID and Sample features
+
+                    writeCSV(sample.getHeader(), sample.getFlowDump());
 
                     try {
 
