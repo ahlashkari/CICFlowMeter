@@ -114,7 +114,7 @@ public class DetectionWorker extends Thread {
                     // Open socket to DNN
                     // Send the Detector ID and Sample features
 
-                    writeCSV(false, sample.getHeader(), sample.getFlowDump());
+
 
                     try {
 
@@ -184,6 +184,8 @@ public class DetectionWorker extends Thread {
                         socket.close();
 
                         BCPServer.getInstance().updateConnectAppliances(Parameters.IP_ADDRESS_VALIDATOR);
+
+                        writeCSV(false, sample.getHeader(), sample.getFlowDump());
                     } catch (IOException | BufferOverflowException e) {
                         e.printStackTrace();
                         owner.addNewSample(sample);
