@@ -19,35 +19,44 @@ import java.util.Map;
 public class DetectionWorker extends Thread {
     private DetectorSet owner;
     protected static final Logger logger = LoggerFactory.getLogger(DetectionWorker.class);
+    public static BufferedWriter writer;
+    private static boolean exists;
 
     public DetectionWorker(DetectorSet detectorSet) {
         super();
 
         owner = detectorSet;
+
+        if (writer == null) {
+            LocalDate currentTime = LocalDate.now();
+            String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
+            try {
+                File f = new File(fileName);
+                exists = f.exists();
+                if (!exists) {
+                    f.createNewFile();
+                }
+
+                FileWriter fw = new FileWriter(f, true);
+                writer = new BufferedWriter(fw);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     private void writeCSV(String header, String flowDump) {
-        LocalDate currentTime = LocalDate.now();
-        String fileName = Parameters.DATA_DIRECTORY + currentTime + "-detected.csv";
+
         try {
-            File f = new File(fileName);
-            boolean exists = f.exists();
-            if (!exists) {
-                f.createNewFile();
-            }
-
-            FileWriter fw = new FileWriter(f, true);
-            BufferedWriter writer = new BufferedWriter(fw);
-
             if (!exists) {
                 writer.write(header);
                 writer.newLine();
+                exists = true;
             }
 
             writer.write(flowDump);
             writer.newLine();
             writer.flush();
-            writer.close();
 
         } catch (IOException ex) {
             ex.printStackTrace();

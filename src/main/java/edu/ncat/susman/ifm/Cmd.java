@@ -2,7 +2,10 @@ package edu.ncat.susman.ifm;
 
 import edu.ncat.susman.ais.AIS;
 import edu.ncat.susman.dataset.DataSet;
+import edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker;
+import edu.ncat.susman.server.DetectionWorker;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Cmd {
@@ -19,6 +22,12 @@ public class Cmd {
         System.out.println("Enter exit when finished");
         String line = scan.nextLine();
         DataSet.getInstance().getmWorker().close();
+        try {
+            TrafficFlowWorker.writer.close();
+            DetectionWorker.writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         System.exit(0);
         // Data Set Processing Thread
         // Pop off queue a flow

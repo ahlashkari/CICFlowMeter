@@ -31,8 +31,11 @@ import java.time.LocalDate;
 public class TrafficFlowWorker extends Thread implements FlowGenListener {
 
 	public static final Logger logger = LoggerFactory.getLogger(TrafficFlowWorker.class);
+	public static BufferedWriter writer;
+	private static boolean exists;
 	private String device;
 	private Pcap pcap;
+
 
 	private ExecutorService sampleWriterThread;
 
@@ -41,6 +44,24 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		super();
 		init();
 		this.device = device;
+
+
+		if (writer == null) {
+			LocalDate currentTime = LocalDate.now();
+			String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
+			try {
+				File f = new File(fileName);
+				exists = f.exists();
+				if (!exists) {
+					f.createNewFile();
+				}
+
+				FileWriter fw = new FileWriter(f, true);
+				writer = new BufferedWriter(fw);
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 
 	private void init() {
@@ -54,26 +75,15 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	}
 
 	private void writeCSV(String header, String flowDump) {
-		LocalDate currentTime = LocalDate.now();
-		String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
 		try {
-			File f = new File(fileName);
-			boolean exists = f.exists();
-			if (!exists) {
-				f.createNewFile();
-			}
-
-			FileWriter fw = new FileWriter(f, true);
-			BufferedWriter writer = new BufferedWriter(fw);
-
 			if (!exists) {
 				writer.write(header);
 				writer.newLine();
+				exists = true;
 			}
 
 			writer.write(flowDump);
 			writer.newLine();
-			writer.close();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
