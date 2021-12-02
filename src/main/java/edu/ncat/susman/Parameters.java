@@ -60,6 +60,7 @@ public class Parameters {
     // DEFAULT NETWORK INFO
     public static final String IP_ADDRESS_SYS_ADMIN = "192.168.1.50";
     public static final String IP_ADDRESS_VALIDATOR = "192.168.1.49";
+    public static final String IP_DEFAULT_GATEWAY = "192.168.1.1";
     public static final String LOCALHOST = "localhost";
     public static final int BCP_PORT = 1891;
 

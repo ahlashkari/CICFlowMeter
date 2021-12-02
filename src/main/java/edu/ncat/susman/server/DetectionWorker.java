@@ -90,7 +90,7 @@ public class DetectionWorker extends Thread {
                 boolean detected = false;
 
                 if (!sample.getDstPort().equals("1891") && !sample.getSrcPort().equals("1891")) {
-                    if (!sample.getDstIP().equals(Parameters.IP_ADDRESS_VALIDATOR) && !sample.getSrcIP().equals(Parameters.IP_ADDRESS_VALIDATOR)) {
+                    if (!sample.getSrcIP().equals(Parameters.IP_ADDRESS_VALIDATOR) && !sample.getSrcIP().equals(Parameters.IP_DEFAULT_GATEWAY)) {
                         for (Map.Entry<String, Detector> entry : detectors.entrySet()) {
                             Detector d = entry.getValue();
                             if (d.classify(sample, rValue)) {
