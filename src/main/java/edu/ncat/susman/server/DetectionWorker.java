@@ -46,6 +46,7 @@ public class DetectionWorker extends Thread {
 
             writer.write(flowDump);
             writer.newLine();
+            writer.flush();
             writer.close();
 
         } catch (IOException ex) {
