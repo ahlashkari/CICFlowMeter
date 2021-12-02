@@ -15,3 +15,7 @@ bin/SSH-Bruteforce.csv
 data/min_max.csv
 bin/FTP-BruteForce.csv
 bin/SSH-Bruteforce.csv
+target/bin/2021-12-02-collected.csv
+target/bin/2021-12-02-detected.csv
+target/logs/debug
+target/logs/info.log
