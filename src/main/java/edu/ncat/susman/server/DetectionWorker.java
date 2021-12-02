@@ -19,45 +19,57 @@ import java.util.Map;
 public class DetectionWorker extends Thread {
     private DetectorSet owner;
     protected static final Logger logger = LoggerFactory.getLogger(DetectionWorker.class);
-    public static BufferedWriter writer;
-    private static boolean exists;
+    public static BufferedWriter collectedWriter;
+    public static BufferedWriter detectedWriter;
 
     public DetectionWorker(DetectorSet detectorSet) {
         super();
 
         owner = detectorSet;
 
-        if (writer == null) {
-            LocalDate currentTime = LocalDate.now();
-            String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
-            try {
-                File f = new File(fileName);
-                exists = f.exists();
-                if (!exists) {
-                    f.createNewFile();
-                }
+        LocalDate currentTime = LocalDate.now();
+        String detectedFileName = Parameters.DATA_DIRECTORY + currentTime + "-detected.csv";
+        String collectedFileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
 
-                FileWriter fw = new FileWriter(f, true);
-                writer = new BufferedWriter(fw);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+        try {
+            // Detected samples writer
+            File f = new File(detectedFileName);
+            boolean exists = f.exists();
+            if (!exists) {
+                f.createNewFile();
             }
+
+            FileWriter fw = new FileWriter(f, true);
+            detectedWriter = new BufferedWriter(fw);
+
+            // Collected samples writer
+            f = new File(collectedFileName);
+            exists = f.exists();
+            if (!exists) {
+                f.createNewFile();
+            }
+
+            fw = new FileWriter(f, true);
+            collectedWriter = new BufferedWriter(fw);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    private void writeCSV(String header, String flowDump) {
-
+    private void writeCSV(boolean collected, String header, String flowDump) {
         try {
-            if (!exists) {
-                writer.write(header);
-                writer.newLine();
-                exists = true;
+
+            BufferedWriter writer = null;
+
+            if (collected) {
+                writer = collectedWriter;
+            } else {
+                writer = detectedWriter;
             }
 
             writer.write(flowDump);
             writer.newLine();
             writer.flush();
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -68,6 +80,7 @@ public class DetectionWorker extends Thread {
         while(true) {
             try {
                 Sample sample = (Sample) owner.getQueue().take();
+                writeCSV(true, sample.getHeader(), sample.getFlowDump());
 
                 Detector detectedDetector = new Detector();
 
@@ -99,7 +112,7 @@ public class DetectionWorker extends Thread {
                     // Open socket to DNN
                     // Send the Detector ID and Sample features
 
-                    writeCSV(sample.getHeader(), sample.getFlowDump());
+                    writeCSV(false, sample.getHeader(), sample.getFlowDump());
 
                     try {
 

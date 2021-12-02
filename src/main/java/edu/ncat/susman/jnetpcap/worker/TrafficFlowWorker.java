@@ -84,6 +84,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 
 			writer.write(flowDump);
 			writer.newLine();
+			writer.flush();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -125,7 +126,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 			throw new IllegalArgumentException("No features to write");
 		}
 
-		writeCSV(header, flowDump);
+		// writeCSV(header, flowDump);
 
 		// Send to python socket
 		// Create Sample with normalized values

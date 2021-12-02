@@ -23,8 +23,8 @@ public class Cmd {
         String line = scan.nextLine();
         DataSet.getInstance().getmWorker().close();
         try {
-            TrafficFlowWorker.writer.close();
-            DetectionWorker.writer.close();
+            DetectionWorker.collectedWriter.close();
+            DetectionWorker.detectedWriter.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
