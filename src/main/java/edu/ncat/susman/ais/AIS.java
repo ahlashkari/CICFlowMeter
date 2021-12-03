@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import edu.ncat.susman.Parameters;
 
@@ -18,7 +20,7 @@ public class AIS {
     private static AIS Instance = new AIS();
 
     // List of detector set (for each malicious type)
-    private DetectorSet detectorSet;
+    private HashMap<Integer, DetectorSet> detectorSets;
 
     // Constructor
     private AIS () {
@@ -52,35 +54,47 @@ public class AIS {
     // Create a Detector Set
     // Add the detectors from the file to the detector set
     public void readSet (File file) {
-        this.detectorSet = new DetectorSet();
+        DetectorSet ds = new DetectorSet();
+
         try {
             Scanner input = new Scanner(file);
-
             String line = input.nextLine();
-
-            detectorSet.setrValue(Integer.parseInt(line));
+            int numDetectorsPerSet = Integer.parseInt(line);
 
             while (input.hasNextLine()) {
-                line = input.nextLine();
+                line = input.next();
 
-                Detector detector = new Detector (line);
+                ds.setrValue(Integer.parseInt(line));
 
-                detectorSet.addDetector(detector);
+                int type = -1;
+                for (int i = 0; i < numDetectorsPerSet; i++) {
+                    line = input.nextLine();
+
+                    Detector detector = new Detector(line);
+
+                    if (type < 0) {
+                        type = detector.getType();
+                    }
+
+                    ds.addDetector(detector);
+                }
+                detectorSets.put(type, ds);
             }
-
             input.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        detectorSet.startLifespanEvaluation();
+        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
+            entry.getValue().startLifespanEvaluation();
+        }
     }
 
     // Replicate a sample to be classified by all the Detector Sets
     public synchronized void addSample(Sample sample) {
-        detectorSet.addNewSample(sample);
+        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
+            entry.getValue().addNewSample(sample);
+        }
     }
 
-    public DetectorSet getDetectorSet () {
-        return this.detectorSet;
-    }
+
 }
