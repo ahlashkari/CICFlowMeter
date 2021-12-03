@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import edu.ncat.susman.Parameters;
@@ -96,5 +95,13 @@ public class AIS {
         }
     }
 
+    public synchronized HashMap<String, Detector> getDetectors() {
+        HashMap<String, Detector> rtdetectors = new HashMap();
+        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
+            rtdetectors.putAll(entry.getValue().getDetectors());
+        }
+
+        return rtdetectors;
+    }
 
 }

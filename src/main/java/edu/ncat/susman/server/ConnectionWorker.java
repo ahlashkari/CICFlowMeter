@@ -66,9 +66,9 @@ public class ConnectionWorker extends Thread {
                             String detectorId = Parameters.bytesToHex(uuid);
 
                             if (response == 1)
-                                AIS.getInstance().getDetectorSet().getDetectors().get(detectorId).promoteMemory();
+                                AIS.getInstance().getDetectors().get(detectorId).promoteMemory();
                             else
-                                AIS.getInstance().getDetectorSet().getDetectors().get(detectorId).incrementIncorrectMatch();
+                                AIS.getInstance().getDetectors().get(detectorId).incrementIncorrectMatch();
                     }
             }
         } catch (IOException e) {
