@@ -53,7 +53,7 @@ public class AIS {
     // Create a Detector Set
     // Add the detectors from the file to the detector set
     public void readSet (File file) {
-        DetectorSet ds = new DetectorSet();
+        detectorSets = new HashMap<>();
 
         try {
             Scanner input = new Scanner(file);
@@ -61,8 +61,8 @@ public class AIS {
             int numDetectorsPerSet = Integer.parseInt(line);
 
             while (input.hasNextLine()) {
-                line = input.next();
-
+                line = input.nextLine();
+                DetectorSet ds = new DetectorSet();
                 ds.setrValue(Integer.parseInt(line));
 
                 int type = -1;
