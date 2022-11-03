@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static cic.cs.unb.ca.jnetpcap.Utils.LINE_SEP;
 
@@ -39,9 +38,10 @@ public class FlowGenerator {
 
 	//40/86
 	private FlowGenListener mListener;
-	private HashMap<String,BasicFlow> currentFlows;
+	private Map<String,BasicFlow> currentFlows;
 	private HashMap<Integer,BasicFlow> finishedFlows;
 	private HashMap<String,ArrayList> IPAddresses;
+	private FlowAnalysis flowAnalysisThread;
 
 	private boolean bidirectional;
 	private long    flowTimeOut;
@@ -57,77 +57,79 @@ public class FlowGenerator {
 	}		
 	
 	private void init(){
-		currentFlows = new HashMap<>();
+		currentFlows = new ConcurrentHashMap();
 		finishedFlows = new HashMap<>();
 		IPAddresses = new HashMap<>();
-		finishedFlowCount = 0;		
+		finishedFlowCount = 0;
+		flowAnalysisThread = new FlowAnalysis();
+		flowAnalysisThread.start();
+
 	}
 
 	public void addFlowListener(FlowGenListener listener) {
 		mListener = listener;
 	}
 
-    public void addPacket(BasicPacketInfo packet){
-        if(packet == null) {
+    public void addPacket(BasicPacketInfo packet) {
+        if (packet == null) {
             return;
         }
-        
-    	BasicFlow   flow;
-    	long        currentTimestamp = packet.getTimeStamp();
-		    String id;
 
-    	if(this.currentFlows.containsKey(packet.fwdFlowId())||this.currentFlows.containsKey(packet.bwdFlowId())){
-	
-	if(this.currentFlows.containsKey(packet.fwdFlowId())) 
-		{id = packet.fwdFlowId();}
-    		else {
-		id = packet.bwdFlowId();}
+        BasicFlow flow;
+        long currentTimestamp = packet.getTimeStamp();
+        String id;
 
-    		flow = currentFlows.get(id);
-    		// Flow finished due flowtimeout: 
-    		// 1.- we move the flow to finished flow list
-    		// 2.- we eliminate the flow from the current flow list
-    		// 3.- we create a new flow with the packet-in-process
-    		if((currentTimestamp -flow.getFlowStartTime())>flowTimeOut){
-    			if(flow.packetCount()>1){
-					if (mListener != null) {
-						mListener.onFlowGenerated(flow);
-					    }
-					else{
-                                                finishedFlows.put(getFlowCount(), flow);
-                                            }
+        if (this.currentFlows.containsKey(packet.fwdFlowId()) || this.currentFlows.containsKey(packet.bwdFlowId())) {
+
+            if (this.currentFlows.containsKey(packet.fwdFlowId())) {
+                id = packet.fwdFlowId();
+            } else {
+                id = packet.bwdFlowId();
+            }
+
+            flow = currentFlows.get(id);
+            // Flow finished due flowtimeout:
+            // 1.- we move the flow to finished flow list
+            // 2.- we eliminate the flow from the current flow list
+            // 3.- we create a new flow with the packet-in-process
+            if ((currentTimestamp - flow.getFlowStartTime()) > flowTimeOut) {
+                if (flow.packetCount() > 1) {
+                    if (mListener != null) {
+                        mListener.onFlowGenerated(flow);
+                    } else {
+                        finishedFlows.put(getFlowCount(), flow);
+                    }
                     //flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
-    			}
-    			currentFlows.remove(id);    			
-				currentFlows.put(id, new BasicFlow(bidirectional,packet,flow.getSrc(),flow.getDst(),flow.getSrcPort(),flow.getDstPort(), this.flowActivityTimeOut));
-    			
-    			int cfsize = currentFlows.size();
-    			if(cfsize%50==0) {
-    				logger.debug("Timeout current has {} flow",cfsize);
-    	    	}
-    			
-        	// Flow finished due FIN flag (tcp only):
-    		// 1.- we add the packet-in-process to the flow (it is the last packet)
-        	// 2.- we move the flow to finished flow list
-        	// 3.- we eliminate the flow from the current flow list   	
-    		}else if(packet.hasFlagFIN()){
-    	    	logger.debug("FlagFIN current has {} flow",currentFlows.size());
-    	    	flow.addPacket(packet);
+                }
+                currentFlows.remove(id);
+                //currentFlows.put(id, new BasicFlow(bidirectional, packet, flow.getSrc(), flow.getDst(), flow.getSrcPort(), flow.getDstPort(), this.flowActivityTimeOut));
+
+                int cfsize = currentFlows.size();
+                if (cfsize % 50 == 0) {
+                    logger.debug("Timeout current has {} flow", cfsize);
+                }
+
+                // Flow finished due FIN flag (tcp only):
+                // 1.- we add the packet-in-process to the flow (it is the last packet)
+                // 2.- we move the flow to finished flow list
+                // 3.- we eliminate the flow from the current flow list
+            } else if (packet.hasFlagFIN()) {
+                logger.debug("FlagFIN current has {} flow", currentFlows.size());
+                flow.addPacket(packet);
                 if (mListener != null) {
                     mListener.onFlowGenerated(flow);
-                } 
-		else {
+                } else {
                     finishedFlows.put(getFlowCount(), flow);
                 }
                 currentFlows.remove(id);
-    		}else{
-    			flow.updateActiveIdleTime(currentTimestamp,this.flowActivityTimeOut);
-    			flow.addPacket(packet);
-    			currentFlows.put(id,flow);
-    		}
-    	}else{
-			currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional,packet, this.flowActivityTimeOut));
-    	}
+            } else {
+                flow.updateActiveIdleTime(currentTimestamp, this.flowActivityTimeOut);
+                flow.addPacket(packet);
+                currentFlows.put(id, flow);
+            }
+        } else {
+            currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional, packet, this.flowActivityTimeOut));
+        }
     }
 
     /*public void dumpFlowBasedFeatures(String path, String filename,String header){
@@ -251,5 +253,42 @@ public class FlowGenerator {
     private int getFlowCount(){
     	this.finishedFlowCount++;
     	return this.finishedFlowCount;
+    }
+
+    private class FlowAnalysis extends Thread {
+
+        @Override
+        public void run() {
+            // System.out.println("Running");
+            while (true) {
+                try {
+                    if (currentFlows.size() > 0) {
+                        for (Map.Entry<String, BasicFlow> entry : currentFlows.entrySet()) {
+                            BasicFlow flow = entry.getValue();
+                            long currentTimestamp = new Date().getTime();
+                            // Flow finished due flowtimeout:
+                            // 1.- we move the flow to finished flow list
+                            // 2.- we eliminate the flow from the current flow list
+                            // 3.- we create a new flow with the packet-in-process
+                            String srcIP = flow.getSrcIP();
+                            String dstIP = flow.getDstIP();
+                            long duration = currentTimestamp - flow.getFlowStartTime();
+
+                            if (duration > flowTimeOut) {
+
+                                if (mListener != null) {
+                                    mListener.onFlowGenerated(flow);
+
+                                    //flow.endActiveIdleTime(currentTimestamp,this.flowActivityTimeOut, this.flowTimeOut, false);
+                                }
+                                currentFlows.remove(entry.getKey());
+                            }
+                        }
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
 }

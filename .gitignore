@@ -1,0 +1,25 @@
+
+data/min_max.csv
+bin/Brute Force -Web.csv
+bin/Brute Force -XSS.csv
+bin/DDOS attack-HOIC.csv
+bin/DDoS attacks-LOIC-HTTP.csv
+bin/DoS attacks-GoldenEye.csv
+bin/DoS attacks-Hulk.csv
+bin/DoS attacks-SlowHTTPTest.csv
+bin/DoS attacks-Slowloris.csv
+bin/FTP-BruteForce.csv
+bin/Infilteration.csv
+bin/SQL Injection.csv
+bin/SSH-Bruteforce.csv
+data/min_max.csv
+bin/FTP-BruteForce.csv
+bin/SSH-Bruteforce.csv
+target/bin/2021-12-02-collected.csv
+target/bin/2021-12-02-detected.csv
+target/logs/debug
+target/logs/info.log
+bin/2021-12-03-collected.csv
+bin/2021-12-03-detected.csv
+data/daily/2021-12-19_Flow.csv
+data/daily/2021-12-20_Flow.csv

@@ -127,13 +127,13 @@
                     	<configuration>
                     		<archive>
                     			<manifest>
-                    				<mainClass>cic.cs.unb.ca.ifm.App</mainClass>
+                    				<mainClass>edu.ncat.susman.ifm.Cmd</mainClass>
                     			</manifest>
                     		</archive>
                     		<descriptorRefs>
                     			<descriptorRef>jar-with-dependencies</descriptorRef>
                     		</descriptorRefs>
-                    		<finalName>CICFlowMeterV3-${project.version}</finalName>
+                    		<finalName>Panda</finalName>
                     		<appendAssemblyId>false</appendAssemblyId>
                     	</configuration>
                     	<id>build-NetWorkTraffic</id>

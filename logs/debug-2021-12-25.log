@@ -1,0 +1,103 @@
+2021-12-25 00:00:55 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2021-12-25 00:02:47 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2021-12-25 00:05:12 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2021-12-25 00:06:17 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 277 flow
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.239 - 192.168.1.89: 0
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.157 - 192.168.1.89: 0
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.246 - 192.168.1.89: 0
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.233 - 192.168.1.89: 0
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.151 - 192.168.1.89: 0
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.157 - 192.168.1.89: 0
+2021-12-25 00:06:18 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 281 flow
+2021-12-25 00:06:18 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 281 flow
+2021-12-25 00:06:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.89 - 35.232.111.17: 0
+2021-12-25 00:06:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.111 - 192.168.1.89: 0
+2021-12-25 00:06:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.109 - 192.168.1.89: 0
+2021-12-25 00:06:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.145 - 192.168.1.89: 0
+2021-12-25 00:06:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.137 - 192.168.1.89: 0
+2021-12-25 00:06:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.243 - 192.168.1.89: 0
+2021-12-25 00:06:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.201 - 192.168.1.89: 0
+2021-12-25 00:06:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 268 flow
+2021-12-25 00:06:30 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 267 flow
+2021-12-25 00:06:31 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.171 - 192.168.1.89: 0
+2021-12-25 00:06:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.194 - 192.168.1.89: 0
+2021-12-25 00:06:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.194 - 192.168.1.89: 0
+2021-12-25 00:06:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.205 - 192.168.1.89: 0
+2021-12-25 00:06:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.205 - 192.168.1.89: 0
+2021-12-25 00:06:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.184 - 192.168.1.89: 0
+2021-12-25 00:06:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.184 - 192.168.1.89: 0
+2021-12-25 00:06:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 192.168.1.89: 0
+2021-12-25 00:06:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 192.168.1.89: 0
+2021-12-25 00:06:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.227 - 192.168.1.89: 0
+2021-12-25 00:06:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.104 - 192.168.1.89: 0
+2021-12-25 00:06:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.104 - 192.168.1.89: 0
+2021-12-25 00:06:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.108 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.158 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.158 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.154 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.106 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.135 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.127 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.127 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.240 - 192.168.1.89: 0
+2021-12-25 00:06:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.240 - 192.168.1.89: 0
+2021-12-25 00:06:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.193 - 192.168.1.89: 0
+2021-12-25 00:06:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.193 - 192.168.1.89: 0
+2021-12-25 00:06:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.214 - 192.168.1.89: 0
+2021-12-25 00:06:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.130 - 192.168.1.89: 0
+2021-12-25 00:06:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.130 - 192.168.1.89: 0
+2021-12-25 00:06:37 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.228 - 192.168.1.89: 0
+2021-12-25 00:06:52 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 269 flow
+2021-12-25 00:06:52 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 270 flow
+2021-12-25 00:07:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.196 - 192.168.1.89: 0
+2021-12-25 00:07:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.226 - 192.168.1.89: 0
+2021-12-25 00:07:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.239 - 192.168.1.89: 0
+2021-12-25 00:07:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.233 - 192.168.1.89: 0
+2021-12-25 00:07:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.246 - 192.168.1.89: 0
+2021-12-25 00:07:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.151 - 192.168.1.89: 0
+2021-12-25 00:07:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.157 - 192.168.1.89: 0
+2021-12-25 00:07:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.157 - 192.168.1.89: 0
+2021-12-25 00:07:18 INFO  edu.ncat.susman.server.DetectionWorker    35.232.111.17 - 192.168.1.89: 0
+2021-12-25 00:07:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.111 - 192.168.1.89: 0
+2021-12-25 00:07:21 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 230 flow
+2021-12-25 00:07:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.109 - 192.168.1.89: 0
+2021-12-25 00:07:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.145 - 192.168.1.89: 0
+2021-12-25 00:07:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.137 - 192.168.1.89: 0
+2021-12-25 00:07:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.243 - 192.168.1.89: 0
+2021-12-25 00:07:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.201 - 192.168.1.89: 0
+2021-12-25 00:07:31 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.171 - 192.168.1.89: 0
+2021-12-25 00:07:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.194 - 192.168.1.89: 0
+2021-12-25 00:07:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.194 - 192.168.1.89: 0
+2021-12-25 00:07:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.205 - 192.168.1.89: 0
+2021-12-25 00:07:32 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.205 - 192.168.1.89: 0
+2021-12-25 00:07:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.184 - 192.168.1.89: 0
+2021-12-25 00:07:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.184 - 192.168.1.89: 0
+2021-12-25 00:07:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 192.168.1.89: 0
+2021-12-25 00:07:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 192.168.1.89: 0
+2021-12-25 00:07:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.227 - 192.168.1.89: 0
+2021-12-25 00:07:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.104 - 192.168.1.89: 0
+2021-12-25 00:07:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.104 - 192.168.1.89: 0
+2021-12-25 00:07:34 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.108 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.158 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.158 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.154 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.106 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.135 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.240 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.240 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.127 - 192.168.1.89: 0
+2021-12-25 00:07:35 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.127 - 192.168.1.89: 0
+2021-12-25 00:07:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.193 - 192.168.1.89: 0
+2021-12-25 00:07:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.193 - 192.168.1.89: 0
+2021-12-25 00:07:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.130 - 192.168.1.89: 0
+2021-12-25 00:07:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.130 - 192.168.1.89: 0
+2021-12-25 00:07:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.214 - 192.168.1.89: 0
+2021-12-25 00:07:37 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.228 - 192.168.1.89: 0
+2021-12-25 00:07:38 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.89 - 8.8.8.8: 0
+2021-12-25 00:07:38 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.89 - 8.8.8.8: 0
+2021-12-25 00:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.171 - 45.79.1.70: 0
+2021-12-25 00:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.171 - 45.79.1.70: 0
+2021-12-25 00:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 50.205.244.114: 0
+2021-12-25 00:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.122 - 50.205.244.114: 0
+2021-12-25 00:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.196 - 192.168.1.89: 0
+2021-12-25 00:09:10 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
