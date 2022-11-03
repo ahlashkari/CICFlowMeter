@@ -28,11 +28,11 @@ public class TrafficFlowWorker extends SwingWorker<String,String> implements Flo
 	@Override
 	protected String doInBackground() {
 		
-		FlowGenerator   flowGen = new FlowGenerator(true,120000000L, 5000000L);
+		FlowGenerator   flowGen = new FlowGenerator(true,5*1000L, 1*1000L);
 		flowGen.addFlowListener(this);
 		int snaplen = 64 * 1024;//2048; // Truncate packet at this size
 		int promiscous = Pcap.MODE_PROMISCUOUS;
-		int timeout = 60 * 1000; // In milliseconds
+		int timeout = 5 * 1000; // In milliseconds
 		StringBuilder errbuf = new StringBuilder();
 		Pcap pcap = Pcap.openLive(device, snaplen, promiscous, timeout, errbuf);
 		if (pcap == null) {
@@ -99,7 +99,21 @@ public class TrafficFlowWorker extends SwingWorker<String,String> implements Flo
 	}
 
 	@Override
-	public void onFlowGenerated(BasicFlow flow) {
-        firePropertyChange(PROPERTY_FLOW,null,flow);
+	public synchronized void onFlowGenerated(BasicFlow flow) {
+		if (flow.getSrcIP().equals("192.168.1.49") || flow.getDstIP().equals("192.168.1.49")
+				|| flow.getSrcIP().equals("192.168.1.59") || flow.getDstIP().equals("192.168.1.59")
+				|| flow.getSrcIP().equals("8.6.0.1") || flow.getDstIP().equals("8.6.0.1")
+				|| flow.getSrcIP().equals("192.168.1.4") || flow.getDstIP().equals("192.168.1.4")
+				|| flow.getSrcIP().equals("192.168.1.170") || flow.getDstIP().equals("192.168.1.170")
+				|| flow.getSrcIP().equals("192.168.1.155") || flow.getDstIP().equals("192.168.1.155")
+				|| flow.getSrcIP().equals("192.168.1.115") || flow.getDstIP().equals("192.168.1.115")
+				|| flow.getSrcIP().equals("192.168.1.229") || flow.getDstIP().equals("192.168.1.229")
+				|| flow.getSrcIP().equals("192.168.1.1") || flow.getDstIP().equals("192.168.1.1")
+				|| flow.getSrcIP().equals("8.8.8.8") || flow.getDstIP().equals("8.8.8.8")
+				|| flow.getSrcIP().equals("8.8.4.4") || flow.getDstIP().equals("8.8.4.4")
+				|| flow.getProtocol() == 0) {
+			return;
+		}
+    	firePropertyChange(PROPERTY_FLOW,null,flow);
 	}
 }

@@ -1,0 +1,3 @@
+2021-12-21 14:56:15 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2021-12-21 14:59:57 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Pcap stop listening
+2021-12-21 14:59:57 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:D:\Documents\GitHub\Panda\data\daily\2021-12-21_Flow.csv

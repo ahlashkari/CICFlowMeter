@@ -102,4 +102,16 @@ public class Sample {
     public void setFlowDump(String flowDump) {
         this.flowDump = flowDump;
     }
+
+    public void generateRandom() {
+        for (int i = 0; i < features.length; i++) {
+            features[i] = (float) Math.random();
+        }
+
+        srcIP = "192.168.1.1";
+        dstIP = "192.168.1.49";
+        srcPort = "7883";
+        dstPort = "80";
+        protocol = "6";
+    }
 }

@@ -26,6 +26,8 @@ public class Range {
     }
 
     public boolean between(float sample) {
+        //if (this.max == 0.0f) return false;
+
         if (this.max >= sample && sample >= this.min) {
             return true;
         } else {

@@ -21,12 +21,11 @@ public class Cmd {
         Scanner scan= new Scanner(System.in);
         System.out.println("Enter exit when finished");
         String line = scan.nextLine();
-        DataSet.getInstance().getmWorker().close();
         try {
-            DetectionWorker.collectedWriter.close();
-            DetectionWorker.detectedWriter.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            AIS.getInstance().close();
+            DataSet.getInstance().close();
+        } catch (Exception ex) {
+            System.out.println("Done");
         }
         System.exit(0);
         // Data Set Processing Thread

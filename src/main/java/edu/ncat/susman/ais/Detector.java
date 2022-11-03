@@ -17,11 +17,26 @@ public class Detector {
     private long creation;
     private String id;
     private byte level;
+    private int rValue;
 
     private int incorrectMatches;
     private boolean markedForRegeneration;
 
     public Detector () {id = null;}
+
+    public void generateRandom() {
+        MessageDigest salt = null;
+        try {
+            salt = MessageDigest.getInstance("SHA-256");
+            salt.update(UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8));
+
+            id = Parameters.bytesToHex(salt.digest());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        type = 1;
+    }
 
 
     public Detector (String line) {
@@ -86,20 +101,21 @@ public class Detector {
     /**
      * Return true if the detector matches the sample
      * @param s
-     * @param rValue
      * @return
      */
-    public synchronized boolean classify (Sample s, int rValue) {
+    public synchronized boolean classify (Sample s) {
         if (!markedForRegeneration) {
             int matches = 0;
 
             for (int i = 0; i < Parameters.SAMPLE_NUMBER_OF_FLOAT_VALUES; i++) {
                 if (this.ranges[i].between(s.getSingleFeature(i))) {
-                    matches += 1;
+                    matches ++;
                 }
+
+                if (matches >= rValue) return true;
             }
 
-            return matches >= rValue;
+            return false;
         } else {
             return false;
         }
@@ -109,6 +125,7 @@ public class Detector {
         if (level == 0) {
             level = 1;
             creation = System.currentTimeMillis();
+            markedForRegeneration = false;
         }
     }
 
@@ -116,6 +133,7 @@ public class Detector {
         if (level == 1) {
             level = 2;
             creation = System.currentTimeMillis();
+            markedForRegeneration = false;
         }
     }
 
@@ -175,5 +193,13 @@ public class Detector {
             rtrValue = true;
 
         return rtrValue;
+    }
+
+    public int getrValue() {
+        return rValue;
+    }
+
+    public void setrValue(int rValue) {
+        this.rValue = rValue;
     }
 }

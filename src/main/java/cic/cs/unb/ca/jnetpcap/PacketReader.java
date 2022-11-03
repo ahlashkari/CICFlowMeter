@@ -402,8 +402,8 @@ public class PacketReader {
 				packetInfo = new BasicPacketInfo(idGen);
 				packetInfo.setSrc(protocol.getIpv4().source());
 				packetInfo.setDst(protocol.getIpv4().destination());
-				//packetInfo.setTimeStamp(packet.getCaptureHeader().timestampInMillis());
-				packetInfo.setTimeStamp(packet.getCaptureHeader().timestampInMicros());
+				packetInfo.setTimeStamp(packet.getCaptureHeader().timestampInMillis());
+				//packetInfo.setTimeStamp(packet.getCaptureHeader().timestampInMicros());
 				
 				/*if(this.firstPacket == 0L)
 					this.firstPacket = packet.getCaptureHeader().timestampInMillis();

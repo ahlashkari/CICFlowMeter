@@ -1,6 +1,7 @@
 package edu.ncat.susman.ais;
 
 import edu.ncat.susman.dataset.Sample;
+import edu.ncat.susman.server.writer.SampleWriter;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -19,7 +20,9 @@ public class AIS {
     private static AIS Instance = new AIS();
 
     // List of detector set (for each malicious type)
-    private HashMap<Integer, DetectorSet> detectorSets;
+    private DetectorSet detectorSet;
+
+    private SampleWriter sampleWriter;
 
     // Constructor
     private AIS () {
@@ -33,8 +36,15 @@ public class AIS {
 
     // Initialize the static instance
     public AIS init () {
+        sampleWriter = new SampleWriter();
+        sampleWriter.start();
         readDetectorSet();
         return Instance;
+    }
+
+    public void close() {
+        detectorSet.close();
+        sampleWriter.interrupt();
     }
 
     // Read the detector set files from a directory
@@ -53,7 +63,7 @@ public class AIS {
     // Create a Detector Set
     // Add the detectors from the file to the detector set
     public void readSet (File file) {
-        detectorSets = new HashMap<>();
+        detectorSet = new DetectorSet(sampleWriter);
 
         try {
             Scanner input = new Scanner(file);
@@ -62,9 +72,8 @@ public class AIS {
 
             while (input.hasNextLine()) {
                 line = input.nextLine();
-                DetectorSet ds = new DetectorSet();
-                ds.setrValue(Integer.parseInt(line));
 
+                int rValue = Integer.parseInt(line);
                 int type = -1;
                 for (int i = 0; i < numDetectorsPerSet; i++) {
                     line = input.nextLine();
@@ -75,33 +84,24 @@ public class AIS {
                         type = detector.getType();
                     }
 
-                    ds.addDetector(detector);
+                    detector.setrValue(rValue);
+
+                    detectorSet.addDetector(detector);
                 }
-                detectorSets.put(type, ds);
             }
             input.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
-            entry.getValue().startLifespanEvaluation();
-        }
     }
 
     // Replicate a sample to be classified by all the Detector Sets
     public synchronized void addSample(Sample sample) {
-        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
-            entry.getValue().addNewSample(sample);
-        }
+        detectorSet.addNewSample(sample);
     }
 
     public synchronized HashMap<String, Detector> getDetectors() {
-        HashMap<String, Detector> rtdetectors = new HashMap();
-        for (Map.Entry<Integer, DetectorSet> entry : detectorSets.entrySet()) {
-            rtdetectors.putAll(entry.getValue().getDetectors());
-        }
-
-        return rtdetectors;
+        return detectorSet.getDetectors();
     }
 
 }

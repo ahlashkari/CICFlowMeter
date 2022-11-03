@@ -5,11 +5,13 @@ import edu.ncat.susman.dataset.Normalizer;
 import edu.ncat.susman.dataset.Sample;
 import edu.ncat.susman.ais.Detector;
 import edu.ncat.susman.ais.DetectorSet;
+import edu.ncat.susman.server.writer.SampleWriter;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.net.UnknownHostException;
 import java.nio.BufferOverflowException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -19,91 +21,64 @@ import java.util.Map;
 public class DetectionWorker extends Thread {
     private DetectorSet owner;
     protected static final Logger logger = LoggerFactory.getLogger(DetectionWorker.class);
-    public static BufferedWriter collectedWriter;
-    public static BufferedWriter detectedWriter;
+    private SampleWriter sampleWriter;
 
-    public DetectionWorker(DetectorSet detectorSet) {
+
+    public DetectionWorker(DetectorSet detectorSet, SampleWriter sampleWriter) {
         super();
 
         owner = detectorSet;
 
-        LocalDate currentTime = LocalDate.now();
-        String detectedFileName = Parameters.DATA_DIRECTORY + currentTime + "-detected.csv";
-        String collectedFileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
-
-        try {
-            // Detected samples writer
-            File f = new File(detectedFileName);
-            boolean exists = f.exists();
-            if (!exists) {
-                f.createNewFile();
-            }
-
-            FileWriter fw = new FileWriter(f, true);
-            detectedWriter = new BufferedWriter(fw);
-
-            // Collected samples writer
-            f = new File(collectedFileName);
-            exists = f.exists();
-            if (!exists) {
-                f.createNewFile();
-            }
-
-            fw = new FileWriter(f, true);
-            collectedWriter = new BufferedWriter(fw);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void writeCSV(boolean collected, String header, String flowDump) {
-        try {
-
-            BufferedWriter writer = null;
-
-            if (collected) {
-                writer = collectedWriter;
-            } else {
-                writer = detectedWriter;
-            }
-
-            writer.write(flowDump);
-            writer.newLine();
-            writer.flush();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        this.sampleWriter = sampleWriter;
     }
 
     @Override
     public void run() {
-        while(true) {
-            try {
+        Socket socket = null;
+        DataOutputStream out = null;
+        DataInputStream in = null;
+        try {
+            socket = new Socket(Parameters.IP_ADDRESS_VALIDATOR, Parameters.BCP_PORT);
+            socket.setKeepAlive(true);
+            socket.setSoTimeout(60000);
+            // Create input and output streams to read from and write to the server
+            out = new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(socket.getInputStream());
+
+            HashMap<String, Detector> detectors = owner.getDetectors();
+
+            while (true) {
                 Sample sample = (Sample) owner.getQueue().take();
-                writeCSV(true, sample.getHeader(), sample.getFlowDump());
+                sampleWriter.addSample(true, sample.getFlowDump());
+                //System.out.println(sample.getSrcIP() + " - " + sample.getDstIP());
 
                 Detector detectedDetector = new Detector();
-
-                HashMap<String, Detector> detectors = owner.getDetectors();
-                int rValue = owner.getrValue();
-
                 boolean detected = false;
 
                 if (!sample.getDstPort().equals("1891") && !sample.getSrcPort().equals("1891")) {
-                    if (!sample.getSrcIP().equals(Parameters.IP_ADDRESS_VALIDATOR) && !sample.getSrcIP().equals(Parameters.IP_DEFAULT_GATEWAY)) {
                         for (Map.Entry<String, Detector> entry : detectors.entrySet()) {
                             Detector d = entry.getValue();
-                            if (d.classify(sample, rValue)) {
+                            if (d.isMarkedForRegeneration()) {
+                                continue;
+                            }
+
+                            if (d.classify(sample)) {
                                 detectedDetector = d;
                                 detected = true;
                                 break;
                             }
                         }
-                    }
                 }
 
+//                    Sample sample = new Sample();
+//                    sample.generateRandom();
+//                    Detector detectedDetector = new Detector();
+//                    detectedDetector.generateRandom();
+//                    boolean detected = true;
+
+
                 // if (!detected)
-                    // logger.info(sample.getSrcIP() + " - " + sample.getDstIP());
+                // logger.info(sample.getSrcIP() + " - " + sample.getDstIP());
 
                 // If the sample was detected by a detector
                 // Establish a connection with the Validator
@@ -115,14 +90,8 @@ public class DetectionWorker extends Thread {
                     // Send the Detector ID and Sample features
 
 
-
                     try {
 
-                        Socket socket = new Socket(Parameters.IP_ADDRESS_VALIDATOR, Parameters.BCP_PORT);
-
-                        // Create input and output streams to read from and write to the server
-                        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                        DataInputStream in = new DataInputStream(socket.getInputStream());
 
                         byte firstByte = (byte) ((Parameters.DEFAULT_VERSION << 4) | Parameters.DVCP_PROTOCOL);
                         byte secondByte = (byte) (Parameters.DVCP_DET_FLAG << 4);
@@ -155,6 +124,7 @@ public class DetectionWorker extends Thread {
                         }
 
                         out.write(msg);
+                        out.flush();
 
                         firstByte = in.readByte();
                         secondByte = in.readByte();
@@ -168,7 +138,7 @@ public class DetectionWorker extends Thread {
                             System.out.println("Incompatible BSP version");
                             return;
                         }
-                        byte response = (byte) (in.readByte());
+                        byte response = in.readByte();
 
                         logger.info(sample.getSrcIP() + " - " + sample.getDstIP() + ": " + response);
 
@@ -179,21 +149,41 @@ public class DetectionWorker extends Thread {
                             //detectedDetector.markForRegeneration();
                         }
 
-                        in.close();
-                        out.close();
-                        socket.close();
+
+                        //in.close();
+                        //out.close();
+                        //socket.close();
 
                         BCPServer.getInstance().updateConnectAppliances(Parameters.IP_ADDRESS_VALIDATOR);
 
-                        writeCSV(false, sample.getHeader(), sample.getFlowDump());
-                    } catch (IOException | BufferOverflowException e) {
+                        sampleWriter.addSample(false, sample.getFlowDump());
+                    } catch (BufferOverflowException e) {
                         e.printStackTrace();
                         owner.addNewSample(sample);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        if (socket.isClosed()) {
+                            socket = new Socket(Parameters.IP_ADDRESS_VALIDATOR, Parameters.BCP_PORT);
+                            socket.setKeepAlive(true);
+                            socket.setSoTimeout(60000);
+
+                            owner.addNewSample(sample);
+                            out = new DataOutputStream(socket.getOutputStream());
+                            in = new DataInputStream(socket.getInputStream());
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Done");
                     }
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Done");
         }
+    }
+
+    public void close() {
+        this.interrupt();
     }
 }

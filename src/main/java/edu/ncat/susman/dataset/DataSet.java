@@ -33,6 +33,11 @@ public class DataSet {
         return Instance;
     }
 
+    public void close() {
+        mWorker.close();
+        mWorker.interrupt();
+    }
+
     public static DataSet getInstance() {
         return Instance;
     }

@@ -9,7 +9,6 @@ import edu.ncat.susman.Parameters;
 import edu.ncat.susman.ais.AIS;
 import edu.ncat.susman.dataset.Normalizer;
 import edu.ncat.susman.dataset.Sample;
-import jdk.vm.ci.meta.Local;
 import org.apache.commons.lang3.StringUtils;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.nio.JMemory.Type;
@@ -46,22 +45,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		this.device = device;
 
 
-		if (writer == null) {
-			LocalDate currentTime = LocalDate.now();
-			String fileName = Parameters.DATA_DIRECTORY + currentTime + "-collected.csv";
-			try {
-				File f = new File(fileName);
-				exists = f.exists();
-				if (!exists) {
-					f.createNewFile();
-				}
 
-				FileWriter fw = new FileWriter(f, true);
-				writer = new BufferedWriter(fw);
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
 	}
 
 	private void init() {
@@ -71,24 +55,21 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	// When a flow is generated, fire a property change to an event listener
 	@Override
 	public void onFlowGenerated(BasicFlow flow) {
-        insertFlow(flow);
-	}
-
-	private void writeCSV(String header, String flowDump) {
-		try {
-			if (!exists) {
-				writer.write(header);
-				writer.newLine();
-				exists = true;
-			}
-
-			writer.write(flowDump);
-			writer.newLine();
-			writer.flush();
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		if (flow.getSrcIP().equals("192.168.1.49") || flow.getDstIP().equals("192.168.1.49")
+				|| flow.getSrcIP().equals("192.168.1.59") || flow.getDstIP().equals("192.168.1.59")
+				|| flow.getSrcIP().equals("8.6.0.1") || flow.getDstIP().equals("8.6.0.1")
+				|| flow.getSrcIP().equals("192.168.1.4") || flow.getDstIP().equals("192.168.1.4")
+				|| flow.getSrcIP().equals("192.168.1.170") || flow.getDstIP().equals("192.168.1.170")
+				|| flow.getSrcIP().equals("192.168.1.155") || flow.getDstIP().equals("192.168.1.155")
+				|| flow.getSrcIP().equals("192.168.1.115") || flow.getDstIP().equals("192.168.1.115")
+				|| flow.getSrcIP().equals("192.168.1.229") || flow.getDstIP().equals("192.168.1.229")
+				|| flow.getSrcIP().equals("192.168.1.1") || flow.getDstIP().equals("192.168.1.1")
+				|| flow.getSrcIP().equals("8.8.8.8") || flow.getDstIP().equals("8.8.8.8")
+				|| flow.getSrcIP().equals("8.8.4.4") || flow.getDstIP().equals("8.8.4.4")
+				|| flow.getProtocol() == 0) {
+			return;
 		}
+        insertFlow(flow);
 	}
 
 	/** Writes flow to file
@@ -148,7 +129,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 	public void run() {
 
 		// FlowGenerated class analyzes data and creates a flow
-		FlowGenerator   flowGen = new FlowGenerator(true,120000000L, 5000000L);
+		FlowGenerator   flowGen = new FlowGenerator(true,5*1000L, 1*1000L);
 
 		// Add this object to the FlowGenerator
 		flowGen.addFlowListener(this);
@@ -160,7 +141,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 		int promiscous = Pcap.MODE_PROMISCUOUS;
 
 		// Set the timeout value
-		int timeout = 60 * 1000; // In milliseconds
+		int timeout = 5 * 1000; // In milliseconds
 		StringBuilder errbuf = new StringBuilder();
 
 		// Begin listening
