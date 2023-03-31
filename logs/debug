@@ -1174,3 +1174,69 @@
 2021-12-27 11:35:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.194 - 192.168.1.99: 0
 2021-12-27 11:35:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.246 - 192.168.1.99: 0
 2021-12-27 11:35:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 0
+2023-03-14 14:07:51 ERROR edu.ncat.susman.ais.AIS    /home/researcher/Documents/GitHub/Panda/bin/detectors.csv does not exist
+2023-03-14 14:18:41 ERROR edu.ncat.susman.ais.AIS    /home/researcher/Documents/GitHub/Panda/bin/detectors.csv does not exist
+2023-03-14 14:26:39 ERROR edu.ncat.susman.dataset.Normalizer    Min Max File doesn't exist
+2023-03-14 14:26:56 ERROR edu.ncat.susman.dataset.Normalizer    Min Max File doesn't exist
+2023-03-14 14:27:07 ERROR edu.ncat.susman.dataset.Normalizer    Min Max File doesn't exist
+2023-03-14 14:45:19 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-03-14 14:48:31 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-03-14 14:49:18 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2 flow
+2023-03-14 14:49:18 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1 flow
+2023-03-14 14:52:09 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-03-14 14:52:14 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:14 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:14 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:14 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 5 flow
+2023-03-14 14:52:14 INFO  edu.ncat.susman.server.DetectionWorker    140.82.112.25 - 192.168.19.128: 0
+2023-03-14 14:52:15 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:16 INFO  edu.ncat.susman.server.DetectionWorker    35.173.86.210 - 192.168.19.128: 0
+2023-03-14 14:52:16 INFO  edu.ncat.susman.server.DetectionWorker    52.73.85.192 - 192.168.19.128: 0
+2023-03-14 14:52:16 INFO  edu.ncat.susman.server.DetectionWorker    34.233.222.254 - 192.168.19.128: 0
+2023-03-14 14:52:18 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.53: 0
+2023-03-14 14:52:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 192.168.19.2: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    52.73.85.192 - 192.168.19.128: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 34.233.222.254: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:19 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 35.173.86.210: 0
+2023-03-14 14:52:22 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:24 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:24 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:24 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:26 INFO  edu.ncat.susman.server.DetectionWorker    35.173.86.210 - 192.168.19.128: 0
+2023-03-14 14:52:26 INFO  edu.ncat.susman.server.DetectionWorker    52.73.85.192 - 192.168.19.128: 0
+2023-03-14 14:52:26 INFO  edu.ncat.susman.server.DetectionWorker    34.233.222.254 - 192.168.19.128: 0
+2023-03-14 14:52:27 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:29 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 140.82.114.5: 0
+2023-03-14 14:52:29 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:29 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:29 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:29 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:30 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 34.233.222.254: 0
+2023-03-14 14:52:30 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:30 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 34.120.5.221: 0
+2023-03-14 14:52:30 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 35.173.86.210: 0
+2023-03-14 14:52:31 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:31 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 0
+2023-03-14 14:52:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 172.253.62.94: 0
+2023-03-14 14:52:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 142.251.163.100: 0
+2023-03-14 14:52:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 104.16.249.249: 0
+2023-03-14 14:52:33 INFO  edu.ncat.susman.server.DetectionWorker    192.168.19.128 - 172.253.122.94: 0
+2023-03-14 14:53:56 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-03-14 14:54:05 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 1
+2023-03-14 14:54:06 INFO  edu.ncat.susman.server.DetectionWorker    127.0.0.1 - 127.0.0.1: 1
+2023-03-14 14:54:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 14 flow
+2023-03-14 14:54:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 14 flow
+2023-03-14 14:54:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 17 flow
+2023-03-14 14:54:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 17 flow
+2023-03-14 14:54:53 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...

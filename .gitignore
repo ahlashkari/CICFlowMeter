@@ -1,5 +1,3 @@
-
-data/min_max.csv
 bin/Brute Force -Web.csv
 bin/Brute Force -XSS.csv
 bin/DDOS attack-HOIC.csv
@@ -12,7 +10,6 @@ bin/FTP-BruteForce.csv
 bin/Infilteration.csv
 bin/SQL Injection.csv
 bin/SSH-Bruteforce.csv
-data/min_max.csv
 bin/FTP-BruteForce.csv
 bin/SSH-Bruteforce.csv
 target/bin/2021-12-02-collected.csv
@@ -23,3 +20,14 @@ bin/2021-12-03-collected.csv
 bin/2021-12-03-detected.csv
 data/daily/2021-12-19_Flow.csv
 data/daily/2021-12-20_Flow.csv
+.gradle/5.1.1/executionHistory/executionHistory.bin
+.gradle/5.1.1/executionHistory/executionHistory.lock
+.gradle/5.1.1/fileContent/fileContent.lock
+.gradle/5.1.1/fileHashes/fileHashes.bin
+.gradle/5.1.1/fileHashes/fileHashes.lock
+.gradle/5.1.1/javaCompile/classAnalysis.bin
+.gradle/5.1.1/javaCompile/javaCompile.lock
+.gradle/5.1.1/javaCompile/taskHistory.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/workspace-id.txt
+.gradle/workspace-id.txt.lock
