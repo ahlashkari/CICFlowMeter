@@ -66,7 +66,7 @@ public class TrafficFlowWorker extends Thread implements FlowGenListener {
 				|| flow.getSrcIP().equals("192.168.1.1") || flow.getDstIP().equals("192.168.1.1")
 				|| flow.getSrcIP().equals("8.8.8.8") || flow.getDstIP().equals("8.8.8.8")
 				|| flow.getSrcIP().equals("8.8.4.4") || flow.getDstIP().equals("8.8.4.4")
-				|| flow.getProtocol() == 0) {
+				|| flow.getSrcIP().equals("127.0.0.1") || flow.getProtocol() == 0) {
 			return;
 		}
         insertFlow(flow);
