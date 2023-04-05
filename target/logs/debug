@@ -1,429 +1,67 @@
-2023-01-20 07:57:58 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
-2023-01-20 07:58:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 19 flow
-2023-01-20 07:58:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 19 flow
-2023-01-20 07:58:03 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 24 flow
-2023-01-20 07:58:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.228 - 172.107.84.94: 0
-2023-01-20 07:58:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.103 - 239.255.255.250: 1
-2023-01-20 07:58:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.103 - 255.255.255.255: 1
-2023-01-20 07:58:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.103 - 255.255.255.255: 1
-2023-01-20 07:58:12 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 14 flow
-2023-01-20 07:58:19 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 136 flow
-2023-01-20 07:58:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.246 - 24.214.53.97: 0
-2023-01-20 07:58:24 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    listening: \Device\NPF_{30EF7B0B-B9B8-4792-AEB0-41F792B0004B} error
-2023-01-20 08:07:18 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
-2023-01-20 08:07:28 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 12 flow
-2023-01-20 08:07:28 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 12 flow
-2023-01-20 08:07:28 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.89 - 35.232.111.17: 0
-2023-01-20 08:07:28 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.89 - 35.232.111.17: 0
-2023-01-20 08:07:32 INFO  edu.ncat.susman.server.DetectionWorker    35.232.111.17 - 192.168.1.89: 0
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 209.18.47.62: 0
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 209.18.47.63: 0
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:07:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:07:47 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:07:48 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:07:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:07:50 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:07:51 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:07:52 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:07:53 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:07:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:07:55 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:07:56 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:07:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:07:58 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:07:59 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:00 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:02 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:03 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:04 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:05 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:07 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:08 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:09 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:11 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:12 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:14 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
-2023-01-20 08:08:15 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.240: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:16 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:17 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:19 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:20 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:21 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.201: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.226: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.217: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.246: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.198: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.228: 1
-2023-01-20 08:08:23 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.193: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.239: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.227: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.245: 1
-2023-01-20 08:08:24 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.157: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.135: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.145: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.154: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.152: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.196: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
-2023-01-20 08:08:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.204: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.244: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.139: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.203: 1
-2023-01-20 08:08:26 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.233: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.214: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.197: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.150: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.184: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.194: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.137: 1
-2023-01-20 08:08:27 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    listening: \Device\NPF_{30EF7B0B-B9B8-4792-AEB0-41F792B0004B} error
+2023-04-04 22:33:29 INFO  edu.ncat.susman.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-04-04 22:33:36 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 13 flow
+2023-04-04 22:33:40 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 34 flow
+2023-04-04 22:33:45 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2519 flow
+2023-04-04 22:33:46 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2632 flow
+2023-04-04 22:33:46 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2631 flow
+2023-04-04 22:33:46 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2630 flow
+2023-04-04 22:33:55 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 32 flow
+2023-04-04 22:33:55 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 40 flow
+2023-04-04 22:33:55 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 67 flow
+2023-04-04 22:33:55 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 622 flow
+2023-04-04 22:33:55 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 624 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1496 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1497 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1455 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1455 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1359 flow
+2023-04-04 22:34:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1360 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1288 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1288 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1257 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1256 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1151 flow
+2023-04-04 22:34:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 1150 flow
+2023-04-04 22:34:01 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 209.18.47.63: 0
+2023-04-04 22:34:06 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 209.18.47.62: 0
+2023-04-04 22:34:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 392 flow
+2023-04-04 22:34:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 393 flow
+2023-04-04 22:34:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 387 flow
+2023-04-04 22:34:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 387 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 371 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 366 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 367 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 367 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 349 flow
+2023-04-04 22:34:08 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 348 flow
+2023-04-04 22:34:10 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.127: 1
+2023-04-04 22:34:13 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.108: 1
+2023-04-04 22:34:18 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.132: 1
+2023-04-04 22:34:22 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.106: 1
+2023-04-04 22:34:24 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 415 flow
+2023-04-04 22:34:24 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 416 flow
+2023-04-04 22:34:25 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.103: 1
+2023-04-04 22:34:28 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.122: 1
+2023-04-04 22:34:30 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 620 flow
+2023-04-04 22:34:31 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.134: 1
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 656 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 657 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 666 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 654 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 659 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 660 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 663 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 664 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 656 flow
+2023-04-04 22:34:34 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 656 flow
+2023-04-04 22:34:36 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.130: 1
+2023-04-04 22:34:39 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 321 flow
+2023-04-04 22:34:40 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.104: 1
+2023-04-04 22:34:40 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 343 flow
+2023-04-04 22:34:43 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.111: 1
+2023-04-04 22:34:46 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.158: 1
+2023-04-04 22:34:49 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.171: 1
+2023-04-04 22:34:53 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 803 flow
+2023-04-04 22:34:53 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 791 flow
+2023-04-04 22:34:54 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.200: 1
+2023-04-04 22:34:57 INFO  edu.ncat.susman.server.DetectionWorker    192.168.1.99 - 192.168.1.159: 1
