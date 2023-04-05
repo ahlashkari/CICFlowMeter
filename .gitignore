@@ -20,3 +20,4 @@ bin/2021-12-03-collected.csv
 bin/2021-12-03-detected.csv
 data/daily/2021-12-19_Flow.csv
 data/daily/2021-12-20_Flow.csv
+*.bin
