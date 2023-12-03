@@ -1,0 +1,14 @@
+2023-12-03 09:23:40 - Pcap is listening...
+2023-12-03 09:26:22 - Pcap stop listening
+2023-12-03 09:26:23 - path:/home/user/Music/UEBA-PY/java/CICFlowMeter/build/distributions/CICFlowMeter-4.0/bin/data/daily/2023-12-03_Flow.csv
+2023-12-03 09:27:56 - The pcap file or folder does not exist! -> -i
+2023-12-03 09:31:18 - The pcap file or folder does not exist! -> -i
+2023-12-03 09:33:59 - The pcap file or folder does not exist! -> -i
+2023-12-03 09:34:57 - The pcap file or folder does not exist! -> -i
+2023-12-03 09:35:06 - Please select pcap!
+2023-12-03 09:35:57 - Pcap is listening...
+2023-12-03 09:36:26 - Forward flow closed due to FIN Flag
+2023-12-03 09:36:29 - Forward flow closed due to FIN Flag
+2023-12-03 09:36:36 - Forward flow closed due to FIN Flag
+2023-12-03 09:36:54 - Pcap stop listening
+2023-12-03 09:36:54 - path:/home/user/Music/UEBA-PY/java/CICFlowMeter/build/distributions/CICFlowMeter-4.0/bin/data/daily/2023-12-03_Flow.csv

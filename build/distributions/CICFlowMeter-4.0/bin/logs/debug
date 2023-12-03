@@ -1,0 +1,49 @@
+2023-12-03 09:23:40 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-12-03 09:26:22 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Pcap stop listening
+2023-12-03 09:26:23 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:/home/user/Music/UEBA-PY/java/CICFlowMeter/build/distributions/CICFlowMeter-4.0/bin/data/daily/2023-12-03_Flow.csv
+2023-12-03 09:27:56 INFO  cic.cs.unb.ca.ifm.Cmd    The pcap file or folder does not exist! -> -i
+2023-12-03 09:31:18 INFO  cic.cs.unb.ca.ifm.Cmd    The pcap file or folder does not exist! -> -i
+2023-12-03 09:33:59 INFO  cic.cs.unb.ca.ifm.Cmd    The pcap file or folder does not exist! -> -i
+2023-12-03 09:34:57 INFO  cic.cs.unb.ca.ifm.Cmd    The pcap file or folder does not exist! -> -i
+2023-12-03 09:35:06 INFO  cic.cs.unb.ca.ifm.Cmd    Please select pcap!
+2023-12-03 09:35:57 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2023-12-03 09:36:21 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 32 flow
+2023-12-03 09:36:21 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 31 flow
+2023-12-03 09:36:21 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 30 flow
+2023-12-03 09:36:21 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 29 flow
+2023-12-03 09:36:26 INFO  cic.cs.unb.ca.jnetpcap.FlowGenerator    Forward flow closed due to FIN Flag
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:26 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 45 flow
+2023-12-03 09:36:29 INFO  cic.cs.unb.ca.jnetpcap.FlowGenerator    Forward flow closed due to FIN Flag
+2023-12-03 09:36:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 48 flow
+2023-12-03 09:36:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 48 flow
+2023-12-03 09:36:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 48 flow
+2023-12-03 09:36:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 48 flow
+2023-12-03 09:36:36 INFO  cic.cs.unb.ca.jnetpcap.FlowGenerator    Forward flow closed due to FIN Flag
+2023-12-03 09:36:36 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 50 flow
+2023-12-03 09:36:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagRST current has 50 flow
+2023-12-03 09:36:54 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Pcap stop listening
+2023-12-03 09:36:54 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:/home/user/Music/UEBA-PY/java/CICFlowMeter/build/distributions/CICFlowMeter-4.0/bin/data/daily/2023-12-03_Flow.csv
+2023-12-03 09:37:00 DEBUG cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    break Packet loop
