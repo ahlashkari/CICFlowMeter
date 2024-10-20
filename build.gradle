@@ -116,7 +116,19 @@ task exeCMD(type: JavaExec){
     }else{
         jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
     }
-    //args = ["/home/yzhang29/0a/Capture/", "/home/yzhang29/0a/Capture/out/"]
+    args = ["/home/enigma/work/tsyp/3asba/CICFlowMeter/cap/", "/home/enigma/work/tsyp/3asba/CICFlowMeter/out/"]
+}
+
+task exeRealCMD(type: JavaExec){
+    main = "cic.cs.unb.ca.ifm.RealCmd" //main class
+    classpath = sourceSets.main.runtimeClasspath
+    String osName = System.getProperty('os.name').toLowerCase()
+    if(osName.contains('windows')){
+        jvmArgs '-Djava.library.path=jnetpcap/win/jnetpcap-1.4.r1425'
+    }else{
+        jvmArgs '-Djava.library.path=jnetpcap/linux/jnetpcap-1.4.r1425'
+    }
+    args = ["wlp49s0", "/home/enigma/work/tsyp/3asba/CICFlowMeter/out/"]
 }
 
 
