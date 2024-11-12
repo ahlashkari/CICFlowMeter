@@ -132,7 +132,7 @@ public class FlowGenerator {
     		    		// 1.- we add the packet-in-process to the flow (it is the last packet)
     		        	// 2.- we move the flow to finished flow list
     		        	// 3.- we eliminate the flow from the current flow list       					
-    					if ((flow.getBwdFINFlags() + flow.getBwdFINFlags()) == 2) {
+    					if ((flow.getFwdFINFlags() + flow.getBwdFINFlags()) == 2) {
     		    	    	logger.debug("FlagFIN current has {} flow",currentFlows.size());
     		    	    	flow.addPacket(packet);
     		                if (mListener != null) {
@@ -163,7 +163,7 @@ public class FlowGenerator {
     		    		// 1.- we add the packet-in-process to the flow (it is the last packet)
     		        	// 2.- we move the flow to finished flow list
     		        	// 3.- we eliminate the flow from the current flow list       					
-    					if ((flow.getBwdFINFlags() + flow.getBwdFINFlags()) == 2) {
+    					if ((flow.getFwdFINFlags() + flow.getBwdFINFlags()) == 2) {
     		    	    	logger.debug("FlagFIN current has {} flow",currentFlows.size());
     		    	    	flow.addPacket(packet);
     		                if (mListener != null) {

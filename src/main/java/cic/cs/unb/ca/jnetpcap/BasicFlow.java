@@ -119,6 +119,14 @@ public class BasicFlow {
 	
 	
 	public void firstPacket(BasicPacketInfo packet){
+		if(this.src==null){
+			this.src = packet.getSrc();
+			this.srcPort = packet.getSrcPort();
+		}
+		if(this.dst==null){
+			this.dst = packet.getDst();
+			this.dstPort = packet.getDstPort();
+		}
 		updateFlowBulk(packet);
 		detectUpdateSubflows(packet);
 		checkFlags(packet);
@@ -128,18 +136,9 @@ public class BasicFlow {
 		this.endActiveTime = packet.getTimeStamp();
 		this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 
-		if(this.src==null){
-			this.src = packet.getSrc();
-			this.srcPort = packet.getSrcPort();
-		}
-		if(this.dst==null){
-			this.dst = packet.getDst();
-			this.dstPort = packet.getDstPort();
-		}		
 		if(Arrays.equals(this.src, packet.getSrc())){
 			this.min_seg_size_forward = packet.getHeaderBytes();
 			Init_Win_bytes_forward = packet.getTCPWindow();
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 			this.fwdPktStats.addValue((double)packet.getPayloadBytes());
 			this.fHeaderBytes = packet.getHeaderBytes();
 			this.forwardLastSeen = packet.getTimeStamp();
@@ -153,7 +152,6 @@ public class BasicFlow {
 			}
 		}else{
 			Init_Win_bytes_backward = packet.getTCPWindow();
-			this.flowLengthStats.addValue((double)packet.getPayloadBytes());
 			this.bwdPktStats.addValue((double)packet.getPayloadBytes());
 			this.bHeaderBytes = packet.getHeaderBytes();
 			this.backwardLastSeen = packet.getTimeStamp();
@@ -184,7 +182,13 @@ public class BasicFlow {
 				}
 				this.fwdPktStats.addValue((double)packet.getPayloadBytes());
 				this.fHeaderBytes +=packet.getHeaderBytes();
-    			this.forward.add(packet);   
+    			this.forward.add(packet);
+				if(packet.hasFlagPSH()){
+					this.fPSH_cnt++;
+				}
+				if(packet.hasFlagURG()){
+					this.fURG_cnt++;
+				}
     			this.forwardBytes+=packet.getPayloadBytes();
     			if (this.forward.size()>1)
     				this.forwardIAT.addValue(currentTimestamp -this.forwardLastSeen);
@@ -196,6 +200,12 @@ public class BasicFlow {
 				Init_Win_bytes_backward = packet.getTCPWindow();
 				this.bHeaderBytes+=packet.getHeaderBytes();
     			this.backward.add(packet);
+				if(packet.hasFlagPSH()){
+					this.bPSH_cnt++;
+				}
+				if(packet.hasFlagURG()){
+					this.bURG_cnt++;
+				}
     			this.backwardBytes+=packet.getPayloadBytes();
     			if (this.backward.size()>1)
     				this.backwardIAT.addValue(currentTimestamp-this.backwardLastSeen);
@@ -381,7 +391,7 @@ public class BasicFlow {
 
 	public void updateFlowBulk (BasicPacketInfo packet){
 
-		if(this.src == packet.getSrc()){
+		if(Arrays.equals(this.src, packet.getSrc())){
 			updateForwardBulk(packet,blastBulkTS);
 		}else {
 			updateBackwardBulk(packet,flastBulkTS);
