@@ -29,6 +29,13 @@ Run eclipse with sudo
 
 ```
 
+## Run from Terminal (Windows Example)
+
+```
+java -Djava.library.path="C:\Users\your_user\Desktop\CICFlowMeter-master\jnetpcap\win\jnetpcap-1.4.r1425"   -jar "C:\Users\your_user\Desktop\CICFlowMeter-master\target\CICFlowMeterV3-0.0.4-SNAPSHOT.jar" -i   "C:\Users\your_user\Desktop\pcap" -o "C:\Users\your_user\Desktop\csv_files"  
+```
+
+
 ## Make package
 
 ### IntelliJ IDEA
